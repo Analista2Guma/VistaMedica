@@ -134,57 +134,6 @@
                                     android:orientation="vertical"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent" >
-                                    <TableLayout
-                                        android:background="@color/colorPrimaryDark"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal">
-                                        <TableRow
-                                            android:layout_width="fill_parent"
-                                            android:layout_height="fill_parent"
-                                            android:layout_margin="10dp">
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="ARTICULO" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="DESCRIPCION" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="CANTIDAD" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="VENTA" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="HITS" />
-                                        </TableRow>
-                                    </TableLayout>
                                     <ListView
                                         android:id="@+id/lst_Articulos"
                                         android:gravity="center"
@@ -196,49 +145,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent" >
 
-                                    <TableLayout
-                                        android:background="@color/colorPrimaryDark"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal">
-                                        <TableRow
-                                            android:layout_width="fill_parent"
-                                            android:layout_height="fill_parent"
-                                            android:layout_margin="10dp">
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="COD CLIENTE" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="CLIENTE" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="HITS" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="VENTAS" />
-                                        </TableRow>
-                                    </TableLayout>
                                     <ListView
                                         android:id="@+id/lstClientes"
                                         android:gravity="center"
@@ -250,49 +156,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent" >
 
-                                    <TableLayout
-                                        android:background="@color/colorPrimaryDark"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal">
-                                        <TableRow
-                                            android:layout_width="fill_parent"
-                                            android:layout_height="fill_parent"
-                                            android:layout_margin="10dp">
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="COD CLIENTE 3" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="CLIENTE" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="VENTA" />
-                                            <TextView
-                                                android:textColor="@color/lightgray"
-                                                android:gravity="center"
-                                                android:layout_height="fill_parent"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="1"
-                                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                                android:text="FACTURAS" />
-                                        </TableRow>
-                                    </TableLayout>
                                     <ListView
                                         android:id="@+id/lst3"
                                         android:gravity="center"

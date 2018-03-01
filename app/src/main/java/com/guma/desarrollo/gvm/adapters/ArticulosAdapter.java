@@ -12,6 +12,7 @@ import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.POJO.Articulo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin.rivera on 27/02/2018.
@@ -19,11 +20,11 @@ import java.util.ArrayList;
 
 public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.ViewHolder> {
 
-    private ArrayList<Articulo> listaArticulos;
+    private List<Articulo> listaArticulos;
     private Context context;
     private Activity activity;
 
-    public ArticulosAdapter(ArrayList<Articulo> listaArticulos, Context context, Activity activity) {
+    public ArticulosAdapter(List<Articulo> listaArticulos, Context context, Activity activity) {
         this.listaArticulos = listaArticulos;
         this.context = context;
         this.activity = activity;
@@ -39,9 +40,9 @@ public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         Articulo articulo = listaArticulos.get(position);
 
-        holder.articuloNombre.setText(articulo.getNombre());
-        holder.articuloCodigo.setText("Codigo: " + articulo.getCodigo());
-        holder.articuloPuntos.setText("Puntos: " + String.valueOf(articulo.getPuntos()));
+        holder.articuloNombre.setText(articulo.getmNam());
+        holder.articuloCodigo.setText("Codigo: " + articulo.getmCod());
+        holder.articuloPuntos.setText("Puntos: " + articulo.getmPts());
     }
 
     @Override
@@ -57,7 +58,6 @@ public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             articuloNombre = itemView.findViewById(R.id.cardArticuloNombre);
             articuloCodigo = itemView.findViewById(R.id.cardArticuloCodigo);
             articuloPuntos = itemView.findViewById(R.id.cardArticuloPuntos);

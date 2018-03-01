@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
+import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.POJO.MvtsCliente;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
@@ -17,30 +17,26 @@ import java.util.List;
  * Created by maryan.espinoza on 01/03/2018.
  */
 
-public class MvtsCliente_model {
+public class Clientes_model {
+
     private static final String TAG = "MesActualActivity";
-    public static void Save(Context context, ArrayList<MvtsCliente> ARTI){
+    public static void Save(Context context, ArrayList<Cliente> ARTI){
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
         try
         {
             myDbHelper = new SQLiteHelper(ManagerURI.getDirDb(), context);
             myDataBase = myDbHelper.getWritableDatabase();
-
-
             if (ARTI.size()>0){
-
-                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM MvtsCliente");
+                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM Clientes");
                 for(int i=0;i<ARTI.size();i++){
-                    MvtsCliente a = ARTI.get(i);
+                    Cliente a = ARTI.get(i);
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("mRut" , a.getmRut());
-                    contentValues.put("mCcl" , a.getmCcl());
+                    contentValues.put("mCod" , a.getmCod());
                     contentValues.put("mNam" , a.getmNam());
+                    contentValues.put("mDir" , a.getmDir());
                     contentValues.put("mRuc" , a.getmRuc());
-                    contentValues.put("mHts" , a.getmHts());
-                    contentValues.put("mVnt" , a.getmVnt());
-                    myDataBase.insert("MvtsCliente", null, contentValues );
+                    myDataBase.insert("Clientes", null, contentValues );
                 }
             }
         }
@@ -53,25 +49,23 @@ public class MvtsCliente_model {
             if(myDbHelper != null) { myDbHelper.close(); }
         }
     }
-    public static List<MvtsCliente>get(String basedir, Context context) {
-        List<MvtsCliente> lst = new ArrayList<>();
+    public static List<Cliente> get(String basedir, Context context) {
+        List<Cliente> lst = new ArrayList<>();
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
         try
         {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
-            Cursor cursor = myDataBase.query(true, "MvtsCliente", null, null, null, null, null, null, null);
+            Cursor cursor = myDataBase.query(true, "Clientes", null, null, null, null, null, null, null);
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while(!cursor.isAfterLast()) {
-                    MvtsCliente tmp = new MvtsCliente();
-                    tmp.setmRut(cursor.getString(cursor.getColumnIndex("mRut")));
-                    tmp.setmCcl(cursor.getString(cursor.getColumnIndex("mCcl")));
+                    Cliente tmp = new Cliente();
+                    tmp.setmCod(cursor.getString(cursor.getColumnIndex("mCod")));
                     tmp.setmNam(cursor.getString(cursor.getColumnIndex("mNam")));
+                    tmp.setmDir(cursor.getString(cursor.getColumnIndex("mDir")));
                     tmp.setmRuc(cursor.getString(cursor.getColumnIndex("mRuc")));
-                    tmp.setmHts(cursor.getInt(cursor.getColumnIndex("mHts")));
-                    tmp.setmVnt(cursor.getString(cursor.getColumnIndex("mVnt")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

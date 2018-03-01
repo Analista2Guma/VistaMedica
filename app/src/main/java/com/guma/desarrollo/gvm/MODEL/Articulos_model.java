@@ -4,10 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
-import com.guma.desarrollo.gvm.POJO.MvtsCliente;
+import com.guma.desarrollo.gvm.POJO.Articulo;
+import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;
@@ -17,30 +17,28 @@ import java.util.List;
  * Created by maryan.espinoza on 01/03/2018.
  */
 
-public class MvtsCliente_model {
-    private static final String TAG = "MesActualActivity";
-    public static void Save(Context context, ArrayList<MvtsCliente> ARTI){
+public class Articulos_model {
+
+    private static final String TAG = "ArticulosActivity";
+    public static void Save(Context context, ArrayList<Articulo> ARTI){
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
         try
         {
             myDbHelper = new SQLiteHelper(ManagerURI.getDirDb(), context);
             myDataBase = myDbHelper.getWritableDatabase();
-
-
             if (ARTI.size()>0){
-
-                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM MvtsCliente");
+                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM Articulos");
                 for(int i=0;i<ARTI.size();i++){
-                    MvtsCliente a = ARTI.get(i);
+                    Articulo a = ARTI.get(i);
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("mRut" , a.getmRut());
-                    contentValues.put("mCcl" , a.getmCcl());
+                    contentValues.put("mCod" , a.getmCod());
                     contentValues.put("mNam" , a.getmNam());
-                    contentValues.put("mRuc" , a.getmRuc());
-                    contentValues.put("mHts" , a.getmHts());
-                    contentValues.put("mVnt" , a.getmVnt());
-                    myDataBase.insert("MvtsCliente", null, contentValues );
+                    contentValues.put("mExi" , a.getmExi());
+                    contentValues.put("mLab" , a.getmLab());
+                    contentValues.put("mUnd" , a.getmUnd());
+                    contentValues.put("mPts" , a.getmPts());
+                    myDataBase.insert("Articulos", null, contentValues );
                 }
             }
         }
@@ -53,25 +51,25 @@ public class MvtsCliente_model {
             if(myDbHelper != null) { myDbHelper.close(); }
         }
     }
-    public static List<MvtsCliente>get(String basedir, Context context) {
-        List<MvtsCliente> lst = new ArrayList<>();
+    public static List<Articulo> get(String basedir, Context context) {
+        List<Articulo> lst = new ArrayList<>();
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
         try
         {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
-            Cursor cursor = myDataBase.query(true, "MvtsCliente", null, null, null, null, null, null, null);
+            Cursor cursor = myDataBase.query(true, "Articulos", null, null, null, null, null, null, null);
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while(!cursor.isAfterLast()) {
-                    MvtsCliente tmp = new MvtsCliente();
-                    tmp.setmRut(cursor.getString(cursor.getColumnIndex("mRut")));
-                    tmp.setmCcl(cursor.getString(cursor.getColumnIndex("mCcl")));
+                    Articulo tmp = new Articulo();
+                    tmp.setmCod(cursor.getString(cursor.getColumnIndex("mCod")));
                     tmp.setmNam(cursor.getString(cursor.getColumnIndex("mNam")));
-                    tmp.setmRuc(cursor.getString(cursor.getColumnIndex("mRuc")));
-                    tmp.setmHts(cursor.getInt(cursor.getColumnIndex("mHts")));
-                    tmp.setmVnt(cursor.getString(cursor.getColumnIndex("mVnt")));
+                    tmp.setmExi(cursor.getString(cursor.getColumnIndex("mExi")));
+                    tmp.setmLab(cursor.getString(cursor.getColumnIndex("mLab")));
+                    tmp.setmUnd(cursor.getString(cursor.getColumnIndex("mUnd")));
+                    tmp.setmPts(cursor.getString(cursor.getColumnIndex("mPts")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

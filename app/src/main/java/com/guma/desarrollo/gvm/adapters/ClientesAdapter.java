@@ -15,6 +15,7 @@ import com.guma.desarrollo.gvm.activities.ClienteDetalleActivity;
 import com.guma.desarrollo.gvm.POJO.Cliente;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin.rivera on 27/02/2018.
@@ -22,11 +23,11 @@ import java.util.ArrayList;
 
 public class ClientesAdapter extends RecyclerView.Adapter<ClientesAdapter.ViewHolder> {
 
-    private ArrayList<Cliente> listaClientes;
+    private List<Cliente> listaClientes;
     private Context context;
     private Activity activity;
 
-    public ClientesAdapter(ArrayList<Cliente> listaClientes, Context context, Activity activity) {
+    public ClientesAdapter(List<Cliente> listaClientes, Context context, Activity activity) {
         this.listaClientes = listaClientes;
         this.context = context;
         this.activity = activity;
@@ -41,14 +42,18 @@ public class ClientesAdapter extends RecyclerView.Adapter<ClientesAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Cliente cliente = listaClientes.get(position);
-        holder.clienteNombre.setText(cliente.getNombre());
-        holder.clienteCodigo.setText(cliente.getCodigo());
+
+        holder.clienteNombre.setText(cliente.getmNam());
+        holder.clienteCodigo.setText(cliente.getmCod());
+
         holder.clienteCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ClienteDetalleActivity.class);
-                intent.putExtra("nombre", cliente.getNombre());
-                intent.putExtra("codigo", cliente.getCodigo().toString());
+                intent.putExtra("nombre", cliente.getmNam());
+                intent.putExtra("codigo", cliente.getmCod());
+                intent.putExtra("Dire", cliente.getmDir());
+
                 activity.startActivity(intent);
 
             }

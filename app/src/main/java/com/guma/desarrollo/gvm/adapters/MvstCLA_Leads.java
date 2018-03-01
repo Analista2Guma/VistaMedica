@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.guma.desarrollo.gvm.POJO.MvstCLA;
+import com.guma.desarrollo.gvm.POJO.MvtsCliente;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.POJO.MvtsArticulos;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ import java.util.List;
  * Created by maryan.espinoza on 07/03/2017.
  */
 
-public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
-    public vstArticulos_Leads(Context context, List<MvtsArticulos> objects) {
+public class MvstCLA_Leads extends ArrayAdapter<MvstCLA> {
+    public MvstCLA_Leads(Context context, List<MvstCLA> objects) {
         super(context, 0, objects);
     }
 
@@ -42,16 +43,14 @@ public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
         TextView it4 = convertView.findViewById(R.id.id_itm4);
         TextView it5 = convertView.findViewById(R.id.id_itm5);
 
-        MvtsArticulos lead = getItem(position);
+        MvstCLA lead = getItem(position);
 
-
-
-
-        it1.setText(lead.getmDic());
+        it1.setText(lead.getmDec());
         it2.setText(lead.getmArt());
         it3.setText("Cantidad: " + lead.getmCnt());
         it4.setText("C$: " + lead.getmVnt());
-        it5.setText("Veces: " + String.valueOf(lead.getmHts()));
+        it5.setText(lead.getmDia());
+
         return convertView;
     }
 }

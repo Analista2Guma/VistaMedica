@@ -6,27 +6,45 @@ package com.guma.desarrollo.gvm.POJO;
 
 public class Cliente {
 
-    private String Nombre;
-    private String Codigo;
+    String mCod,mNam,mDir,mRuc;
 
-    public Cliente(String nombre, String codigo) {
-        Nombre = nombre;
-        Codigo = codigo;
+    public Cliente(String mCod, String mNam, String mDir, String mRuc) {
+        this.mCod = mCod;
+        this.mNam = mNam;
+        this.mDir = mDir;
+        this.mRuc = mRuc;
+    }
+    public Cliente(){}
+
+    public String getmCod() {
+        return mCod;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public void setmCod(String mCod) {
+        this.mCod = mCod;
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public String getmNam() {
+        return mNam;
     }
 
-    public String getCodigo() {
-        return Codigo;
+    public void setmNam(String mNam) {
+        this.mNam = mNam;
     }
 
-    public void setCodigo(String codigo) {
-        Codigo = codigo;
+    public String getmDir() {
+        return mDir;
+    }
+
+    public void setmDir(String mDir) {
+        this.mDir = mDir;
+    }
+
+    public String getmRuc() {
+        return mRuc;
+    }
+
+    public void setmRuc(String mRuc) {
+        this.mRuc = mRuc;
     }
 }

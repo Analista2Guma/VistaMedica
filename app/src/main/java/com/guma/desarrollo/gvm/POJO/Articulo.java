@@ -6,37 +6,63 @@ package com.guma.desarrollo.gvm.POJO;
 
 public class Articulo {
 
-    private String Nombre;
-    private String Codigo;
-    private int Puntos;
+    String mCod,mNam,mExi,mLab,mUnd,mPts;
 
-    public Articulo(String nombre, String codigo, int puntos) {
-        Nombre = nombre;
-        Codigo = codigo;
-        Puntos = puntos;
+    public Articulo(String mCod, String mNam, String mExi, String mLab, String mUnd, String mPts) {
+        this.mCod = mCod;
+        this.mNam = mNam;
+        this.mExi = mExi;
+        this.mLab = mLab;
+        this.mUnd = mUnd;
+        this.mPts = mPts;
+    }
+    public Articulo(){}
+
+    public String getmCod() {
+        return mCod;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public void setmCod(String mCod) {
+        this.mCod = mCod;
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public String getmNam() {
+        return mNam;
     }
 
-    public String getCodigo() {
-        return Codigo;
+    public void setmNam(String mNam) {
+        this.mNam = mNam;
     }
 
-    public void setCodigo(String codigo) {
-        Codigo = codigo;
+    public String getmExi() {
+        return mExi;
     }
 
-    public int getPuntos() {
-        return Puntos;
+    public void setmExi(String mExi) {
+        this.mExi = mExi;
     }
 
-    public void setPuntos(int puntos) {
-        Puntos = puntos;
+    public String getmLab() {
+        return mLab;
+    }
+
+    public void setmLab(String mLab) {
+        this.mLab = mLab;
+    }
+
+    public String getmUnd() {
+        return mUnd;
+    }
+
+    public void setmUnd(String mUnd) {
+        this.mUnd = mUnd;
+    }
+
+    public String getmPts() {
+        return mPts;
+    }
+
+    public void setmPts(String mPts) {
+        this.mPts = mPts;
     }
 }

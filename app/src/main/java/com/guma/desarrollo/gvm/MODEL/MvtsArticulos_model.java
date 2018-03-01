@@ -105,7 +105,6 @@ public class MvtsArticulos_model {
                 cursor.moveToFirst();
                 while(!cursor.isAfterLast()) {
                     MvtsArticulos tmp = new MvtsArticulos();
-
                     tmp.setMventa(cursor.getString(cursor.getColumnIndex("mVnt")));
                     tmp.setmMeta(cursor.getString(cursor.getColumnIndex("mMts")));
                     lista.add(tmp);

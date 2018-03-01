@@ -15,11 +15,13 @@ public class ClienteDetalleActivity extends AppCompatActivity {
 
         TextView textViewNombre = findViewById(R.id.detalleClienteNombre);
         TextView textViewCodigo = findViewById(R.id.detalleClienteCodigo);
+        TextView textViewDir = findViewById(R.id.clDir);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             textViewNombre.setText(bundle.getString("nombre"));
             textViewCodigo.setText(bundle.getString("codigo"));
+            textViewDir.setText(bundle.getString("Dire"));
         }
     }
 }

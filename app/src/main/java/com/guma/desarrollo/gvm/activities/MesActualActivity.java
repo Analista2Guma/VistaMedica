@@ -8,11 +8,15 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
+import com.guma.desarrollo.gvm.POJO.MvstCLA;
 import com.guma.desarrollo.gvm.POJO.MvtsArticulos;
 import com.guma.desarrollo.gvm.POJO.MvtsCliente;
 import com.guma.desarrollo.gvm.R;
+import com.guma.desarrollo.gvm.adapters.MvstCLA_Leads;
+import com.guma.desarrollo.gvm.adapters.MvtsCliente_Leads;
 import com.guma.desarrollo.gvm.adapters.vstArticulos_Leads;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
@@ -22,6 +26,7 @@ public class MesActualActivity extends AppCompatActivity {
     private static final String TAG = "MesActualActivity";
     private List<MvtsArticulos> oArticulos_vendidos,oVentas_Metas;
     private List<MvtsCliente> oVentas_Clientes;
+    private List<MvstCLA> oMvstCLA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +35,15 @@ public class MesActualActivity extends AppCompatActivity {
         oArticulos_vendidos = MvtsArticulos_model.get_ventas(ManagerURI.getDirDb(), this);
         oVentas_Metas = MvtsArticulos_model.get_ventas_metas(ManagerURI.getDirDb(), this);
         oVentas_Clientes = MvtsCliente_model.get(ManagerURI.getDirDb(), this);
+        oMvstCLA = Mvstcla_model.get(ManagerURI.getDirDb(), this);
 
 
         TextView txtMetas      = findViewById(R.id.idMeta);
         TextView txtVentas     = findViewById(R.id.idVenta);
-        ListView lstArticulo   = findViewById(R.id.lst_Articulos);
+        ListView lst_tab1      = findViewById(R.id.lst_Articulos);
+        ListView lst_tab2      = findViewById(R.id.lstClientes);
+        ListView lst_tab3      = findViewById(R.id.lst3);
+
         TabHost tabs = findViewById(android.R.id.tabhost);
         tabs.setup();
 
@@ -51,17 +60,19 @@ public class MesActualActivity extends AppCompatActivity {
 
         spec=tabs.newTabSpec("TB2");
         spec.setContent(R.id.tab2);
-        spec.setIndicator("VENTAS POR CLIENTE ",null);
+        spec.setIndicator("Vts POR CLIENTE ",null);
         tabs.addTab(spec);
 
         spec=tabs.newTabSpec("TB3");
         spec.setContent(R.id.tab3);
-        spec.setIndicator("FACTURADO",null);
+        spec.setIndicator("Art. FACTURADO",null);
         tabs.addTab(spec);
 
         tabs.setCurrentTab(0);
 
-        lstArticulo.setAdapter(new vstArticulos_Leads(this, oArticulos_vendidos));
+        lst_tab1.setAdapter(new vstArticulos_Leads(this, oArticulos_vendidos));
+        lst_tab2.setAdapter(new MvtsCliente_Leads(this, oVentas_Clientes));
+        lst_tab3.setAdapter(new MvstCLA_Leads(this, oMvstCLA));
 
 
 
