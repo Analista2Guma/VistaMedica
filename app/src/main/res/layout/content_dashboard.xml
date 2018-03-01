@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.guma.desarrollo.gvm.activities.DashboardActivity"
+    tools:showIn="@layout/app_bar_dashboard"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/dashboardCurrentMonth"
+            android:clickable="true"
+            android:layout_width="@dimen/dashboardCardWidth"
+            android:layout_height="@dimen/dashboardCardHeight"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/item_circle"
+                    android:src="@drawable/dashboard_calendar"
+                    android:gravity="center"
+                    android:elevation="@dimen/elevation_ico_dashboard"
+                    android:layout_marginBottom="20dp"
+                    android:padding="20dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="MES ACTUAL"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/dashboardLastMonths"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="@dimen/dashboardCardWidth"
+            android:layout_height="@dimen/dashboardCardHeight"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/item_circle"
+                    android:src="@drawable/dashboard_calendar"
+                    android:gravity="center"
+                    android:elevation="@dimen/elevation_ico_dashboard"
+                    android:layout_marginBottom="20dp"
+                    android:padding="20dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="3 MESES"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/dashboardClientes"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="@dimen/dashboardCardWidth"
+            android:layout_height="@dimen/dashboardCardHeight"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/item_circle"
+                    android:src="@drawable/dashboard_clientes"
+                    android:gravity="center"
+                    android:elevation="@dimen/elevation_ico_dashboard"
+                    android:layout_marginBottom="20dp"
+                    android:padding="20dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="CLIENTES"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/dashboardArticulos"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="@dimen/dashboardCardWidth"
+            android:layout_height="@dimen/dashboardCardHeight"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/item_circle"
+                    android:src="@drawable/dashboard_listado"
+                    android:gravity="center"
+                    android:elevation="@dimen/elevation_ico_dashboard"
+                    android:layout_marginBottom="20dp"
+                    android:padding="20dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="ARTICULOS"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

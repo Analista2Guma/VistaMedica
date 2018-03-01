@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guma.desarrollo.gvm.activities.MesActualActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/idMeta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:text="20,000"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_gravity="center_horizontal"
+                        android:text="META"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/idVenta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:text="15,000"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:text="VENTAS TOTALES"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:elevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_shopping"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:textSize="17sp"
+                            android:textColor="@android:color/black"
+                            android:text="VENTAS"/>
+
+                    </LinearLayout>
+
+                    <TabHost
+                        android:id="@android:id/tabhost"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+
+
+                            <TabWidget android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@android:id/tabs" />
+
+                            <FrameLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@android:id/tabcontent" >
+
+                                <LinearLayout
+                                    android:id="@+id/tab1"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+                                    <TableLayout
+                                        android:background="@color/colorPrimaryDark"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal">
+                                        <TableRow
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="fill_parent"
+                                            android:layout_margin="10dp">
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="ARTICULO" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="DESCRIPCION" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="CANTIDAD" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="VENTA" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="HITS" />
+                                        </TableRow>
+                                    </TableLayout>
+                                    <ListView
+                                        android:id="@+id/lst_Articulos"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+                                <LinearLayout android:id="@+id/tab2"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+
+                                    <TableLayout
+                                        android:background="@color/colorPrimaryDark"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal">
+                                        <TableRow
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="fill_parent"
+                                            android:layout_margin="10dp">
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="COD CLIENTE" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="CLIENTE" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="HITS" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="VENTAS" />
+                                        </TableRow>
+                                    </TableLayout>
+                                    <ListView
+                                        android:id="@+id/lstClientes"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+                                <LinearLayout android:id="@+id/tab3"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+
+                                    <TableLayout
+                                        android:background="@color/colorPrimaryDark"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal">
+                                        <TableRow
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="fill_parent"
+                                            android:layout_margin="10dp">
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="COD CLIENTE 3" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="CLIENTE" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="VENTA" />
+                                            <TextView
+                                                android:textColor="@color/lightgray"
+                                                android:gravity="center"
+                                                android:layout_height="fill_parent"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                                android:text="FACTURAS" />
+                                        </TableRow>
+                                    </TableLayout>
+                                    <ListView
+                                        android:id="@+id/lst3"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+
+
+                            </FrameLayout>
+                        </LinearLayout>
+                    </TabHost>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

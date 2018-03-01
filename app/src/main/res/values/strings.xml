@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GVM</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="drawer_cerrar_session">CERRAR SESSIÓN</string>
+
+    <string name="app_name_full">GESTIÓN DE VISITA MÉDICA</string>
+    <string name="text_buttom_login">Entrar</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_usuario">Usuario</string>
+    <string name="text_mes_actual">MES ACTUAL</string>
+    <string name="text_3_meses">ULTIMOS 3 MESES</string>
+    <string name="text_clientes">CLIENTES</string>
+    <string name="text_articulos">ARTICULOS</string>
+    <string name="copyright">Todos los Derechos Reservados - Unimark S.A, Copyright © 2018</string>
+    <string name="hint_busqueda">BUSQUEDA</string>
+</resources>
