@@ -5,14 +5,16 @@ package com.guma.desarrollo.gvm.POJO;
  */
 
 public class MvtsArticulos {
-    String mRut1,mventa,mMeta;
+    String mRut1,mventa,mMeta,mV3m;
     String mRut2,mArt,mDic,mClf,mCnt,mVnt;
     int mHts;
 
-    public MvtsArticulos(String mRut1, String mventa, String mMeta, String mRut2, String mArt, String mDic, String mClf, String mCnt, String mVnt, int mHts) {
+
+    public MvtsArticulos(String mRut1, String mventa, String mMeta, String mV3m, String mRut2, String mArt, String mDic, String mClf, String mCnt, String mVnt, int mHts) {
         this.mRut1 = mRut1;
         this.mventa = mventa;
         this.mMeta = mMeta;
+        this.mV3m = mV3m;
         this.mRut2 = mRut2;
         this.mArt = mArt;
         this.mDic = mDic;
@@ -21,7 +23,16 @@ public class MvtsArticulos {
         this.mVnt = mVnt;
         this.mHts = mHts;
     }
+
     public MvtsArticulos(){}
+
+    public String getmV3m() {
+        return mV3m;
+    }
+
+    public void setmV3m(String mV3m) {
+        this.mV3m = mV3m;
+    }
 
     public String getmRut1() {
         return mRut1;

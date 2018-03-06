@@ -2,21 +2,28 @@ package com.guma.desarrollo.gvm.TASK;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.guma.desarrollo.gvm.API.Servicio;
+import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
+import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
+import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
+import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsCliente;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_articulos;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_vts_3m_Articulos;
 import com.guma.desarrollo.gvm.services.Class_retrofit;
 
 import retrofit2.Call;
@@ -31,10 +38,16 @@ import retrofit2.Response;
 public class TaskDownload extends AsyncTask<Integer,Integer,String> {
     public ProgressDialog pdialog;
     Context cnxt;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    String user;
 
     private static final String TAG = "TaskDownload";
     public TaskDownload(Context cnxt) {
         this.cnxt = cnxt;
+        preferences = PreferenceManager.getDefaultSharedPreferences(cnxt);
+        editor = preferences.edit();
+        user =preferences.getString("Ruta","");
     }
 
     @Override
@@ -45,7 +58,9 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
     @Override
     protected String doInBackground(Integer... params) {
-        Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos("f06").enqueue(new Callback<Respuesta_MvtsArticulos>() {
+
+        //VENTAS POR ARTICULOS MENSUALES
+        Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user).enqueue(new Callback<Respuesta_MvtsArticulos>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsArticulos> call, Response<Respuesta_MvtsArticulos> response) {
                 if(response.isSuccessful()){
@@ -62,8 +77,27 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
             }
 
         });
+        //VENTAS POR ARTICULOS EN LOS ULTIMOS 3 MESES
+        Class_retrofit.Objfit().create(Servicio.class).get_vm_3M_vtsArticulos(user).enqueue(new Callback<Respuesta_vts_3m_Articulos>() {
+            @Override
+            public void onResponse(Call<Respuesta_vts_3m_Articulos> call, Response<Respuesta_vts_3m_Articulos> response) {
+                if(response.isSuccessful()){
+                    Respuesta_vts_3m_Articulos respuesta = response.body();
+                    vts_m3_Articulos_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
 
-        Class_retrofit.Objfit().create(Servicio.class).get_MvtsCliente("f06").enqueue(new Callback<Respuesta_MvtsCliente>() {
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_vts_3m_Articulos> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+
+        //CLIENTES FACTURADOS EN EL MES
+        Class_retrofit.Objfit().create(Servicio.class).get_MvtsCliente(user).enqueue(new Callback<Respuesta_MvtsCliente>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsCliente> call, Response<Respuesta_MvtsCliente> response) {
                 if(response.isSuccessful()){
@@ -79,7 +113,27 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
             }
 
         });
-        Class_retrofit.Objfit().create(Servicio.class).get_MvstCLA("f06").enqueue(new Callback<Respuesta_MvstCLA>() {
+
+        //CLIENTES FACTURADOS EN LOS ULTIMOS 3 MESES
+        Class_retrofit.Objfit().create(Servicio.class).get_vts_3M_Cliente(user).enqueue(new Callback<Respuesta_MvtsCliente>() {
+            @Override
+            public void onResponse(Call<Respuesta_MvtsCliente> call, Response<Respuesta_MvtsCliente> response) {
+                if(response.isSuccessful()){
+                    Respuesta_MvtsCliente respuesta = response.body();
+                    vts_3m_Cliente_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_MvtsCliente> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+
+        //ARTICULOS FACTURADOS EN EL MES
+        Class_retrofit.Objfit().create(Servicio.class).get_MvstCLA(user).enqueue(new Callback<Respuesta_MvstCLA>() {
             @Override
             public void onResponse(Call<Respuesta_MvstCLA> call, Response<Respuesta_MvstCLA> response) {
                 if(response.isSuccessful()){
@@ -96,7 +150,25 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
         });
 
-        Class_retrofit.Objfit().create(Servicio.class).get_Clientes("f06").enqueue(new Callback<Respuesta_Clientes>() {
+        //ARTICULOS FACTURADOS EN LOS ULTIMOS 3 MESES
+        Class_retrofit.Objfit().create(Servicio.class).get_vst_3M_CLA(user).enqueue(new Callback<Respuesta_MvstCLA>() {
+            @Override
+            public void onResponse(Call<Respuesta_MvstCLA> call, Response<Respuesta_MvstCLA> response) {
+                if(response.isSuccessful()){
+                    Respuesta_MvstCLA respuesta = response.body();
+                    vst_3m_cla_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_MvstCLA> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+
+        Class_retrofit.Objfit().create(Servicio.class).get_Clientes(user).enqueue(new Callback<Respuesta_Clientes>() {
             @Override
             public void onResponse(Call<Respuesta_Clientes> call, Response<Respuesta_Clientes> response) {
                 if(response.isSuccessful()){
@@ -119,6 +191,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
                 if(response.isSuccessful()){
                     Respuesta_articulos respuesta = response.body();
                     Articulos_model.Save(cnxt,respuesta.getResults());
+                    Alerta();
                     pdialog.dismiss();
                 }else{
                     pdialog.dismiss();
@@ -129,6 +202,9 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
                 pdialog.dismiss();
             }
         });
+
+        editor.putString("lstDownload", Clock.getTimeStamp());
+        editor.apply();
         return null;
     }
 

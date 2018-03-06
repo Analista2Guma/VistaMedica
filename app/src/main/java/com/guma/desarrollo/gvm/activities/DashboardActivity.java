@@ -2,11 +2,14 @@ package com.guma.desarrollo.gvm.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.R;
@@ -27,7 +31,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private CardView dashboardLastMonths;
     private CardView dashboardClientes;
     private CardView dashboardArticulos;
-
+    private SharedPreferences preferences;
+    boolean checked;
+    private SharedPreferences.Editor editor;
+    String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +47,30 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+        checked = preferences.getBoolean("pref",false);
+        user = preferences.getString("Ruta","");
+
+
+        final TextView txt_last_update = findViewById(R.id.txtLastUpdate);
+        final TextView txt_name_user= headerView.findViewById(R.id.drw_name_user);
+        final TextView txt_name_ruta= headerView.findViewById(R.id.drw_name_ruta);
+
+
+
+
+
+        txt_last_update.setText("Actualizado hasta:" + preferences.getString("lstDownload","00/00/0000"));
+        txt_name_user.setText("MARYAN ADAN ESPINOZA");
+        txt_name_ruta.setText(user);
+
 
         dashboardCurrentMonth =  findViewById(R.id.dashboardCurrentMonth);
         dashboardLastMonths = findViewById(R.id.dashboardLastMonths);
@@ -52,7 +80,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         dashboardLastMonths.setOnClickListener(this);
         dashboardClientes.setOnClickListener(this);
         dashboardArticulos.setOnClickListener(this);
-        new TaskDownload(this).execute(0);
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new TaskDownload(DashboardActivity.this).execute(0);
+                txt_last_update.setText(preferences.getString("lstDownload","00/00/0000"));
+
+            }
+        });
+
     }
 
     @Override
@@ -68,7 +104,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.drawerMenuItem1) {
@@ -79,7 +114,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     .setCancelable(false)
                     .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Toast.makeText(getBaseContext(), "SESSIÓN CERRADA", Toast.LENGTH_SHORT).show();
+                            Log.d("", "onClick: " + preferences.getBoolean("pref",false));
+                            checked = false;
+                            editor.putBoolean("isLogin", false);
+                            editor.apply();
+                            //Toast.makeText(getBaseContext(), "SESSIÓN CERRADA", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     })
                     .setNegativeButton("NO", null)

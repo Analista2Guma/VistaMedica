@@ -16,32 +16,43 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
+                android:orientation="horizontal"
                 android:layout_marginBottom="15dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:text="15,000"/>
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="20dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="VENTAS TOTALES"/>
+                    <TextView
+                        android:id="@+id/idVenta3M"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"/>
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_gravity="center_horizontal"
+                        android:text="VENTAS TOTALES"/>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="750dp"
                 android:elevation="5dp">
 
                 <LinearLayout
@@ -75,11 +86,64 @@
 
                     </LinearLayout>
 
-                    <android.support.design.widget.TabLayout
+                    <TabHost
+                        android:id="@android:id/tabhost"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
 
-                    </android.support.design.widget.TabLayout>
+
+                            <TabWidget android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@android:id/tabs" />
+
+                            <FrameLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@android:id/tabcontent" >
+
+                                <LinearLayout
+                                    android:id="@+id/m3_tab1"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+                                    <ListView
+                                        android:id="@+id/m3_lst1"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+                                <LinearLayout android:id="@+id/m3_tab2"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+
+                                    <ListView
+                                        android:id="@+id/m3_lst2"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+                                <LinearLayout android:id="@+id/m3_tab3"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" >
+
+                                    <ListView
+                                        android:id="@+id/m3_lst3"
+                                        android:gravity="center"
+                                        android:layout_height="match_parent"
+                                        android:layout_width="match_parent"/>
+                                </LinearLayout>
+
+
+                            </FrameLayout>
+                        </LinearLayout>
+                    </TabHost>
 
                 </LinearLayout>
 

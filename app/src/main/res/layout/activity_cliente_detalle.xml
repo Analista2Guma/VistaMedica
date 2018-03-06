@@ -83,6 +83,7 @@
                 android:padding="5dp">
 
                 <LinearLayout
+                    android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -92,17 +93,19 @@
                     android:paddingRight="15dp">
 
                     <ImageView
+                        android:tint="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_time"/>
 
                     <TextView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:textSize="17sp"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:text="HISTORIAL DE COMPRAS"/>
 
                 </LinearLayout>
@@ -110,36 +113,14 @@
                 <TableLayout
                     android:id="@+id/detalleClienteHistorialCompras"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="300dp"
                     android:stretchColumns="*" >
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/padding_header_row_table"
-                        android:paddingBottom="@dimen/padding_header_row_table"
-                        android:background="@color/colorPrimary">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="ARTICULOS" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="FECHA" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="CANTIDAD" />
-
-                    </TableRow>
+                    <ListView
+                        android:id="@+id/m3_lst_historico"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"/>
 
                 </TableLayout>
 
@@ -159,6 +140,7 @@
                 android:padding="5dp">
 
                 <LinearLayout
+                    android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -168,6 +150,7 @@
                     android:paddingRight="15dp">
 
                     <ImageView
+                        android:tint="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_list"/>
@@ -178,7 +161,7 @@
                         android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:textSize="17sp"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:text="ITEMS FACTURADOS"/>
 
                 </LinearLayout>
@@ -186,36 +169,14 @@
                 <TableLayout
                     android:id="@+id/clienteItemsFacturados"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="300dp"
                     android:stretchColumns="*">
+                    <ListView
+                        android:id="@+id/m3_lst_item_facturado"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"/>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/padding_header_row_table"
-                        android:paddingBottom="@dimen/padding_header_row_table"
-                        android:background="@color/colorPrimary">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="ARTICULOS" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="DESCRIPCIÓN" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:text="CANTIDAD" />
-
-                    </TableRow>
                 </TableLayout>
 
             </LinearLayout>
