@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.TASK.TaskDownload;
+import com.guma.desarrollo.gvm.services.ManagerURI;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -52,7 +53,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
-
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
@@ -61,19 +61,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         user = preferences.getString("Ruta","");
         NombreVisitador= preferences.getString("NombreVisitador","N/D");
 
-
         final TextView txt_last_update = findViewById(R.id.txtLastUpdate);
         final TextView txt_name_user= headerView.findViewById(R.id.drw_name_user);
         final TextView txt_name_ruta= headerView.findViewById(R.id.drw_name_ruta);
 
-
-
-
-
-        txt_last_update.setText("Actualizado hasta:" + preferences.getString("lstDownload","00/00/0000"));
+        txt_last_update.setText("Actualizado hasta: " + preferences.getString("lstDownload","00/00/0000"));
         txt_name_user.setText(NombreVisitador);
         txt_name_ruta.setText(user);
-
 
         dashboardCurrentMonth =  findViewById(R.id.dashboardCurrentMonth);
         dashboardLastMonths = findViewById(R.id.dashboardLastMonths);
@@ -86,14 +80,22 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TaskDownload(DashboardActivity.this).execute(0);
-                txt_last_update.setText(preferences.getString("lstDownload","00/00/0000"));
+                if (ManagerURI.isOnlinea(DashboardActivity.this)){
+                    new TaskDownload(DashboardActivity.this).execute(0);
+                    txt_last_update.setText(preferences.getString("lstDownload","00/00/0000"));
+                }else{
+                    new AlertDialog.Builder(DashboardActivity.this)
+                            .setTitle("Alerta")
+                            .setMessage("No se obtuvo conexión con el servidor.")
+                            .setCancelable(false)
+                            .setPositiveButton("OK",null)
+                            .show();
+                }
+
 
             }
         });
-
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -137,7 +139,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
         if (id == R.id.dashboardArticulos) {
             startActivity(new Intent(this, ArticulosActivity.class));
         } else if(id == R.id.dashboardClientes) {

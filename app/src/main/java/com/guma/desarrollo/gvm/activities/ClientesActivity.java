@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.R;
@@ -29,8 +30,6 @@ public class ClientesActivity extends AppCompatActivity{
     SearchManager searchManager;
     SearchView searchView;
     RecyclerView recyclerViewClientes;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +39,13 @@ public class ClientesActivity extends AppCompatActivity{
         LinearLayoutManager linearLayout = new LinearLayoutManager(getBaseContext());
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewClientes.setLayoutManager(linearLayout);
-
+        TextView txt = findViewById(R.id.lblItem);
         oClientes = Clientes_model.get(ManagerURI.getDirDb(),this);
+        if (oClientes.size()!=0){
+            txt.setVisibility(TextView.INVISIBLE);
+        }
         ClientesAdapter articulosAdapter = new ClientesAdapter(oClientes, getBaseContext(), this);
         recyclerViewClientes.setAdapter(articulosAdapter);
-
     }
 
     @Override
@@ -59,7 +60,6 @@ public class ClientesActivity extends AppCompatActivity{
                 filterData(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 filterData(newText);
@@ -93,5 +93,4 @@ public class ClientesActivity extends AppCompatActivity{
         }
         recyclerViewClientes.setAdapter( new ClientesAdapter(newList, getBaseContext(), this));
     }
-
 }

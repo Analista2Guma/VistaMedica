@@ -36,7 +36,7 @@
                         android:textSize="50sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
-                        android:text="20,000"/>
+                        android:text="0.00"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                         android:textSize="50sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
-                        android:text="15,000"/>
+                        android:text="0.00"/>
 
                     <TextView
                         android:layout_width="wrap_content"

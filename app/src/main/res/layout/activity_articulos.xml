@@ -6,9 +6,23 @@
     android:layout_height="match_parent"
     tools:context="com.guma.desarrollo.gvm.activities.ArticulosActivity">
 
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/idlblArticulos"
+            android:text="SIN DATOS. :("
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/articulosRecyclerView"

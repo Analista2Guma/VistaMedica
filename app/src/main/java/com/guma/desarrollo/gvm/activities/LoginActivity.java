@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
         final TextView txtUsuario = findViewById(R.id.ediTextUsuario);
         final TextView txtPassword = findViewById(R.id.ediTextPassword);
-
         final List<Usuario> lista = new ArrayList<>();
 
         try {
@@ -50,14 +49,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 lista.clear();
                 lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),""));
-
                 isUsuario = Usuario_model.get(ManagerURI.getDirDb(),LoginActivity.this,lista);
-
                 if (isUsuario.size()>0){
                     editor.putBoolean("isLogin", !checked);
                     editor.putString("Ruta", isUsuario.get(0).getmUser());
                     editor.putString("NombreVisitador", isUsuario.get(0).getmNamv());
-
                     editor.apply();
                     startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
                     finish();
@@ -66,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
         if (checked){
             startActivity(new Intent(this,DashboardActivity.class));
             finish();

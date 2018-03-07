@@ -44,9 +44,6 @@ public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
 
         MvtsArticulos lead = getItem(position);
 
-
-
-
         it1.setText(lead.getmDic());
         it2.setText(lead.getmArt());
         it3.setText("Cantidad: " + lead.getmCnt());

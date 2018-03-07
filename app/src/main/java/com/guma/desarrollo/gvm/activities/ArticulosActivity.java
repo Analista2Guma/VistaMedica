@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.POJO.Cliente;
@@ -40,6 +41,10 @@ public class ArticulosActivity extends AppCompatActivity {
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewArticulos.setLayoutManager(linearLayout);
         oArticulo = Articulos_model.get(ManagerURI.getDirDb(),this);
+        TextView txt = findViewById(R.id.idlblArticulos);
+        if (oArticulo.size()!=0){
+            txt.setVisibility(TextView.INVISIBLE);
+        }
         articulosAdapter = new ArticulosAdapter(oArticulo, getBaseContext(), this);
         recyclerViewArticulos.setAdapter(articulosAdapter);
     }

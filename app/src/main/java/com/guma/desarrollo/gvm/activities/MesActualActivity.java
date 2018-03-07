@@ -26,7 +26,7 @@ import com.guma.desarrollo.gvm.services.ManagerURI;
 import java.util.List;
 
 public class MesActualActivity extends AppCompatActivity {
-    private static final String TAG = "MesActualActivity";
+    private static final String TAG = "MesActualActivityLOG";
     private List<MvtsArticulos> oArticulos_vendidos,oVentas_Metas;
     private List<MvtsCliente> oVentas_Clientes;
     private List<MvstCLA> oMvstCLA;
@@ -53,10 +53,10 @@ public class MesActualActivity extends AppCompatActivity {
         TabHost tabs = findViewById(android.R.id.tabhost);
         tabs.setup();
 
-
-        txtMetas.setText(oVentas_Metas.get(0).getmMeta());
-        txtVentas.setText(oVentas_Metas.get(0).getMventa());
-
+        if (oVentas_Metas.size()!=0){
+            txtMetas.setText(oVentas_Metas.get(0).getmMeta());
+            txtVentas.setText(oVentas_Metas.get(0).getMventa());
+        }
 
 
         TabHost.TabSpec spec = tabs.newTabSpec("TB1");
@@ -80,6 +80,12 @@ public class MesActualActivity extends AppCompatActivity {
         tabs.addTab(spec);
 
         tabs.setCurrentTab(0);
+
+        if (oArticulos_vendidos.size()==0){oArticulos_vendidos.add(new MvtsArticulos("","","","","","","","","","",0));}
+        if (oVentas_Clientes.size()==0){oVentas_Clientes.add(new MvtsCliente("","","","","",0));}
+        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","",""));}
+        if (oCuotas.size()==0){oCuotas.add(new Cuotas("","","",""));}
+
 
         lst_tab1.setAdapter(new vstArticulos_Leads(this, oArticulos_vendidos));
         lst_tab2.setAdapter(new MvtsCliente_Leads(this, oVentas_Clientes));

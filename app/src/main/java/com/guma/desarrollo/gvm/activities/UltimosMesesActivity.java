@@ -45,7 +45,6 @@ public class UltimosMesesActivity extends AppCompatActivity {
 
         oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,"");
 
-
         TextView txtVentas     = findViewById(R.id.idVenta3M);
         ListView lst_tab1      = findViewById(R.id.m3_lst1);
         ListView lst_tab2      = findViewById(R.id.m3_lst2);
@@ -71,9 +70,17 @@ public class UltimosMesesActivity extends AppCompatActivity {
 
         tabs.setCurrentTab(0);
 
+        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","",""));}
+        if (oVentas_Clientes.size()==0){oVentas_Clientes.add(new MvtsCliente("","","","","",0));}
+        if (oArticulos_vendidos.size()==0){oArticulos_vendidos.add(new vts_3m_Articulos("","","","","","",0));}
+        if (oVentas_Metas.size()!=0){txtVentas.setText("C$ " + oVentas_Metas.get(0).getmV3m());}
         lst_tab1.setAdapter(new vst_3m_Articulos_Leads(this, oArticulos_vendidos));
         lst_tab2.setAdapter(new MvtsCliente_Leads(this, oVentas_Clientes));
         lst_tab3.setAdapter(new MvstCLA_Leads(this, oMvstCLA));
-        txtVentas.setText("C$ " + oVentas_Metas.get(0).getmV3m());
+
+
+
+
+
     }
 }

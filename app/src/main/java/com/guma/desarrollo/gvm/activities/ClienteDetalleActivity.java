@@ -43,7 +43,6 @@ public class ClienteDetalleActivity extends AppCompatActivity {
         oArticulos_vendidos = HstItemFacturado_model.get(ManagerURI.getDirDb(), this,bundle.getString("codigo"));
         oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,bundle.getString("codigo"));
 
-
         lst_tab3.setAdapter(new MvstCLA_Leads(this, oMvstCLA));
         lst_tab1.setAdapter(new HstItemFacturado_Leads(this, oArticulos_vendidos));
 
