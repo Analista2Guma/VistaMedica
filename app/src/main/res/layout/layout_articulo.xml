@@ -19,7 +19,7 @@
             android:layout_height="70dp"
             android:elevation="5dp"
             android:background="@android:color/white"
-            android:src="@drawable/thumbnail_articulos"/>
+            android:src="@drawable/item"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,24 +34,35 @@
                 android:layout_height="wrap_content"
                 android:textAllCaps="true"
                 android:textSize="17sp"
-                android:textColor="@android:color/black"
-                android:text="TEXTO 1"/>
+                android:textColor="@android:color/black"/>
 
-            <TextView
-                android:id="@+id/cardArticuloCodigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@android:color/black"
-                android:text="TEXTO 2"/>
 
-            <TextView
-                android:id="@+id/cardArticuloPuntos"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@android:color/black"
-                android:text="TEXTO 3"/>
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/cardArticuloCodigo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/cardArticuloPuntos"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/cardArticuloExistencia"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

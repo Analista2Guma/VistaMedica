@@ -34,7 +34,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private SharedPreferences preferences;
     boolean checked;
     private SharedPreferences.Editor editor;
-    String user;
+    String user,NombreVisitador;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         checked = preferences.getBoolean("pref",false);
         user = preferences.getString("Ruta","");
+        NombreVisitador= preferences.getString("NombreVisitador","N/D");
 
 
         final TextView txt_last_update = findViewById(R.id.txtLastUpdate);
@@ -68,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
         txt_last_update.setText("Actualizado hasta:" + preferences.getString("lstDownload","00/00/0000"));
-        txt_name_user.setText("MARYAN ADAN ESPINOZA");
+        txt_name_user.setText(NombreVisitador);
         txt_name_ruta.setText(user);
 
 

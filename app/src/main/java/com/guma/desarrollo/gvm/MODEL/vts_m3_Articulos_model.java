@@ -98,21 +98,37 @@ public class vts_m3_Articulos_model {
         }
         return lista;
     }
-    public static List<MvtsArticulos> get_ventas_metas(String basedir, Context context) {
-        List<MvtsArticulos> lista = new ArrayList<>();
+    public static List<vts_3m_Articulos> get_hstItemFacturados(String basedir, Context context, String CLS) {
+        List<vts_3m_Articulos> lista = new ArrayList<>();
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
+        Cursor cursor;
         try
         {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
-            Cursor cursor = myDataBase.query(true, "MvtsTotales", null, null, null, null, null, null, null);
 
+            // TODO: 02/03/2018 pendiente en filtrar por cliente
+
+            cursor = myDataBase.query(true, "vts_m3_Articulos", null, null, null, null, null, null, null);
+           /* if (CLS.equals("")){
+                cursor = myDataBase.query(true, "vts_m3_Articulos", null, null, null, null, null, null, null);
+            }else{
+                //cursor = myDataBase.query(true, "vts_m3_Articulos", null, null, null, null, null, null, null);
+                cursor = myDataBase.query(true, "vts_m3_Articulos", null, "mCcl"+ "=?", new String[] { CLS }, null, null, null, null);
+            }*/
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while(!cursor.isAfterLast()) {
-                    MvtsArticulos tmp = new MvtsArticulos();
-                    tmp.setmV3m(cursor.getString(cursor.getColumnIndex("mV3m")));
+                    vts_3m_Articulos tmp = new vts_3m_Articulos();
+
+                    tmp.setmRut2(cursor.getString(cursor.getColumnIndex("mRut")));
+                    tmp.setmArt(cursor.getString(cursor.getColumnIndex("mArt")));
+                    tmp.setmDec(cursor.getString(cursor.getColumnIndex("mDec")));
+                    tmp.setmClf(cursor.getString(cursor.getColumnIndex("mClf")));
+                    tmp.setmCnt(cursor.getString(cursor.getColumnIndex("mCnt")));
+                    tmp.setmVnt(cursor.getString(cursor.getColumnIndex("mVnt")));
+                    tmp.setmHts(cursor.getInt(cursor.getColumnIndex("mHts")));
                     lista.add(tmp);
                     cursor.moveToNext();
                 }
@@ -126,4 +142,5 @@ public class vts_m3_Articulos_model {
         }
         return lista;
     }
+
 }

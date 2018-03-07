@@ -20,7 +20,7 @@ android:layout_marginBottom="@dimen/margin_bottom_card">
         android:layout_height="70dp"
         android:elevation="5dp"
         android:background="@android:color/white"
-        android:src="@drawable/thumbnail_articulos"/>
+        android:src="@drawable/item"/>
 
     <LinearLayout
         android:layout_width="match_parent"

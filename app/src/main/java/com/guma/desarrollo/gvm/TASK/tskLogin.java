@@ -63,13 +63,21 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
             @Override
             public void onResponse(Call<Respuesta_Login> call, Response<Respuesta_Login> response) {
                 if(response.isSuccessful()){
-                    editor.putBoolean("isLogin", true);
-                    editor.putString("Ruta", response.body().getResults().get(0).getmUser());
-                    editor.apply();
-                    Usuario_model.Save(cnxt,response.body().getResults());
+
+
+
+                    if (response.body().getResults().get(0).getmUser().equals("")){
+                        Alerta();
+                    }else {
+                        editor.putBoolean("isLogin", true);
+                        editor.putString("Ruta", response.body().getResults().get(0).getmUser());
+                        editor.putString("NombreVisitador", response.body().getResults().get(0).getmNamv());
+                        editor.apply();
+                        Usuario_model.Save(cnxt,response.body().getResults());
+                        cnxt.startActivity(new Intent(cnxt,DashboardActivity.class));
+                        ((Activity)(cnxt)).finish();
+                    }
                     pdialog.dismiss();
-                    cnxt.startActivity(new Intent(cnxt,DashboardActivity.class));
-                    ((Activity)(cnxt)).finish();
 
                 }else{
                     pdialog.dismiss();
@@ -86,6 +94,9 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
     @Override
     protected void onPostExecute(Void s) {
         super.onPostExecute(s);
+    }
+    private void Alerta() {
+        new AlertDialog.Builder(cnxt).setTitle("Alerta").setMessage("Usuario no encontrado").setCancelable(false).setPositiveButton("OK",null).show();
     }
 
 }

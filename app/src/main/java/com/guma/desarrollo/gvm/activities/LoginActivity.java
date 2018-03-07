@@ -48,17 +48,17 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                lista.clear();
                 lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),""));
 
                 isUsuario = Usuario_model.get(ManagerURI.getDirDb(),LoginActivity.this,lista);
-                if (isUsuario.size()>0){
 
+                if (isUsuario.size()>0){
                     editor.putBoolean("isLogin", !checked);
                     editor.putString("Ruta", isUsuario.get(0).getmUser());
-                    editor.apply();
+                    editor.putString("NombreVisitador", isUsuario.get(0).getmNamv());
 
+                    editor.apply();
                     startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
                     finish();
                 }else{

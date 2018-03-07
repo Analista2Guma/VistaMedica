@@ -19,7 +19,7 @@
             android:layout_height="70dp"
             android:elevation="5dp"
             android:background="@android:color/white"
-            android:src="@drawable/thumbnail_cliente"/>
+            android:src="@drawable/user"/>
 
         <LinearLayout
             android:layout_width="match_parent"

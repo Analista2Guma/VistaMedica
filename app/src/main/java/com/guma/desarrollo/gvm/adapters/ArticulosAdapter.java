@@ -43,6 +43,7 @@ public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.View
         holder.articuloNombre.setText(articulo.getmNam());
         holder.articuloCodigo.setText("Codigo: " + articulo.getmCod());
         holder.articuloPuntos.setText("Puntos: " + articulo.getmPts());
+        holder.articuloExistencia.setText("Existencia: " + articulo.getmExi() + " [ "+ articulo.getmUnd() +" ] "  );
     }
 
     @Override
@@ -55,12 +56,14 @@ public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.View
         private TextView articuloNombre;
         private TextView articuloCodigo;
         private TextView articuloPuntos;
+        private TextView articuloExistencia;
 
         public ViewHolder(View itemView) {
             super(itemView);
             articuloNombre = itemView.findViewById(R.id.cardArticuloNombre);
             articuloCodigo = itemView.findViewById(R.id.cardArticuloCodigo);
             articuloPuntos = itemView.findViewById(R.id.cardArticuloPuntos);
+            articuloExistencia = itemView.findViewById(R.id.cardArticuloExistencia);
         }
 
     }

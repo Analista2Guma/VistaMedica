@@ -1,6 +1,8 @@
 package com.guma.desarrollo.gvm.API;
 
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Login;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
@@ -53,6 +55,10 @@ public interface Servicio {
     @POST("vstCLA")
     Call<Respuesta_MvstCLA>get_vst_3M_CLA(@Field("mVendedor") String mVendedor);
 
+    @FormUrlEncoded
+    @POST("HstItemFacturados")
+    Call<Respuesta_HstItemFacturados>get_vst_HstItemFacturados(@Field("mVendedor") String mVendedor);
+
 
     //MODULO GENERALES.
     @GET("ARTICULOS")
@@ -65,6 +71,10 @@ public interface Servicio {
     @FormUrlEncoded
     @POST("CLIENTES")
     Call<Respuesta_Clientes> get_Clientes(@Field("mVendedor") String mVendedor);
+
+    @FormUrlEncoded
+    @POST("Mcuotas")
+    Call<Respuesta_Cuotas> get_Coutas(@Field("mVendedor") String mVendedor);
 
 
 

@@ -12,6 +12,8 @@ import com.guma.desarrollo.gvm.API.Servicio;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
+import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
+import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
@@ -19,6 +21,8 @@ import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsCliente;
@@ -150,6 +154,24 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
         });
 
+        //HISTORICO DE ITEM FACTURADOS POR CLIENTE
+        Class_retrofit.Objfit().create(Servicio.class).get_vst_HstItemFacturados(user).enqueue(new Callback<Respuesta_HstItemFacturados>() {
+            @Override
+            public void onResponse(Call<Respuesta_HstItemFacturados> call, Response<Respuesta_HstItemFacturados> response) {
+                if(response.isSuccessful()){
+                    Respuesta_HstItemFacturados respuesta = response.body();
+                    HstItemFacturado_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_HstItemFacturados> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+
         //ARTICULOS FACTURADOS EN LOS ULTIMOS 3 MESES
         Class_retrofit.Objfit().create(Servicio.class).get_vst_3M_CLA(user).enqueue(new Callback<Respuesta_MvstCLA>() {
             @Override
@@ -167,7 +189,26 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
             }
 
         });
+        //CUOTAS CORRESPONDIENTES A CADA MES
+        Class_retrofit.Objfit().create(Servicio.class).get_Coutas(user).enqueue(new Callback<Respuesta_Cuotas>() {
+            @Override
+            public void onResponse(Call<Respuesta_Cuotas> call, Response<Respuesta_Cuotas> response) {
+                if(response.isSuccessful()){
 
+                    Respuesta_Cuotas respuesta = response.body();
+                    Log.d(TAG, "onResponse: " + respuesta.getCount());
+                    Cuotas_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Cuotas> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+        //CLIENTES DE LA RUTA
         Class_retrofit.Objfit().create(Servicio.class).get_Clientes(user).enqueue(new Callback<Respuesta_Clientes>() {
             @Override
             public void onResponse(Call<Respuesta_Clientes> call, Response<Respuesta_Clientes> response) {
@@ -184,7 +225,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
             }
 
         });
-
+        //MASTER DE ARTICULOS
         Class_retrofit.Objfit().create(Servicio.class).get_Articulos().enqueue(new Callback<Respuesta_articulos>() {
             @Override
             public void onResponse(Call<Respuesta_articulos> call, Response<Respuesta_articulos> response) {
