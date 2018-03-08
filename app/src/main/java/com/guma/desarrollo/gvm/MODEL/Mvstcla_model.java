@@ -36,6 +36,7 @@ public class Mvstcla_model {
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("mRut" , a.getmRut());
                     contentValues.put("mCcl" , a.getmCcl());
+                    contentValues.put("mNcl" , a.getmNcl());
                     contentValues.put("mArt" , a.getmArt());
                     contentValues.put("mDec" , a.getmDec());
                     contentValues.put("mCnt" , a.getmCnt());
@@ -70,6 +71,7 @@ public class Mvstcla_model {
                     MvstCLA tmp = new MvstCLA();
                     tmp.setmRut(cursor.getString(cursor.getColumnIndex("mRut")));
                     tmp.setmCcl(cursor.getString(cursor.getColumnIndex("mCcl")));
+                    tmp.setmNcl(cursor.getString(cursor.getColumnIndex("mNcl")));
                     tmp.setmArt(cursor.getString(cursor.getColumnIndex("mArt")));
                     tmp.setmDec(cursor.getString(cursor.getColumnIndex("mDec")));
                     tmp.setmCnt(cursor.getString(cursor.getColumnIndex("mCnt")));

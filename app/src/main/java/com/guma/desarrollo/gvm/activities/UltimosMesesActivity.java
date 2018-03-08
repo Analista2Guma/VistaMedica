@@ -70,7 +70,7 @@ public class UltimosMesesActivity extends AppCompatActivity {
 
         tabs.setCurrentTab(0);
 
-        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","",""));}
+        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","","",""));}
         if (oVentas_Clientes.size()==0){oVentas_Clientes.add(new MvtsCliente("","","","","",0));}
         if (oArticulos_vendidos.size()==0){oArticulos_vendidos.add(new vts_3m_Articulos("","","","","","",0));}
         if (oVentas_Metas.size()!=0){txtVentas.setText("C$ " + oVentas_Metas.get(0).getmV3m());}

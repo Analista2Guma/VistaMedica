@@ -4,9 +4,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
@@ -83,14 +86,18 @@ public class MesActualActivity extends AppCompatActivity {
 
         if (oArticulos_vendidos.size()==0){oArticulos_vendidos.add(new MvtsArticulos("","","","","","","","","","",0));}
         if (oVentas_Clientes.size()==0){oVentas_Clientes.add(new MvtsCliente("","","","","",0));}
-        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","",""));}
+        if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","","",""));}
         if (oCuotas.size()==0){oCuotas.add(new Cuotas("","","",""));}
+
 
 
         lst_tab1.setAdapter(new vstArticulos_Leads(this, oArticulos_vendidos));
         lst_tab2.setAdapter(new MvtsCliente_Leads(this, oVentas_Clientes));
         lst_tab3.setAdapter(new MvstCLA_Leads(this, oMvstCLA));
         lst_tab4.setAdapter(new Cuotas_Leads(this, oCuotas));
+
+
+
 
 
 

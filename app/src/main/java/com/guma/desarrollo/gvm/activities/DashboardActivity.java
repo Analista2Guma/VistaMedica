@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -17,10 +15,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.TASK.TaskDownload;
@@ -32,6 +28,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private CardView dashboardLastMonths;
     private CardView dashboardClientes;
     private CardView dashboardArticulos;
+    private CardView CardViewQR;
     private SharedPreferences preferences;
     boolean checked;
     private SharedPreferences.Editor editor;
@@ -77,6 +74,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         dashboardLastMonths.setOnClickListener(this);
         dashboardClientes.setOnClickListener(this);
         dashboardArticulos.setOnClickListener(this);
+
+        findViewById(R.id.idQR).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardActivity.this, QRActivity.class));
+            }
+        });
+
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

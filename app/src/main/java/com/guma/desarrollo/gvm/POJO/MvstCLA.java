@@ -5,9 +5,9 @@ package com.guma.desarrollo.gvm.POJO;
  */
 
 public class MvstCLA {
-    String mRut,mCcl,mArt,mDec,mCnt,mClf,mVnt,mDia;
+    String mRut,mCcl,mArt,mDec,mCnt,mClf,mVnt,mDia,mNcl;
 
-    public MvstCLA(String mRut, String mCcl, String mArt, String mDec, String mCnt, String mClf, String mVnt, String mDia) {
+    public MvstCLA(String mRut, String mCcl, String mArt, String mDec, String mCnt, String mClf, String mVnt, String mDia,String mNcl) {
         this.mRut = mRut;
         this.mCcl = mCcl;
         this.mArt = mArt;
@@ -16,9 +16,18 @@ public class MvstCLA {
         this.mClf = mClf;
         this.mVnt = mVnt;
         this.mDia = mDia;
+        this.mNcl = mNcl;
     }
 
     public MvstCLA(){}
+
+    public String getmNcl() {
+        return mNcl;
+    }
+
+    public void setmNcl(String mNcl) {
+        this.mNcl = mNcl;
+    }
 
     public String getmRut() {
         return mRut;

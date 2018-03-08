@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.POJO.HstItemFacturados;
+import com.guma.desarrollo.gvm.POJO.MvstCLA;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;
@@ -68,6 +69,38 @@ public class HstItemFacturado_model {
                     tmp.setmDes(cursor.getString(cursor.getColumnIndex("mDes")));
                     tmp.setmCan(cursor.getString(cursor.getColumnIndex("mCan")));
                     tmp.setmVnt(cursor.getString(cursor.getColumnIndex("mVnt")));
+                    lst.add(tmp);
+                    cursor.moveToNext();
+                }
+            }
+        }
+        catch (Exception e) { e.printStackTrace(); }
+        finally
+        {
+            if(myDataBase != null) { myDataBase.close(); }
+            if(myDbHelper != null) { myDbHelper.close(); }
+        }
+        return lst;
+    }
+    public static List<MvstCLA> get_articulos(String basedir, Context context, String Art) {
+        List<MvstCLA> lst = new ArrayList<>();
+        SQLiteDatabase myDataBase = null;
+        SQLiteHelper myDbHelper = null;
+        try
+        {
+            myDbHelper = new SQLiteHelper(basedir, context);
+            myDataBase = myDbHelper.getReadableDatabase();
+            //Cursor cursor = myDataBase.query(true, "HstItemFacturados", null, null, null, null, null, null, null);
+            Cursor cursor = myDataBase.query(true, "MvstCLA", null, "mArt"+ "=?", new String[] { Art }, null, null, null, null);
+            if(cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while(!cursor.isAfterLast()) {
+                    MvstCLA tmp = new MvstCLA();
+                    tmp.setmCcl(cursor.getString(cursor.getColumnIndex("mCcl")));
+                    tmp.setmNcl(cursor.getString(cursor.getColumnIndex("mNcl")));
+                    tmp.setmCnt(cursor.getString(cursor.getColumnIndex("mCnt")));
+                    tmp.setmVnt(cursor.getString(cursor.getColumnIndex("mVnt")));
+                    tmp.setmDia(cursor.getString(cursor.getColumnIndex("mDia")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

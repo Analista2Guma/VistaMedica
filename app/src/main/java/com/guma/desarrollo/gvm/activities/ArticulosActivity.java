@@ -37,10 +37,13 @@ public class ArticulosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articulos);
         recyclerViewArticulos = findViewById(R.id.articulosRecyclerView);
+
         LinearLayoutManager linearLayout = new LinearLayoutManager(getBaseContext());
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewArticulos.setLayoutManager(linearLayout);
+
         oArticulo = Articulos_model.get(ManagerURI.getDirDb(),this);
+
         TextView txt = findViewById(R.id.idlblArticulos);
         if (oArticulo.size()!=0){
             txt.setVisibility(TextView.INVISIBLE);

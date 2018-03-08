@@ -16,6 +16,7 @@
     <string name="text_articulos">ARTICULOS</string>
     <string name="copyright">Todos los Derechos Reservados - Unimark S.A, Copyright © 2018</string>
     <string name="hint_busqueda">BUSQUEDA</string>
+    <string name="successful">Su Registro fue satisfactorio.</string>
 
     <string name="lbl_Hits">Veces: </string>
     <string name="lbl_moneda">C$: </string>

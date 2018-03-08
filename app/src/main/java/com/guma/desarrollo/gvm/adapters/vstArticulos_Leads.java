@@ -1,12 +1,17 @@
 package com.guma.desarrollo.gvm.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.guma.desarrollo.gvm.HistorialActivity;
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.POJO.MvtsArticulos;
 
@@ -16,13 +21,15 @@ import java.util.List;
  * Created by maryan.espinoza on 07/03/2017.
  */
 
-public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
+public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos>{
+    private Context context;
     public vstArticulos_Leads(Context context, List<MvtsArticulos> objects) {
         super(context, 0, objects);
+        this.context = context;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -35,6 +42,19 @@ public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
         } else {
             convertView.setBackgroundResource(R.drawable.artists_list_background_alternate);
         }
+        final MvtsArticulos lead = getItem(position);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, HistorialActivity.class);
+                intent.putExtra("COD", lead.getmArt());
+                intent.putExtra("View","AR");
+                context.startActivity(intent);
+            }
+        });
+
+
 
         TextView it1 = convertView.findViewById(R.id.id_itm1);
         TextView it2 = convertView.findViewById(R.id.id_itm2);
@@ -42,13 +62,16 @@ public class vstArticulos_Leads extends ArrayAdapter<MvtsArticulos> {
         TextView it4 = convertView.findViewById(R.id.id_itm4);
         TextView it5 = convertView.findViewById(R.id.id_itm5);
 
-        MvtsArticulos lead = getItem(position);
+
 
         it1.setText(lead.getmDic());
         it2.setText(lead.getmArt());
         it3.setText("Cantidad: " + lead.getmCnt());
         it4.setText("C$: " + lead.getmVnt());
         it5.setText("Veces: " + String.valueOf(lead.getmHts()));
+
+
+
         return convertView;
     }
 }

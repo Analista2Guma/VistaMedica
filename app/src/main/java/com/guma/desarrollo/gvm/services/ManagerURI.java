@@ -14,9 +14,9 @@ import okhttp3.OkHttpClient;
  */
 
 public class ManagerURI {
-    //private static String SERVER = "192.168.1.78:8448";
+    private static String SERVER = "192.168.1.78:8448";
 
-    private static String SERVER = "165.98.75.219:8448";//SERVIDOR
+    //private static String SERVER = "165.98.75.219:8448";//SERVIDOR
     //private static String SERVER = "165.98.75.45:8448";//SERVIDOR TIPITAPA
 
     private static String URL_Base= "http://"+ SERVER + "/API_vm/index.php/";

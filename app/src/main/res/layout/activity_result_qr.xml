@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guma.desarrollo.gvm.activities.ResultQrActivity">
+    <android.support.v7.widget.CardView
+        android:id="@+id/dashboardClientes"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:tint="@color/colorPrimary"
+                android:src="@drawable/successful"
+                android:gravity="center"
+                android:elevation="@dimen/elevation_ico_dashboard"
+                android:layout_marginBottom="120dp"
+                android:padding="20dp"/>
+            <TextView
+                android:id="@+id/dontHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/successful"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="40sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btnCloseQR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/RaisedButtonDark"
+                android:padding="20dp"
+                android:text="Aceptar"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
