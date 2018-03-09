@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.MODEL.Usuario_model;
@@ -48,17 +50,26 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 lista.clear();
-                lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),""));
-                isUsuario = Usuario_model.get(ManagerURI.getDirDb(),LoginActivity.this,lista);
-                if (isUsuario.size()>0){
-                    editor.putBoolean("isLogin", !checked);
-                    editor.putString("Ruta", isUsuario.get(0).getmUser());
-                    editor.putString("NombreVisitador", isUsuario.get(0).getmNamv());
-                    editor.apply();
-                    startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
-                    finish();
+
+                if (TextUtils.isEmpty(txtUsuario.getText())){
+                    Toast.makeText(LoginActivity.this, "Campos Requeridos", Toast.LENGTH_SHORT).show();
                 }else{
-                    new tskLogin(LoginActivity.this).execute(lista);
+                    if (TextUtils.isEmpty(txtPassword.getText())){
+                        Toast.makeText(LoginActivity.this, "Campos Requeridos", Toast.LENGTH_SHORT).show();
+                    }else{
+                        lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),""));
+                        isUsuario = Usuario_model.get(ManagerURI.getDirDb(),LoginActivity.this,lista);
+                        if (isUsuario.size()>0){
+                            editor.putBoolean("isLogin", !checked);
+                            editor.putString("Ruta", isUsuario.get(0).getmUser());
+                            editor.putString("NombreVisitador", isUsuario.get(0).getmNamv());
+                            editor.apply();
+                            startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
+                            finish();
+                        }else{
+                            new tskLogin(LoginActivity.this).execute(lista);
+                        }
+                    }
                 }
             }
         });

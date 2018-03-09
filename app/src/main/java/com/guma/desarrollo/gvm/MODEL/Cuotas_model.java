@@ -35,6 +35,7 @@ public class Cuotas_model {
                     contentValues.put("ARTICULO" , a.getmArti());
                     contentValues.put("DESCRIPCION" , a.getmDesc());
                     contentValues.put("CANTIDAD" , a.getmCant());
+                    contentValues.put("CANTACTUAL" , a.getmCnAc());
                     myDataBase.insert("CuotasMes", null, contentValues );
                 }
             }
@@ -64,6 +65,7 @@ public class Cuotas_model {
                     tmp.setmArti(cursor.getString(cursor.getColumnIndex("ARTICULO")));
                     tmp.setmDesc(cursor.getString(cursor.getColumnIndex("DESCRIPCION")));
                     tmp.setmCant(cursor.getString(cursor.getColumnIndex("CANTIDAD")));
+                    tmp.setmCnAc(cursor.getString(cursor.getColumnIndex("CANTACTUAL")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

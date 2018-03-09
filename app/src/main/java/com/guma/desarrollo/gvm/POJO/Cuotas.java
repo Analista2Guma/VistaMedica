@@ -6,13 +6,14 @@ package com.guma.desarrollo.gvm.POJO;
 
 public class Cuotas {
 
-    String mRuta,mArti,mDesc,mCant;
+    String mRuta,mArti,mDesc,mCant,mCnAc;
 
-    public Cuotas(String mRuta, String mArti, String mDesc, String mCant) {
+    public Cuotas(String mRuta, String mArti, String mDesc, String mCant,String mCnAc) {
         this.mRuta = mRuta;
         this.mArti = mArti;
         this.mDesc = mDesc;
         this.mCant = mCant;
+        this.mCnAc = mCnAc;
     }
     public Cuotas(){}
 
@@ -22,6 +23,14 @@ public class Cuotas {
 
     public void setmRuta(String mRuta) {
         this.mRuta = mRuta;
+    }
+
+    public String getmCnAc() {
+        return mCnAc;
+    }
+
+    public void setmCnAc(String mCnAc) {
+        this.mCnAc = mCnAc;
     }
 
     public String getmArti() {

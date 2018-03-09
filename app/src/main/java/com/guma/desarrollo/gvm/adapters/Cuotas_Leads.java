@@ -44,10 +44,22 @@ public class Cuotas_Leads extends ArrayAdapter<Cuotas> {
         TextView it5 = convertView.findViewById(R.id.id_itm5);
 
         Cuotas lead = getItem(position);
+        Integer Cantidad = Integer.valueOf(lead.getmCant());
+        Integer Vendido = Integer.valueOf(lead.getmCnAc());
+        Integer Pendiente = Cantidad - Vendido;
 
         it1.setText(lead.getmDesc());
         it2.setText(lead.getmArti());
-        it3.setText("Cantidad: " + lead.getmCant());
+        it3.setText("Cuota: " + String.valueOf(Cantidad));
+        it4.setText("Vendido: " + String.valueOf(Vendido));
+
+        it5.setText("Pendiente: " + String.valueOf(Pendiente));
+        if (Pendiente>=0){
+            it5.setTextColor(getContext().getResources().getColor(R.color.color_NOk));
+        }else {
+            it5.setTextColor(getContext().getResources().getColor(R.color.color_ok));
+        }
+
 
         return convertView;
     }

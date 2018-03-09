@@ -1,4 +1,4 @@
-package com.guma.desarrollo.gvm;
+package com.guma.desarrollo.gvm.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.POJO.Articulo;
 import com.guma.desarrollo.gvm.POJO.HstItemFacturados;
 import com.guma.desarrollo.gvm.POJO.MvstCLA;
+import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.adapters.ArticulosAdapter;
 import com.guma.desarrollo.gvm.adapters.HistoricoAdapter;
 import com.guma.desarrollo.gvm.adapters.HistoricoArticuloAdapter;

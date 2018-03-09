@@ -61,8 +61,7 @@
                         android:id="@+id/ediTextUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_usuario"
-                        android:text="F09"/>
+                        android:hint="@string/hint_usuario"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -78,8 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_password"
-                        android:inputType="textPassword"
-                        android:text="NR8183"/>
+                        android:inputType="textPassword"/>
 
                 </android.support.design.widget.TextInputLayout>
 

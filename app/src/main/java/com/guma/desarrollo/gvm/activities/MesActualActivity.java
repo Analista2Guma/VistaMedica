@@ -57,8 +57,8 @@ public class MesActualActivity extends AppCompatActivity {
         tabs.setup();
 
         if (oVentas_Metas.size()!=0){
-            txtMetas.setText(oVentas_Metas.get(0).getmMeta());
-            txtVentas.setText(oVentas_Metas.get(0).getMventa());
+            txtMetas.setText("C$: " + oVentas_Metas.get(0).getmMeta());
+            txtVentas.setText("C$: " + oVentas_Metas.get(0).getMventa());
         }
 
 
@@ -87,7 +87,7 @@ public class MesActualActivity extends AppCompatActivity {
         if (oArticulos_vendidos.size()==0){oArticulos_vendidos.add(new MvtsArticulos("","","","","","","","","","",0));}
         if (oVentas_Clientes.size()==0){oVentas_Clientes.add(new MvtsCliente("","","","","",0));}
         if (oMvstCLA.size()==0){oMvstCLA.add(new MvstCLA("","","","","","","","",""));}
-        if (oCuotas.size()==0){oCuotas.add(new Cuotas("","","",""));}
+        if (oCuotas.size()==0){oCuotas.add(new Cuotas("","","","",""));}
 
 
 
