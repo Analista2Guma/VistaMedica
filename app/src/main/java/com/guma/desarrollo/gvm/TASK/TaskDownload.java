@@ -13,7 +13,9 @@ import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
+import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
 import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
+import com.guma.desarrollo.gvm.MODEL.Lotes_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
@@ -22,7 +24,9 @@ import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Facturas_puntos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Lotes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsCliente;
@@ -221,6 +225,40 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
             }
             @Override
             public void onFailure(Call<Respuesta_Clientes> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+        //LOTES DE LOS ARTICULOS
+        Class_retrofit.Objfit().create(Servicio.class).get_Lotes().enqueue(new Callback<Respuesta_Lotes>() {
+            @Override
+            public void onResponse(Call<Respuesta_Lotes> call, Response<Respuesta_Lotes> response) {
+                if(response.isSuccessful()){
+                    Respuesta_Lotes respuesta = response.body();
+                    Lotes_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Lotes> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+        //OBTIENE LAS FACTURAS QUE CONTIENEN PUNTOS
+        Class_retrofit.Objfit().create(Servicio.class).get_Facturas_puntos(user).enqueue(new Callback<Respuesta_Facturas_puntos>() {
+            @Override
+            public void onResponse(Call<Respuesta_Facturas_puntos> call, Response<Respuesta_Facturas_puntos> response) {
+                if(response.isSuccessful()){
+                    Respuesta_Facturas_puntos respuesta = response.body();
+                    Facturas_Puntos_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Facturas_puntos> call, Throwable t) {
                 pdialog.dismiss();
             }
 

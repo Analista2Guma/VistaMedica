@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
@@ -40,28 +41,24 @@ public class HistorialActivity extends AppCompatActivity {
         recyclerViewArticulos = findViewById(R.id.articulosRecyclerView);
         LinearLayoutManager linearLayout = new LinearLayoutManager(getBaseContext());
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
+        if (getSupportActionBar() != null){ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
         recyclerViewArticulos.setLayoutManager(linearLayout);
 
         if (bundle.getString("View").equals("CL")){
             //oArticulo = Articulos_model.get(ManagerURI.getDirDb(),this);
+            setTitle("HISTORIAL DEL CLIENTE");
             oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,bundle.getString("COD"));
             recyclerViewArticulos.setAdapter(new HistoricoAdapter(oMvstCLA, getBaseContext(), this));
         }else{
+            setTitle("HISTORIAL ARTICULO");
             oArticulos_vendidos = HstItemFacturado_model.get_articulos(ManagerURI.getDirDb(), this,bundle.getString("COD"));
             recyclerViewArticulos.setAdapter(new HistoricoArticuloAdapter(oArticulos_vendidos, getBaseContext(), this));
         }
-
-
-
-
-
-
-
-
-        /*ListView lst_tab1      = findViewById(R.id.rcvHistorial);
-
-        oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,"03181");
-
-        lst_tab1.setAdapter(new MvstCLA_Leads(this, oMvstCLA));*/
+    }
+    public boolean onOptionsItemSelected(MenuItem item)    {
+        if (item.getItemId() == 16908332){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -2,12 +2,15 @@ package com.guma.desarrollo.gvm.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
 import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
 import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
+import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
 import com.guma.desarrollo.gvm.POJO.HstItemFacturados;
 import com.guma.desarrollo.gvm.POJO.MvstCLA;
 import com.guma.desarrollo.gvm.POJO.vts_3m_Articulos;
@@ -22,6 +25,8 @@ import java.util.List;
 public class ClienteDetalleActivity extends AppCompatActivity {
     private List<MvstCLA> oMvstCLA;
     private List<HstItemFacturados> oArticulos_vendidos;
+
+    int Puntos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,13 @@ public class ClienteDetalleActivity extends AppCompatActivity {
 
         oArticulos_vendidos = HstItemFacturado_model.get(ManagerURI.getDirDb(), this,bundle.getString("codigo"));
         oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,bundle.getString("codigo"));
+
+
+
+
+
+
+        Log.d("", "onCreateFacturaPuntos: " + String.valueOf(Puntos));
 
         lst_tab3.setAdapter(new MvstCLA_Leads(this, oMvstCLA));
         lst_tab1.setAdapter(new HstItemFacturado_Leads(this, oArticulos_vendidos));

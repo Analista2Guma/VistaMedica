@@ -44,6 +44,15 @@
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
                 android:text="TEXTO 2"/>
+
+            <TextView
+                android:id="@+id/cardClientePuntos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="right"
+                android:textColor="@android:color/black"
+                android:text="0.00 Pts."/>
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

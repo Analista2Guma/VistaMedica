@@ -85,7 +85,11 @@
         </activity>
         <activity android:name=".activities.QRActivity" />
         <activity android:name=".activities.ResultQrActivity" />
-        <activity android:name=".activities.HistorialActivity"></activity>
+        <activity
+            android:name=".activities.HistorialActivity"
+            android:theme="@style/AppThemeAzul" />
+        <activity android:name=".activities.DetalleArticulosActivity"
+            android:theme="@style/AppThemeAzul"/>
     </application>
 
 </manifest>

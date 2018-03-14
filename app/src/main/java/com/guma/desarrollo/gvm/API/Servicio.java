@@ -2,8 +2,10 @@ package com.guma.desarrollo.gvm.API;
 
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Facturas_puntos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Login;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Lotes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsCliente;
@@ -76,8 +78,12 @@ public interface Servicio {
     @POST("Mcuotas")
     Call<Respuesta_Cuotas> get_Coutas(@Field("mVendedor") String mVendedor);
 
+    @FormUrlEncoded
+    @POST("PUNTOS")
+    Call<Respuesta_Facturas_puntos> get_Facturas_puntos(@Field("mVendedor") String mVendedor);
 
-
+    @GET("LOTES")
+    Call<Respuesta_Lotes> get_Lotes();
 
 
 }

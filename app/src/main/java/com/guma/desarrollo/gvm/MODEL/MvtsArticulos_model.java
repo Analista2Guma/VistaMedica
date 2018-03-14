@@ -29,7 +29,7 @@ public class MvtsArticulos_model {
 
             if (ARTI.size()>0){
                 SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM MvtsTotales");
-                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM MvtsTotales");
+                SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM MvtsArticulos");
                 ContentValues cV = new ContentValues();
                 cV.put("mRut" , ARTI.get(0).getmRut1());
                 cV.put("mVnt" , ARTI.get(0).getMventa());
