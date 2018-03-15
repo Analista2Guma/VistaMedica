@@ -1,7 +1,6 @@
 package com.guma.desarrollo.gvm.RESPUESTAS;
 
 import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
-import com.guma.desarrollo.gvm.POJO.Lotes;
 
 import java.util.ArrayList;
 

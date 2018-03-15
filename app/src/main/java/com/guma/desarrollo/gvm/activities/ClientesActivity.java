@@ -10,7 +10,6 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;

@@ -1,15 +1,11 @@
 package com.guma.desarrollo.gvm.activities;
 
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;

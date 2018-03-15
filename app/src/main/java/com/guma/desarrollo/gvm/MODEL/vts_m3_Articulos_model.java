@@ -4,10 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
-import com.guma.desarrollo.gvm.POJO.MvtsArticulos;
 import com.guma.desarrollo.gvm.POJO.vts_3m_Articulos;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
@@ -64,7 +62,7 @@ public class vts_m3_Articulos_model {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
 
-            // TODO: 02/03/2018 pendiente en filtrar por cliente
+
 
             cursor = myDataBase.query(true, "vts_m3_Articulos", null, null, null, null, null, null, null);
            /* if (CLS.equals("")){
@@ -108,7 +106,7 @@ public class vts_m3_Articulos_model {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
 
-            // TODO: 02/03/2018 pendiente en filtrar por cliente
+
 
             cursor = myDataBase.query(true, "vts_m3_Articulos", null, null, null, null, null, null, null);
            /* if (CLS.equals("")){

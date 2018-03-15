@@ -7,9 +7,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
-import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
 import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
@@ -20,7 +18,6 @@ import com.guma.desarrollo.gvm.POJO.vts_3m_Articulos;
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.adapters.MvstCLA_Leads;
 import com.guma.desarrollo.gvm.adapters.MvtsCliente_Leads;
-import com.guma.desarrollo.gvm.adapters.vstArticulos_Leads;
 import com.guma.desarrollo.gvm.adapters.vst_3m_Articulos_Leads;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 

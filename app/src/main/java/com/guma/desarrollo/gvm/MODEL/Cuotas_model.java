@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
-import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.POJO.Cuotas;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 

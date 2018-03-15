@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
-import com.guma.desarrollo.gvm.POJO.Lotes;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;

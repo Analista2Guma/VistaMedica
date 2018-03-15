@@ -14,7 +14,6 @@ import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.POJO.Articulo;
 import com.guma.desarrollo.gvm.activities.DetalleArticulosActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

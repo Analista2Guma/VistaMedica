@@ -13,11 +13,10 @@ import android.view.MenuInflater;
 import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
-import com.guma.desarrollo.gvm.POJO.Cliente;
+
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.adapters.ArticulosAdapter;
 import com.guma.desarrollo.gvm.POJO.Articulo;
-import com.guma.desarrollo.gvm.adapters.ClientesAdapter;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;

@@ -9,6 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Class_retrofit {
     public static Retrofit Objfit() {
-        return  new Retrofit.Builder().baseUrl(ManagerURI.getURL_Base()).client(ManagerURI.ConfigTimeOut()).addConverterFactory(GsonConverterFactory.create()).build();
+        return  new Retrofit.Builder()
+                .baseUrl(ManagerURI.getURL_Base())
+                .client(ManagerURI.ConfigTimeOut())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 }

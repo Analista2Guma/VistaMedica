@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.guma.desarrollo.gvm.POJO.MvtsArticulos;
 import com.guma.desarrollo.gvm.POJO.vts_3m_Articulos;
 import com.guma.desarrollo.gvm.R;
 

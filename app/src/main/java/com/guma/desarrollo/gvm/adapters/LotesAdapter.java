@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.POJO.Lotes;
-import com.guma.desarrollo.gvm.POJO.MvstCLA;
 import com.guma.desarrollo.gvm.R;
 
 import java.util.List;

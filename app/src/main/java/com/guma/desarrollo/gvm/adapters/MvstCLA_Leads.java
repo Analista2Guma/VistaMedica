@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.POJO.MvstCLA;
-import com.guma.desarrollo.gvm.POJO.MvtsCliente;
 import com.guma.desarrollo.gvm.R;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.guma.desarrollo.gvm.RESPUESTAS;
 
-import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.POJO.Usuario;
 
 import java.util.ArrayList;

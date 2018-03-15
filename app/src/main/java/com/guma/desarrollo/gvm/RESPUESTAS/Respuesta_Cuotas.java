@@ -1,6 +1,5 @@
 package com.guma.desarrollo.gvm.RESPUESTAS;
 
-import com.guma.desarrollo.gvm.POJO.Articulo;
 import com.guma.desarrollo.gvm.POJO.Cuotas;
 
 import java.util.ArrayList;

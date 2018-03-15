@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.POJO.MvtsCliente;

@@ -6,18 +6,13 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
 import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
 import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
-import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
-import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
 import com.guma.desarrollo.gvm.POJO.HstItemFacturados;
 import com.guma.desarrollo.gvm.POJO.MvstCLA;
-import com.guma.desarrollo.gvm.POJO.vts_3m_Articulos;
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.adapters.HstItemFacturado_Leads;
 import com.guma.desarrollo.gvm.adapters.MvstCLA_Leads;
-import com.guma.desarrollo.gvm.adapters.vst_3m_Articulos_Leads;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.List;

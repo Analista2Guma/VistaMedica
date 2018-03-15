@@ -3,7 +3,6 @@ package com.guma.desarrollo.gvm.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
