@@ -37,6 +37,7 @@ public class Articulos_model {
                     contentValues.put("mLab" , a.getmLab());
                     contentValues.put("mUnd" , a.getmUnd());
                     contentValues.put("mPts" , a.getmPts());
+                    contentValues.put("mRgl" , a.getmRgl());
                     myDataBase.insert("Articulos", null, contentValues );
                 }
             }
@@ -69,6 +70,7 @@ public class Articulos_model {
                     tmp.setmLab(cursor.getString(cursor.getColumnIndex("mLab")));
                     tmp.setmUnd(cursor.getString(cursor.getColumnIndex("mUnd")));
                     tmp.setmPts(cursor.getString(cursor.getColumnIndex("mPts")));
+                    tmp.setmRgl(cursor.getString(cursor.getColumnIndex("mRgl")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

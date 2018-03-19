@@ -114,11 +114,18 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, ListasMedicosFarmaciasActivity.class);
         int id = item.getItemId();
 
-        if (id == R.id.drawerMenuItem1) {
+        if (id == R.id.drawer_item_Farmacias) {
 
-        } else if (id == R.id.drawerCerrarSession) {
+            intent.putExtra("Activity_list", "F");
+            startActivity(intent);
+
+        } else if (id == R.id.drawer_item_Medicos) {
+            intent.putExtra("Activity_list", "M");
+            startActivity(intent);
+        } else if(id == R.id.drawerCerrarSession){
             new AlertDialog.Builder(this)
                     .setMessage("Seguro que decea Cerrar Sessión?")
                     .setCancelable(false)

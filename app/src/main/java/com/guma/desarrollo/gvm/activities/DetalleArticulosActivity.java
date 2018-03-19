@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.guma.desarrollo.gvm.MODEL.Lotes_model;
 import com.guma.desarrollo.gvm.POJO.Lotes;
@@ -29,6 +30,8 @@ public class DetalleArticulosActivity extends AppCompatActivity {
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
 
         rviewArticulos.setLayoutManager(linearLayout);
+        TextView txt = findViewById(R.id.txtReglas);
+        txt.setText(bundle.getString("Art_Reglas"));
         oLotes = Lotes_model.get(ManagerURI.getDirDb(), this,bundle.getString("Cod_articulo"));
         rviewArticulos.setAdapter(new LotesAdapter(oLotes, getBaseContext(), this));
 

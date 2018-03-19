@@ -13,4 +13,13 @@
     <dimen name="elevation_ico_dashboard">2dp</dimen>
     <dimen name="padding_card_cliente_layout">10dp</dimen>
     <dimen name="margin_bottom_card">5dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+
+    <dimen name="headerbar_elevation">4dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+    <dimen name="size_fab">56dp</dimen>
+    <dimen name="avatar_size">40dp</dimen>
+    <dimen name="fab_elevation">16dp</dimen>
 </resources>

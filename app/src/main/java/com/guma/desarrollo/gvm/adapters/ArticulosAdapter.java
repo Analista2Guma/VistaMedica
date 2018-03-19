@@ -53,6 +53,7 @@ public class ArticulosAdapter extends RecyclerView.Adapter<ArticulosAdapter.View
                 Intent intent = new Intent(context, DetalleArticulosActivity.class);
                 intent.putExtra("Cod_articulo", articulo.getmCod());
                 intent.putExtra("Name_articulo", articulo.getmNam());
+                intent.putExtra("Art_Reglas", articulo.getmRgl());
                 activity.startActivity(intent);
             }
         });

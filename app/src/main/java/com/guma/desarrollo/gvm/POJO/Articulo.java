@@ -6,15 +6,16 @@ package com.guma.desarrollo.gvm.POJO;
 
 public class Articulo {
 
-    String mCod,mNam,mExi,mLab,mUnd,mPts;
+    String mCod,mNam,mExi,mLab,mUnd,mPts,mRgl;
 
-    public Articulo(String mCod, String mNam, String mExi, String mLab, String mUnd, String mPts) {
+    public Articulo(String mCod, String mNam, String mExi, String mLab, String mUnd, String mPts, String mRgl) {
         this.mCod = mCod;
         this.mNam = mNam;
         this.mExi = mExi;
         this.mLab = mLab;
         this.mUnd = mUnd;
         this.mPts = mPts;
+        this.mRgl = mRgl;
     }
     public Articulo(){}
 
@@ -64,5 +65,13 @@ public class Articulo {
 
     public void setmPts(String mPts) {
         this.mPts = mPts;
+    }
+
+    public String getmRgl() {
+        return mRgl;
+    }
+
+    public void setmRgl(String mRgl) {
+        this.mRgl = mRgl;
     }
 }

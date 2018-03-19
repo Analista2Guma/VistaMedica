@@ -5,18 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.guma.desarrollo.gvm.activities.DetalleArticulosActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtReglas"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:text="0.00"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:text="BONIFICADO"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
     <ListView
+
         android:id="@+id/rcvHistorial"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"/>
 
     <ScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="100dp"
             android:id="@+id/rvArticulos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

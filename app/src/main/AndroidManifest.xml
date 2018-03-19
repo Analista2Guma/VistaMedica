@@ -49,10 +49,8 @@
             android:theme="@style/AppThemeAzul">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".activities.DashboardActivity" />
@@ -88,8 +86,25 @@
         <activity
             android:name=".activities.HistorialActivity"
             android:theme="@style/AppThemeAzul" />
-        <activity android:name=".activities.DetalleArticulosActivity"
-            android:theme="@style/AppThemeAzul"/>
+        <activity
+            android:name=".activities.DetalleArticulosActivity"
+            android:theme="@style/AppThemeAzul" />
+        <activity
+            android:name=".activities.ListasMedicosFarmaciasActivity"
+            android:label="@string/title_activity_listas_medicos_farmacias"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.AddFarmaciasActivity"
+            android:label="@string/title_activity_add_medicos"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.AddMedicosActivity"
+            android:label="@string/title_activity_add_farmacia"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.DetalleContactoActivity"
+            android:label="@string/title_activity_detalle_contacto"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
