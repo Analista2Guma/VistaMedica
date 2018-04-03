@@ -134,7 +134,7 @@
     <string name="frm_13">Participa de Programa Puntos</string>
     <string name="frm_14">Entrega beneficios a dependientes</string>
     <string name="frm_15">Permite Impulsadoras</string>
-    <string name="frm_16">Potencial mensual de compra</string>
+    <string name="frm_16">Potencial mensual de compra C$</string>
     <string name="frm_17">Dias para pago de facturas</string>
     <string name="frm_18">Responsable de Vencidos </string>
     <string name="frm_19">Responsable de Canjes</string>
@@ -154,7 +154,7 @@
     <string name="mdc_11">Año y Universidad de Graduacion</string>
     <string name="mdc_12">Nº Estimado de Paciente Semanal Privado</string>
     <string name="mdc_13">Motivos de consulta mas frecuente</string>
-    <string name="mdc_14">Costo de Consulta $</string>
+    <string name="mdc_14">Costo de Consulta</string>
     <string name="mdc_15">Propietario de Farmacia</string>
     <string name="mdc_16">Socio de Clinica</string>
 

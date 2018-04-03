@@ -14,7 +14,9 @@ import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
 import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
+import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
+import com.guma.desarrollo.gvm.MODEL.Llaves_model;
 import com.guma.desarrollo.gvm.MODEL.Lotes_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
@@ -22,10 +24,13 @@ import com.guma.desarrollo.gvm.MODEL.MvtsCliente_model;
 import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
+import com.guma.desarrollo.gvm.POJO.Llaves;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Facturas_puntos;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Farmacias;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Llaves;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Lotes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsArticulos;
@@ -33,6 +38,10 @@ import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvtsCliente;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_articulos;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_vts_3m_Articulos;
 import com.guma.desarrollo.gvm.services.Class_retrofit;
+import com.guma.desarrollo.gvm.services.ManagerURI;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +58,8 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     String user;
+    Integer cntFarmacias=0;
+    Integer cntMedicos=0;
 
     private static final String TAG = "TaskDownload";
     public TaskDownload(Context cnxt) {
@@ -68,7 +79,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
     protected String doInBackground(Integer... params) {
 
         //VENTAS POR ARTICULOS MENSUALES
-        Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user).enqueue(new Callback<Respuesta_MvtsArticulos>() {
+       /* Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user).enqueue(new Callback<Respuesta_MvtsArticulos>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsArticulos> call, Response<Respuesta_MvtsArticulos> response) {
                 if(response.isSuccessful()){
@@ -270,8 +281,6 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
                 if(response.isSuccessful()){
                     Respuesta_articulos respuesta = response.body();
                     Articulos_model.Save(cnxt,respuesta.getResults());
-                    Alerta();
-                    pdialog.dismiss();
                 }else{
                     pdialog.dismiss();
                 }
@@ -281,6 +290,61 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
                 pdialog.dismiss();
             }
         });
+        Class_retrofit.Objfit().create(Servicio.class).get_Farmacias(user).enqueue(new Callback<Respuesta_Farmacias>() {
+            @Override
+            public void onResponse(Call<Respuesta_Farmacias> call, Response<Respuesta_Farmacias> response) {
+                if(response.isSuccessful()){
+                    Respuesta_Farmacias respuesta = response.body();
+                    Farmacias_model.Save(cnxt,respuesta.getResults(),"All");
+                    pdialog.dismiss();
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Farmacias> call, Throwable t) {
+                pdialog.dismiss();
+            }
+        });*/
+
+
+        for (Llaves ll: Llaves_model.get(ManagerURI.getDirDb(),cnxt)) {
+            cntFarmacias = Integer.valueOf(ll.getmFar());
+            cntMedicos = Integer.valueOf(ll.getmMed());
+        }
+
+
+        Class_retrofit.Objfit().create(Servicio.class).get_Llaves(user,cntFarmacias,cntMedicos).enqueue(new Callback<Respuesta_Llaves>() {
+            @Override
+            public void onResponse(Call<Respuesta_Llaves> call, Response<Respuesta_Llaves> response) {
+                if(response.isSuccessful()){
+                    Respuesta_Llaves respuesta = response.body();
+                    Llaves_model.Save(cnxt,respuesta.getResults());
+
+                    Log.d(TAG, "Medicos : " + cntMedicos);
+                    Log.d(TAG, "Farmacias : " + cntFarmacias);
+
+                    cntFarmacias++;
+                    cntMedicos++;
+
+                    Llaves_model.updtID(ManagerURI.getDirDb(),cnxt,cntFarmacias,user,"FARMACIAS");
+                    Llaves_model.updtID(ManagerURI.getDirDb(),cnxt,cntMedicos,user,"MEDICOS");
+                    Alerta();
+                    pdialog.dismiss();
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Llaves> call, Throwable t) {
+                pdialog.dismiss();
+            }
+        });
+
+
+
+
+
 
         editor.putString("lstDownload", Clock.getTimeStamp());
         editor.apply();

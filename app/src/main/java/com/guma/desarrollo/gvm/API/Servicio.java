@@ -3,7 +3,9 @@ package com.guma.desarrollo.gvm.API;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Facturas_puntos;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Farmacias;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
+import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Llaves;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Login;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Lotes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_MvstCLA;
@@ -81,6 +83,14 @@ public interface Servicio {
     @FormUrlEncoded
     @POST("PUNTOS")
     Call<Respuesta_Facturas_puntos> get_Facturas_puntos(@Field("mVendedor") String mVendedor);
+
+    @FormUrlEncoded
+    @POST("Farmacias")
+    Call<Respuesta_Farmacias> get_Farmacias(@Field("mVendedor") String mVendedor,@Field("mFarmacias") String mFarmacias);
+
+    @FormUrlEncoded
+    @POST("Llaves")
+    Call<Respuesta_Llaves> get_Llaves(@Field("mVendedor") String mVendedor,@Field("mFarmacias") Integer mFarmacias,@Field("mMedicos") Integer mMedicos);
 
     @GET("LOTES")
     Call<Respuesta_Lotes> get_Lotes();

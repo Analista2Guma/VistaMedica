@@ -6,6 +6,7 @@
     <color name="lightgray">#ededed</color>
     <color name="color_Accent">#d1e3f4</color>
     <color name="color_white">#fff</color>
+    <color name="color_black">#000</color>
     <color name="color_gris">#f5f7fa</color>
     <color name="color_ok">#5fba7d</color>
     <color name="color_NOk">#ff0d00</color>
