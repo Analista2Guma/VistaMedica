@@ -17,15 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
-import com.guma.desarrollo.gvm.POJO.Cliente;
+import com.guma.desarrollo.gvm.MODEL.Medicos_model;
 import com.guma.desarrollo.gvm.POJO.Farmacias;
+import com.guma.desarrollo.gvm.POJO.Medicos;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.TASK.TaskDownload;
 import com.guma.desarrollo.gvm.TASK.TaskFarmacias;
-import com.guma.desarrollo.gvm.adapters.ClientesAdapter;
+import com.guma.desarrollo.gvm.TASK.TaskMedicos;
 import com.guma.desarrollo.gvm.adapters.Farmacias_Adapter;
+import com.guma.desarrollo.gvm.adapters.Medicos_Adapter;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;
@@ -35,7 +35,8 @@ import java.util.Locale;
 public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
     Bundle bundle;
     String Str;
-    private List<Farmacias> oClientes;
+    private List<Farmacias> oFarmacias;
+    private List<Medicos> oMedicos;
     private static final String TAG = "ClienteActivity";
     MenuInflater inflater;
     SearchManager searchManager;
@@ -57,11 +58,6 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
         linearLayout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewClientes.setLayoutManager(linearLayout);
 
-
-
-        Llenar();
-
-        setTitle(Str);
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,16 +68,49 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(ListasMedicosFarmaciasActivity.this, "Algo Salio mal", Toast.LENGTH_SHORT).show();
                 }
+                finish();
             }
         });
+
+        if (Str.equals("F")){
+            setTitle("LISTA DE FARMACIAS");
+            LlenarFarmacias();
+        }else if (Str.equals("M")){
+            setTitle("LISTA DE MEDICOS");
+            LlenarMedicos();
+        }else{
+            Toast.makeText(ListasMedicosFarmaciasActivity.this, "Algo Salio mal", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    private void Llenar() {
-        oClientes = Farmacias_model.get(ManagerURI.getDirDb(),this);
-        Farmacias_Adapter articulosAdapter = new Farmacias_Adapter(oClientes, getBaseContext(), this);
-        recyclerViewClientes.setAdapter(articulosAdapter);
+    private void LlenarFarmacias() {
+        oFarmacias = Farmacias_model.get(ManagerURI.getDirDb(),this,"");
+        recyclerViewClientes.setAdapter(new Farmacias_Adapter(oFarmacias, getBaseContext(), this));
+    }
+    private void LlenarMedicos() {
+
+        oMedicos = Medicos_model.get(ManagerURI.getDirDb(),this,"");
+
+        for ( Medicos icv:oMedicos){
+            Log.i("Medicos_model_log", "LlenarMedicos: " + icv.getM01());
+        }
+
+        recyclerViewClientes.setAdapter(new Medicos_Adapter(oMedicos, getBaseContext(), this));
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+
+    }
     public boolean onOptionsItemSelected(MenuItem item)    {
         int id = item.getItemId();
         switch (id) {
@@ -90,11 +119,17 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
                 return true;
             case R.id.action_sync:
                 if (ManagerURI.isOnlinea(this)){
-
-                    recyclerViewClientes.setAdapter( new Farmacias_Adapter(new ArrayList<Farmacias>(), getBaseContext(), this));
-                    new TaskFarmacias(this).execute(0);
-                    Llenar();
-
+                    if (Str.equals("F")){
+                        recyclerViewClientes.setAdapter( new Farmacias_Adapter(new ArrayList<Farmacias>(), getBaseContext(), this));
+                        new TaskFarmacias(this).execute(0);
+                        LlenarFarmacias();
+                    }else if (Str.equals("M")){
+                        recyclerViewClientes.setAdapter( new Medicos_Adapter(new ArrayList<Medicos>(), getBaseContext(), this));
+                        new TaskMedicos(this).execute(0);
+                        LlenarMedicos();
+                    }else{
+                        Toast.makeText(ListasMedicosFarmaciasActivity.this, "Algo Salio mal", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     new AlertDialog.Builder(this)
                             .setTitle("Alerta")
@@ -139,12 +174,11 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
         query = query.toLowerCase(Locale.getDefault());
         ArrayList<Farmacias> newList = new ArrayList<>();
         if (query.isEmpty()){
-            for(Farmacias oC:oClientes){
+            for(Farmacias oC:oFarmacias){
                 newList.add(oC);
             }
         }else{
-            //ArrayList<Articulo> newList = new ArrayList<>();
-            for(Farmacias oC:oClientes){
+            for(Farmacias oC:oFarmacias){
                 if (oC.getmNFR().toLowerCase().contains(query)){
                     newList.add(oC);
                 }

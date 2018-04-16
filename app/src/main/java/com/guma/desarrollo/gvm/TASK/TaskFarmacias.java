@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.guma.desarrollo.gvm.API.Servicio;
+import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.POJO.Farmacias;
@@ -52,14 +53,16 @@ public class TaskFarmacias extends AsyncTask<Integer,Integer,String> {
     @Override
     protected String doInBackground(Integer... params) {
 
-        List<Farmacias> oClientes = Farmacias_model.get(ManagerURI.getDirDb(),cnxt);
+        List<Farmacias> oClientes = Farmacias_model.get(ManagerURI.getDirDb(),cnxt,"");
         String json = new Gson().toJson(oClientes);
+        Log.d(TAG, "doInBackground: " + json);
+
        Class_retrofit.Objfit().create(Servicio.class).get_Farmacias(user,json).enqueue(new Callback<Respuesta_Farmacias>() {
             @Override
             public void onResponse(Call<Respuesta_Farmacias> call, Response<Respuesta_Farmacias> response) {
                 if(response.isSuccessful()){
                     Respuesta_Farmacias respuesta = response.body();
-                   // Farmacias_model.Save(cnxt,respuesta.getResults(),"All");
+                    Farmacias_model.Save(cnxt,respuesta.getResults(),"All");
                     Alerta();
                     pdialog.dismiss();
                 }else{
@@ -68,6 +71,7 @@ public class TaskFarmacias extends AsyncTask<Integer,Integer,String> {
             }
             @Override
             public void onFailure(Call<Respuesta_Farmacias> call, Throwable t) {
+                Log.d(TAG, "doInBackground: " + t.getMessage());
                 pdialog.dismiss();
             }
         });

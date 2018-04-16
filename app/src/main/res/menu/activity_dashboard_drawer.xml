@@ -6,14 +6,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_item_Farmacias"
-            android:icon="@drawable/ic_list"
+            android:icon="@drawable/ic_store_mall_directory_black_24dp"
             android:title="@string/drawer_farmacias"/>
         <item
             android:id="@+id/drawer_item_Medicos"
-            android:icon="@drawable/ic_list"
+            android:icon="@drawable/ic_group_black_24dp"
             android:title="@string/drawer_medicos"/>
         <item
-
             android:id="@+id/drawerCerrarSession"
             android:title="@string/drawer_cerrar_session" />
     </group>

@@ -36,6 +36,7 @@ public class Llaves_model {
                     contentValues.put("RUTA" , a.getmRut());
                     contentValues.put("FARMACIAS" , a.getmFar());
                     contentValues.put("MEDICOS" , a.getmMed());
+                    contentValues.put("REPORTES" , a.getmRpt());
                     myDataBase.insert("Llaves", null, contentValues );
                 }
             }
@@ -67,6 +68,7 @@ public class Llaves_model {
                     tmp.setmRut(cursor.getString(cursor.getColumnIndex("RUTA")));
                     tmp.setmFar(cursor.getString(cursor.getColumnIndex("FARMACIAS")));
                     tmp.setmMed(cursor.getString(cursor.getColumnIndex("MEDICOS")));
+                    tmp.setmRpt(cursor.getString(cursor.getColumnIndex("REPORTES")));
                     lst.add(tmp);
                     cursor.moveToNext();
                 }

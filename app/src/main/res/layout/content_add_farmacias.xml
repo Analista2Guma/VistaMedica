@@ -44,101 +44,95 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:elevation="5dp">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
                                 <LinearLayout
-                                    android:orientation="horizontal"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_person_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_person_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="NOMBRE DE FARMACIA"
-
                                                 android:singleLine="true"
                                                 android:layout_marginTop="10dp"
                                                 android:id="@+id/item_frm_nameFarmacia"
                                                 android:hint="@string/frm_1"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_person_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_person_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="NOMBRE DE PROPIETARIO"
                                                 android:layout_marginTop="10dp"
                                                 android:id="@+id/item_frm_namePropietario"
                                                 android:hint="@string/frm_2"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_place_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_place_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="ADMINISTRACION DE RENTA 6 AL SUR"
                                                 android:id="@+id/item_frm_Direccion"
                                                 android:layout_marginTop="10dp"
                                                 android:hint="@string/frm_3"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_date_range_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_date_range_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
+                                                android:text="00/00/000"
                                                 android:id="@+id/item_frm_FechaAniversario"
                                                 android:hint="@string/frm_4"
                                                 android:layout_width="match_parent"
@@ -149,159 +143,147 @@
                                                 android:clickable="true"
                                                 android:maxLines="1" />
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_call_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_call_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="82449100"
                                                 android:id="@+id/item_frm_TelfFarmacia"
                                                 android:inputType="number"
                                                 android:layout_marginTop="10dp"
                                                 android:hint="@string/frm_5"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_stay_current_portrait_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_stay_current_portrait_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="82449100"
                                                 android:id="@+id/item_frm_Celularduenno"
                                                 android:inputType="number"
                                                 android:hint="@string/frm_6"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_access_time_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_access_time_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="DE LUNES A VIERNES"
                                                 android:id="@+id/item_frm_HtsAtencion"
                                                 android:layout_marginTop="10dp"
                                                 android:hint="@string/frm_7"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_person_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_person_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="MARYAN ESPINOZA"
                                                 android:id="@+id/item_frm_Resp_Compra"
                                                 android:layout_marginTop="10dp"
                                                 android:hint="@string/frm_8"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_stay_current_portrait_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_stay_current_portrait_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="82449100"
                                                 android:id="@+id/item_frm_Cel_Resp_Compra"
                                                 android:inputType="number"
                                                 android:hint="@string/frm_9"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/ic_wc_black_24dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_wc_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
                                         <android.support.design.widget.TextInputLayout
                                             android:layout_marginLeft="10dp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content">
                                             <EditText
-                                                android:text="10"
                                                 android:id="@+id/item_frm_Cant_Dependiete"
                                                 android:layout_marginTop="10dp"
                                                 android:hint="@string/frm_10"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:textAllCaps="true"
                                                 android:textSize="21sp"
                                                 android:textColor="@android:color/black"/>
                                         </android.support.design.widget.TextInputLayout>
+                                    </LinearLayout>
                                 </LinearLayout>
-                            </LinearLayout>
                             </android.support.v7.widget.CardView>
                         </LinearLayout>
                     </LinearLayout>
@@ -335,7 +317,6 @@
                                         android:layout_height="wrap_content">
                                         <EditText
                                             android:id="@+id/item_frm_potencial_mensual"
-                                            android:text="1000"
                                             android:ems="10"
                                             android:inputType="numberDecimal"
                                             android:textSize="21sp"
@@ -360,7 +341,6 @@
                                         android:layout_height="wrap_content">
                                         <EditText
                                             android:id="@+id/item_frm_Dias"
-                                            android:text="Lunes , Martes"
                                             android:textSize="21sp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -383,7 +363,6 @@
                                         android:layout_height="wrap_content">
                                         <EditText
                                             android:id="@+id/item_frm_Responsable_vencidos"
-                                            android:text="MARYAN ESPINOZA"
                                             android:textSize="21sp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -406,7 +385,6 @@
                                         android:layout_height="wrap_content">
                                         <EditText
                                             android:id="@+id/item_frm_Responsables_canjes"
-                                            android:text="MRYAN ESPINOZA"
                                             android:textSize="21sp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -429,7 +407,6 @@
                                         android:layout_height="wrap_content">
                                         <EditText
                                             android:id="@+id/item_frm_dependientes_mostrador"
-                                            android:text="2"
                                             android:textSize="21sp"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"

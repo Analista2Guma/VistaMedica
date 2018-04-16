@@ -5,17 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
 import com.guma.desarrollo.gvm.POJO.Cliente;
 import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
 import com.guma.desarrollo.gvm.POJO.Farmacias;
 import com.guma.desarrollo.gvm.R;
+import com.guma.desarrollo.gvm.activities.AddFarmaciasActivity;
 import com.guma.desarrollo.gvm.activities.ClienteDetalleActivity;
+import com.guma.desarrollo.gvm.activities.DetalleContactoActivity;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.text.NumberFormat;
@@ -49,7 +53,7 @@ public class Farmacias_Adapter extends RecyclerView.Adapter<Farmacias_Adapter.Vi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Farmacias cliente = listaClientes.get(position);
 
-        holder.clienteNombre.setText(cliente.getmNFR());
+        holder.clienteNombre.setText((cliente.getmUID()).concat(" | ").concat(cliente.getmNFR()));
         holder.clienteCodigo.setText(cliente.getmDIR());
         holder.clsPuntos.setText(cliente.getmTFR());
 
@@ -57,12 +61,15 @@ public class Farmacias_Adapter extends RecyclerView.Adapter<Farmacias_Adapter.Vi
         holder.clienteCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ClienteDetalleActivity.class);
-                /*intent.putExtra("nombre", cliente.getmNam());
-                intent.putExtra("codigo", cliente.getmCod());
-                intent.putExtra("Dire", cliente.getmDir());*/
+                Intent intent = new Intent(context, DetalleContactoActivity.class);
+                intent.putExtra("Accion", "Editar");
+                intent.putExtra("UID", cliente.getmUID());
+                intent.putExtra("Tipo", "F");
+                intent.putExtra("peNombre", cliente.getmNFR());
+                intent.putExtra("peDireccion", cliente.getmDIR());
 
                 activity.startActivity(intent);
+                activity.finish();
 
             }
         });

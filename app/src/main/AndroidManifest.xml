@@ -49,8 +49,10 @@
             android:theme="@style/AppThemeAzul">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".activities.DashboardActivity" />
@@ -104,7 +106,21 @@
         <activity
             android:name=".activities.DetalleContactoActivity"
             android:label="@string/title_activity_detalle_contacto"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.LocationActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <service
+            android:name=".activities.DetectedActivitiesIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>

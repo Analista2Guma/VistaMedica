@@ -22,393 +22,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="5dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_person_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <EditText
-                                android:hint="@string/mdc_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textAllCaps="true"
-                                android:textSize="21sp"
-                                android:textColor="@android:color/black"/>
-                        </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_person_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_place_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_call_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:inputType="number"
-                            android:hint="@string/mdc_4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_stay_current_portrait_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_email_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:inputType="textEmailAddress"
-                            android:hint="@string/mdc_6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_location_city_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_golf_course_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_8"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_nature_people_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_group_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_info_outline_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_11"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_info_outline_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_info_outline_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_13"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_info_outline_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_14"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_person_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_15"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_person_black_24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:hint="@string/mdc_16"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:textSize="21sp"
-                            android:textColor="@android:color/black"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-            </LinearLayout></android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="5dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp">
-                <TextView
-
-                    android:hint="@string/mdc_17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="true"
-                    android:textSize="21sp"
-                    android:textColor="@android:color/black"/>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_stay_current_portrait_black_24dp"
+                            android:src="@drawable/ic_person_black_24dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <android.support.design.widget.TextInputLayout
@@ -416,54 +41,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
-                                android:hint="@string/mdc_18"
+                                android:id="@+id/Idet01"
+                                android:inputType="text"
+                                android:hint="@string/mdc_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
-                                android:textSize="21sp"
-                                android:textColor="@android:color/black"/>
-                        </android.support.design.widget.TextInputLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_time_to_leave_black_24dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <EditText
-                                android:hint="@string/mdc_19"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textAllCaps="true"
-                                android:textSize="21sp"
-                                android:textColor="@android:color/black"/>
-                        </android.support.design.widget.TextInputLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <EditText
-                                android:hint="@string/mdc_20"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textAllCaps="true"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -482,10 +64,466 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
-                                android:hint="@string/mdc_21"
+                                android:text="00/00/000"
+                                android:id="@+id/Idet02"
+                                android:hint="@string/mdc_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:focusable="false"
+                                android:textSize="21sp"
+                                android:clickable="true"
+                                android:maxLines="1" />
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_place_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet03"
+                                android:hint="@string/mdc_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="25dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_info_outline_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <Spinner
+                            android:id="@+id/spnn1"
+                            android:gravity="center"
+                            android:layout_height="fill_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="0" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_call_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet04"
+                                android:inputType="number"
+                                android:hint="@string/mdc_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_stay_current_portrait_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet05"
+                                android:hint="@string/mdc_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_email_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet06"
+                                android:inputType="textEmailAddress"
+                                android:hint="@string/mdc_6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_location_city_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet07"
+                                android:hint="@string/mdc_7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_golf_course_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet08"
+                                android:hint="@string/mdc_8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_nature_people_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet09"
+                                android:hint="@string/mdc_9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_group_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet10"
+                                android:hint="@string/mdc_10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_info_outline_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet11"
+                                android:hint="@string/mdc_11"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_info_outline_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet12"
+                                android:hint="@string/mdc_12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_info_outline_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet13"
+                                android:hint="@string/mdc_13"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_info_outline_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet14"
+                                android:inputType="number"
+                                android:hint="@string/mdc_14"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textAllCaps="true"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_person_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet16"
+                                android:hint="@string/mdc_16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_margin="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <CheckBox
+                            android:id="@+id/Idet15"
+                            android:textSize="21sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/mdc_15" />
+                    </LinearLayout>
+
+                </LinearLayout></android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <TextView
+                        android:hint="@string/mdc_17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textSize="21sp"
+                        android:textColor="@android:color/black"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_stay_current_portrait_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet17"
+                                android:hint="@string/mdc_18"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_time_to_leave_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet18"
+                                android:hint="@string/mdc_19"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet19"
+                                android:hint="@string/mdc_20"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_person_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet20"
+                                android:hint="@string/mdc_21"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -523,10 +561,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
+                                android:id="@+id/Idet21"
                                 android:hint="@string/mdc_23"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
+                                android:inputType="text"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -545,10 +584,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
+                                android:id="@+id/Idet22"
                                 android:hint="@string/mdc_24"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
+                                android:inputType="text"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -567,10 +607,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
-                                android:hint="@string/mdc_23"
+                                android:id="@+id/Idet23"
+                                android:hint="@string/mdc_25"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
+                                android:inputType="text"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -589,11 +630,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
+                                android:id="@+id/Idet24"
                                 android:inputType="textEmailAddress"
                                 android:hint="@string/mdc_26"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>
@@ -612,12 +653,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
+                                android:text="00/00/000"
+                                android:id="@+id/Idet25"
                                 android:hint="@string/mdc_27"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
+                                android:inputType="date"
+                                android:focusable="false"
                                 android:textSize="21sp"
-                                android:textColor="@android:color/black"/>
+                                android:clickable="true"
+                                android:maxLines="1" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -634,10 +679,116 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <EditText
+                                android:id="@+id/Idet26"
                                 android:hint="@string/mdc_28"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAllCaps="true"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconfb"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet27"
+                                android:hint="@string/mdc_29"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconstwitter"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet28"
+                                android:hint="@string/mdc_30"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconslinkedin"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet29"
+                                android:hint="@string/mdc_31"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textSize="21sp"
+                                android:textColor="@android:color/black"/>
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconsinstagram"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/Idet30"
+                                android:hint="@string/mdc_32"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
                                 android:textSize="21sp"
                                 android:textColor="@android:color/black"/>
                         </android.support.design.widget.TextInputLayout>

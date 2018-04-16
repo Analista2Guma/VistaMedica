@@ -42,6 +42,7 @@ public class ClientesActivity extends AppCompatActivity{
         oClientes = Clientes_model.get(ManagerURI.getDirDb(),this);
         if (oClientes.size()!=0){
             txt.setVisibility(TextView.INVISIBLE);
+
         }
         ClientesAdapter articulosAdapter = new ClientesAdapter(oClientes, getBaseContext(), this);
         recyclerViewClientes.setAdapter(articulosAdapter);
