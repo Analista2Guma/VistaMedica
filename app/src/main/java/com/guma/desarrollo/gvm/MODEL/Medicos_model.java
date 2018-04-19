@@ -4,10 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
-import com.guma.desarrollo.gvm.POJO.Farmacias;
+
 import com.guma.desarrollo.gvm.POJO.Medicos;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
@@ -29,45 +30,46 @@ public class Medicos_model {
             myDbHelper = new SQLiteHelper(ManagerURI.getDirDb(), context);
             myDataBase = myDbHelper.getWritableDatabase();
             if (ARTI.size()>0){
-                if (Type.equals("All")){SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM IdMedico");}
-                Log.i("Medicos_model_log", "Correcto" );
+                if (Type.equals("All")){SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(), context,"DELETE FROM Medicos");}
+
                 for(int i=0;i<ARTI.size();i++){
                     Medicos a = ARTI.get(i);
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("IdMedico" , a.getmUID());
-                    contentValues.put("cmp1" , a.getM01());
-                    contentValues.put("cmp2" , a.getM02());
-                    contentValues.put("cmp3" , a.getM03());
-                    contentValues.put("cmp4" , a.getM04());
-                    contentValues.put("cmp5" , a.getM05());
-                    contentValues.put("cmp6" , a.getM06());
-                    contentValues.put("cmp7" , a.getM07());
-                    contentValues.put("cmp8" , a.getM08());
-                    contentValues.put("cmp9" , a.getM09());
-                    contentValues.put("cmp10" , a.getM010());
-                    contentValues.put("cmp11" , a.getM011());
-                    contentValues.put("cmp12" , a.getM012());
-                    contentValues.put("cmp13" , a.getM013());
-                    contentValues.put("cmp14" , a.getM014());
-
-                    contentValues.put("cmp16" , a.getM016());
-                    contentValues.put("cmp17" , a.getM017());
-                    contentValues.put("cmp18" , a.getM018());
-                    contentValues.put("cmp19" , a.getM019());
-                    contentValues.put("cmp20" , a.getM020());
-                    contentValues.put("cmp21" , a.getM21());
-                    contentValues.put("cmp22" , a.getM22());
-                    contentValues.put("cmp23" , a.getM23());
-                    contentValues.put("cmp24" , a.getM24());
-                    contentValues.put("cmp25" , a.getM25());
-                    contentValues.put("cmp26" , a.getM26());
-                    contentValues.put("cmp27" , a.getM27());
-                    contentValues.put("cmp28" , a.getM28());
-                    contentValues.put("cmp29" , a.getM29());
-                    contentValues.put("cmp30" , a.getM30());
+                    contentValues.put("cmp1" , ((TextUtils.isEmpty(a.getM01())) ? "" : a.getM01()));
+                    contentValues.put("cmp2" , ((TextUtils.isEmpty(a.getM02())) ? "" : a.getM02()));
+                    contentValues.put("cmp3" , ((TextUtils.isEmpty(a.getM03())) ? "" : a.getM03()));
+                    contentValues.put("cmp4" , ((TextUtils.isEmpty(a.getM04())) ? "" : a.getM04()));
+                    contentValues.put("cmp5" , ((TextUtils.isEmpty(a.getM05())) ? "" : a.getM05()));
+                    contentValues.put("cmp6" , ((TextUtils.isEmpty(a.getM06())) ? "" : a.getM06()));
+                    contentValues.put("cmp7" , ((TextUtils.isEmpty(a.getM07())) ? "" : a.getM07()));
+                    contentValues.put("cmp8" , ((TextUtils.isEmpty(a.getM08())) ? "" : a.getM08()));
+                    contentValues.put("cmp9" , ((TextUtils.isEmpty(a.getM09())) ? "" : a.getM09()));
+                    contentValues.put("cmp10" , ((TextUtils.isEmpty(a.getM010())) ? "" : a.getM010()));
+                    contentValues.put("cmp11" , ((TextUtils.isEmpty(a.getM011())) ? "" : a.getM011()));
+                    contentValues.put("cmp12" , ((TextUtils.isEmpty(a.getM012())) ? "" : a.getM012()));
+                    contentValues.put("cmp13" , ((TextUtils.isEmpty(a.getM013())) ? "" : a.getM013()));
+                    contentValues.put("cmp14" , ((TextUtils.isEmpty(a.getM014())) ? "" : a.getM014()));
+                    contentValues.put("cmp15" , "");
+                    contentValues.put("cmp16" , ((TextUtils.isEmpty(a.getM016())) ? "" : a.getM016()));
+                    contentValues.put("cmp17" , ((TextUtils.isEmpty(a.getM017())) ? "" : a.getM017()));
+                    contentValues.put("cmp18" , ((TextUtils.isEmpty(a.getM018())) ? "" : a.getM018()));
+                    contentValues.put("cmp19" , ((TextUtils.isEmpty(a.getM019())) ? "" : a.getM019()));
+                    contentValues.put("cmp20" , ((TextUtils.isEmpty(a.getM020())) ? "" : a.getM020()));
+                    contentValues.put("cmp21" , ((TextUtils.isEmpty(a.getM21())) ? "" : a.getM21()));
+                    contentValues.put("cmp22" , ((TextUtils.isEmpty(a.getM22())) ? "" : a.getM22()));
+                    contentValues.put("cmp23" , ((TextUtils.isEmpty(a.getM23())) ? "" : a.getM23()));
+                    contentValues.put("cmp24" , ((TextUtils.isEmpty(a.getM24())) ? "" : a.getM24()));
+                    contentValues.put("cmp25" , ((TextUtils.isEmpty(a.getM25())) ? "" : a.getM25()));
+                    contentValues.put("cmp26" , ((TextUtils.isEmpty(a.getM26())) ? "" : a.getM26()));
+                    contentValues.put("cmp27" , ((TextUtils.isEmpty(a.getM27())) ? "" : a.getM27()));
+                    contentValues.put("cmp28" , ((TextUtils.isEmpty(a.getM28())) ? "" : a.getM28()));
+                    contentValues.put("cmp29" , ((TextUtils.isEmpty(a.getM29())) ? "" : a.getM29()));
+                    contentValues.put("cmp30" , ((TextUtils.isEmpty(a.getM30())) ? "" : a.getM30()));
                     contentValues.put("cmp31" , a.getM31());
                     contentValues.put("cmp32" , a.getM32());
                     contentValues.put("Ruta" , a.getmRuta());
+
                     myDataBase.insert("Medicos", null, contentValues );
                 }
             }

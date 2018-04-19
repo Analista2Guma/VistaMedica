@@ -20,39 +20,42 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
+
         <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="30sp"
+            android:id="@+id/tv_latitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="00.0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="00.0" />
+
+        <TextView
+            android:textSize="30sp"
+            android:id="@+id/tv_longitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="00.0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="00.0" />
+    </TableRow>
+        <TableRow
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_latitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="00.0"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                tools:text="00.0" />
-
-            <TextView
-                android:id="@+id/tv_longitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="00.0"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                tools:text="00.0" />
-        </TableRow>
-
-        <TableRow
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
+                android:textSize="20sp"
                 android:id="@+id/tv_latitude_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
             <TextView
+                android:textSize="20sp"
                 android:id="@+id/tv_longitude_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,10 +76,31 @@
                 android:text="Longitud"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
         </TableRow>
-        <ScrollView
-            android:layout_marginTop="20dp"
+        <TableRow
+
             android:layout_width="match_parent"
-            android:layout_height="670dp">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@color/color_Accent"
+                android:background="@color/colorAccent"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="ARTICULOS PROMOCIONADOS."
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+
+        </TableRow>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/articulosRecyclerView"
                 android:layout_width="match_parent"

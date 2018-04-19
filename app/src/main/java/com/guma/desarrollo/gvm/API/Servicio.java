@@ -95,11 +95,18 @@ public interface Servicio {
 
     @FormUrlEncoded
     @POST("Medicos")
-    Call<Respuesta_Medicos> get_Medicos(@Field("mVendedor") String mVendedor, @Field("mFarmacias") String mFarmacias);
+    Call<Respuesta_Medicos> get_Medicos(@Field("mVendedor") String mVendedor, @Field("mJSONMedicos") String mFarmacias);
 
     @FormUrlEncoded
     @POST("Llaves")
-    Call<Respuesta_Llaves> get_Llaves(@Field("mVendedor") String mVendedor,@Field("mFarmacias") Integer mFarmacias,@Field("mMedicos") Integer mMedicos);
+    Call<Respuesta_Llaves> get_Llaves(@Field("mVendedor") String mVendedor);
+
+    @FormUrlEncoded
+    @POST("UpdateLlaves")
+    Call<String> update_Llaves(@Field("mVendedor") String mVendedor,
+                                      @Field("mFarmacias") Integer mFarmacias,
+                                      @Field("mMedicos") Integer mMedicos,
+                                      @Field("mReportes") Integer mReportes);
 
     @GET("LOTES")
     Call<Respuesta_Lotes> get_Lotes();
@@ -109,8 +116,14 @@ public interface Servicio {
     Call<String> Send_Id_delete_Row(@Field("mID") String mID);
 
     @FormUrlEncoded
+    @POST("Logs")
+    Call<String> SendLogs(@Field("mLogs") String mLogs,@Field("mLogsDetalles") String mLogsDetalles);
+
+    @FormUrlEncoded
     @POST("DeleteMedicos")
     Call<String> Send_Id_delete_Row_medicos(@Field("mID") String mID);
+
+
 
 
 }

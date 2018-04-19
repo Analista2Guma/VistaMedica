@@ -13,10 +13,10 @@ public class Clock {
         String sTime = now.format("%Y-%m-%d %H:%M:%S");
         return sTime;
     }
-    public static String getTimeStamp_mls() {
+    public static String getIDs() {
         Time now = new Time();
         now.setToNow();
-        String sTime = now.format("%Y-%m-%d %H:%M:%S");
+        String sTime = now.format("%m%d%H%M%S");
         return sTime;
     }
 }

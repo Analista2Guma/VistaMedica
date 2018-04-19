@@ -5,24 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
-import com.guma.desarrollo.gvm.POJO.Cliente;
-import com.guma.desarrollo.gvm.POJO.Facturas_puntos;
 import com.guma.desarrollo.gvm.POJO.Farmacias;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.activities.AddFarmaciasActivity;
-import com.guma.desarrollo.gvm.activities.ClienteDetalleActivity;
 import com.guma.desarrollo.gvm.activities.DetalleContactoActivity;
-import com.guma.desarrollo.gvm.services.ManagerURI;
-
-import java.text.NumberFormat;
 import java.util.List;
 
 /**

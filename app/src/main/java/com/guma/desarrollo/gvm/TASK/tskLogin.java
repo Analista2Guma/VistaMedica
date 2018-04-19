@@ -63,9 +63,6 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
             @Override
             public void onResponse(Call<Respuesta_Login> call, Response<Respuesta_Login> response) {
                 if(response.isSuccessful()){
-
-
-
                     if (response.body().getResults().get(0).getmUser().equals("")){
                         Alerta();
                     }else {
@@ -85,6 +82,7 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
             }
             @Override
             public void onFailure(Call<Respuesta_Login> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
                 pdialog.dismiss();
             }
 

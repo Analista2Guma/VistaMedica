@@ -1,6 +1,7 @@
 package com.guma.desarrollo.gvm.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -23,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,6 +32,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +50,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
 import com.guma.desarrollo.gvm.MODEL.LogActividades_model;
@@ -53,8 +58,6 @@ import com.guma.desarrollo.gvm.POJO.Articulo;
 import com.guma.desarrollo.gvm.POJO.DetalleLog;
 import com.guma.desarrollo.gvm.POJO.Llaves;
 import com.guma.desarrollo.gvm.POJO.Log_Actividades;
-import com.guma.desarrollo.gvm.TASK.TaskDeleteMedicos;
-import com.guma.desarrollo.gvm.adapters.ArticulosAdapter;
 import com.guma.desarrollo.gvm.adapters.ReporteVisitaAdapter;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 import com.guma.desarrollo.gvm.R;
@@ -82,8 +85,8 @@ public class LocationActivity extends AppCompatActivity implements
     private ActivityDetectionBroadcastReceiver mBroadcastReceiver;
 
     // UI
-    private TextView mLatitude;
-    private TextView mLongitude;
+    private TextView mLatitude,mlblLatitude;
+    private TextView mLongitude,mlblLongitude;
     private TextView mComentarios;
 
     // Códigos de petición
@@ -94,9 +97,11 @@ public class LocationActivity extends AppCompatActivity implements
     //List<Articulo> lst = new ArrayList<>();
     ReporteVisitaAdapter articulosAdapter;
    String[] myarray;
-   String user,IDFarmacias;
+   String user,IDFarmacias,opView;
+
     List<DetalleLog> dtLogs = new ArrayList<>();;
     private SharedPreferences preferences;
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +110,10 @@ public class LocationActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
         mLatitude = findViewById(R.id.tv_latitude);
         mLongitude = findViewById(R.id.tv_longitude);
+
+        mlblLatitude = findViewById(R.id.tv_latitude_label);
+        mlblLongitude = findViewById(R.id.tv_longitude_label);
+
         if (getSupportActionBar() != null){ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
         buildGoogleApiClient();
         createLocationRequest();
@@ -115,9 +124,16 @@ public class LocationActivity extends AppCompatActivity implements
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         user =preferences.getString("Ruta","");
         Bundle bundle = getIntent().getExtras();
+
         if (bundle != null) {
             IDFarmacias = bundle.getString("UID");
+            opView = bundle.getString("Accion","");
         }
+        Button btn = findViewById(R.id.btnRpt);
+        //LinearLayout lyt = findViewById(R.id.tlTop);
+
+
+
         recyclerViewArticulos = findViewById(R.id.articulosRecyclerView);
 
         mComentarios = findViewById(R.id.idComentarios);
@@ -135,37 +151,54 @@ public class LocationActivity extends AppCompatActivity implements
 
         }
 
-    findViewById(R.id.btnRpt).setOnClickListener(new View.OnClickListener() {
+
+        btn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            new android.support.v7.app.AlertDialog.Builder(LocationActivity.this)
-                    .setMessage("¿Seguro que decea guardar el registro?")
-                    .setCancelable(false)
-                    .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Save_log();
-                        }
-                    })
-                    .setNegativeButton("NO", null)
-                    .show();
+            if (dtLogs.size()>0){
+                new android.support.v7.app.AlertDialog.Builder(LocationActivity.this)
+                        .setMessage("¿Seguro que decea guardar el registro?")
+                        .setCancelable(false)
+                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Save_log();
+                            }
+                        })
+                        .setNegativeButton("NO", null)
+                        .show();
+            }else{
+                Toast.makeText(LocationActivity.this, "Sin Registros que Guardar.", Toast.LENGTH_SHORT).show();
+            }
+
 
 
 
         }
     });
+        if (opView.equals("view")){
+            btn.setVisibility(View.GONE);
+            mLatitude.setVisibility(View.GONE);
+           // mlblLatitude.setVisibility(View.GONE);
+            mLongitude.setVisibility(View.GONE);
+           // mlblLongitude.setVisibility(View.GONE);
+            List<Log_Actividades> lstCommit = LogActividades_model.get_commit(ManagerURI.getDirDb(),getBaseContext(),IDFarmacias);
+            List<DetalleLog> dtLogs = LogActividades_model.get_row(ManagerURI.getDirDb(),getBaseContext(),IDFarmacias);
+            recyclerViewArticulos.setAdapter(new ReporteVisitaAdapter(dtLogs, getBaseContext(), LocationActivity.this,"View"));
+            mComentarios.setText(lstCommit.get(0).getmComentario().toString());
+            //setTitle(lstCommit.get(0).getUID().toString());
+            mlblLatitude.setText(lstCommit.get(0).getUID().toString());
+            final String Fecha = (String) DateFormat.format("EEEE dd 'de' MMMM 'de' yyyy HH:mm:ss 's'", lstCommit.get(0).getmFecha());
+            mlblLongitude.setText(Fecha);
+
+        }
 
     }
 
     private void Save_log() {
-        Integer rpt=0;
 
-        for (Llaves ll: Llaves_model.get(ManagerURI.getDirDb(),this)) {
-            rpt = Integer.valueOf(ll.getmRpt());
-        }
 
-        rpt++;
 
-        String COD = user.concat("-R").concat(String.valueOf(rpt));
+        String COD = user.concat("-R").concat(Clock.getIDs());
 
         ArrayList<Log_Actividades> alog = new ArrayList<>();
         Log_Actividades tmp = new Log_Actividades();
@@ -180,7 +213,6 @@ public class LocationActivity extends AppCompatActivity implements
 
         alog.add(tmp);
         LogActividades_model.Save(LocationActivity.this,alog,dtLogs);
-        Llaves_model.updtID(ManagerURI.getDirDb(),LocationActivity.this,rpt,user,"REPORTES");
         new android.support.v7.app.AlertDialog.Builder(this).setTitle("Notificación").setMessage("Guardado con exito").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -205,6 +237,8 @@ public class LocationActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mn_add_item_report, menu);
+        MenuItem shareItem = menu.findItem(R.id.action_add_item_report);
+        if (opView.equals("view")){shareItem.setVisible(false);}
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item)    {
@@ -240,7 +274,7 @@ public class LocationActivity extends AppCompatActivity implements
                                     tmp.setDescrp(popupSpinner.getSelectedItem().toString());
                                     tmp.setCantidad(Cantidad.getText().toString());
                                     dtLogs.add(tmp);
-                                    recyclerViewArticulos.setAdapter(new ReporteVisitaAdapter(dtLogs, getBaseContext(), LocationActivity.this));
+                                    recyclerViewArticulos.setAdapter(new ReporteVisitaAdapter(dtLogs, getBaseContext(), LocationActivity.this,""));
 
                                 }
 

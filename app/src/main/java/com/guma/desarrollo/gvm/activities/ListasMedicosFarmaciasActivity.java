@@ -10,7 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,6 +42,8 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
     SearchManager searchManager;
     SearchView searchView;
     RecyclerView recyclerViewClientes;
+
+    int CountRow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,16 +89,12 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
     private void LlenarFarmacias() {
         oFarmacias = Farmacias_model.get(ManagerURI.getDirDb(),this,"");
         recyclerViewClientes.setAdapter(new Farmacias_Adapter(oFarmacias, getBaseContext(), this));
+        CountRow = oFarmacias.size();
     }
     private void LlenarMedicos() {
-
         oMedicos = Medicos_model.get(ManagerURI.getDirDb(),this,"");
-
-        for ( Medicos icv:oMedicos){
-            Log.i("Medicos_model_log", "LlenarMedicos: " + icv.getM01());
-        }
-
         recyclerViewClientes.setAdapter(new Medicos_Adapter(oMedicos, getBaseContext(), this));
+        CountRow = oMedicos.size();
     }
     @Override
     protected void onPause() {
@@ -146,7 +144,11 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_busqueda_farmacias_medicos, menu);
+        inflater.inflate(R.menu.menu_busqueda_farmacias_medicos
+                , menu);
+        MenuItem shareItem = menu.findItem(R.id.action_sync);
+       // if (CountRow ==0){shareItem.setVisible(false);}
+
         searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -172,19 +174,41 @@ public class ListasMedicosFarmaciasActivity extends AppCompatActivity {
     }
     public void filterData(String query) {
         query = query.toLowerCase(Locale.getDefault());
-        ArrayList<Farmacias> newList = new ArrayList<>();
-        if (query.isEmpty()){
-            for(Farmacias oC:oFarmacias){
-                newList.add(oC);
-            }
-        }else{
-            for(Farmacias oC:oFarmacias){
-                if (oC.getmNFR().toLowerCase().contains(query)){
+        if (Str.equals("F")){
+            ArrayList<Farmacias> newList = new ArrayList<>();
+            if (query.isEmpty()){
+
+                for(Farmacias oC:oFarmacias){
                     newList.add(oC);
                 }
+            }else{
+                for(Farmacias oC:oFarmacias){
+                    if (oC.getmNFR().toLowerCase().contains(query)){
+                        newList.add(oC);
+                    }
+                }
             }
+            recyclerViewClientes.setAdapter( new Farmacias_Adapter(newList, getBaseContext(), this));
+        }else if (Str.equals("M")){
+            ArrayList<Medicos> newList = new ArrayList<>();
+            if (query.isEmpty()){
+
+                for(Medicos oC:oMedicos){
+                    newList.add(oC);
+                }
+            }else{
+                for(Medicos oC:oMedicos){
+                    if (oC.getM01().toLowerCase().contains(query)){
+                        newList.add(oC);
+                    }
+                }
+            }
+            recyclerViewClientes.setAdapter( new Medicos_Adapter(newList, getBaseContext(), this));
+        }else{
+            Toast.makeText(ListasMedicosFarmaciasActivity.this, "Algo Salio mal", Toast.LENGTH_SHORT).show();
         }
-        recyclerViewClientes.setAdapter( new Farmacias_Adapter(newList, getBaseContext(), this));
+
+
     }
 
 }

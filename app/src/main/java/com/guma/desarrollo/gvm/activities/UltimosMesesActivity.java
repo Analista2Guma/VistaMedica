@@ -2,7 +2,7 @@ package com.guma.desarrollo.gvm.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;

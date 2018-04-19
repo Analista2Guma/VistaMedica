@@ -6,11 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,10 +21,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
+import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Especialidades_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
 import com.guma.desarrollo.gvm.MODEL.Medicos_model;
@@ -32,7 +31,6 @@ import com.guma.desarrollo.gvm.POJO.Especialidades;
 import com.guma.desarrollo.gvm.POJO.Llaves;
 import com.guma.desarrollo.gvm.POJO.Medicos;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.TASK.TaskDeleteFarmacias;
 import com.guma.desarrollo.gvm.TASK.TaskDeleteMedicos;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
@@ -251,15 +249,15 @@ public class AddMedicosActivity extends AppCompatActivity {
                 }else{
                     if(et01.getText().toString().isEmpty()){
                         et01.requestFocus();
-                        et01.setError("This field can not be blank");
+                        et01.setError("Este campo no puede estar en blanco");
                     }else {
                         if(et03.getText().toString().isEmpty()){
                             et03.requestFocus();
-                            et03.setError("This field can not be blank");
+                            et03.setError("Este campo no puede estar en blanco");
                         }else{
                             if(et04.getText().toString().isEmpty()){
                                 et04.requestFocus();
-                                et04.setError("This field can not be blank");
+                                et04.setError("Este campo no puede estar en blanco");
                             }else{
                                 Save_Medico();
                             }
@@ -286,15 +284,9 @@ public class AddMedicosActivity extends AppCompatActivity {
     }
 
     private void Save_Medico() {
-        Integer cntMedicos=0;
 
-        for (Llaves ll: Llaves_model.get(ManagerURI.getDirDb(),this)) {
-            cntMedicos = Integer.valueOf(ll.getmMed());
-        }
 
-        cntMedicos++;
-
-        String COD = user.concat("-M").concat(String.valueOf(cntMedicos));
+        String COD = user.concat("-M").concat(Clock.getIDs());
         ArrayList<Medicos> aLista = new ArrayList<>();
         Medicos mdc = new Medicos();
 
@@ -302,48 +294,48 @@ public class AddMedicosActivity extends AppCompatActivity {
         Integer Select = getItemIndexById(spnn1.getSelectedItem().toString());
 
         mdc.setmUID(COD);
-        mdc.setM01(et01.getText().toString());
-        mdc.setM02(et02.getText().toString());
-        mdc.setM03(et03.getText().toString());
-        mdc.setM04(et04.getText().toString());
-        mdc.setM05(et05.getText().toString());
+        mdc.setM01(((TextUtils.isEmpty(et01.getText().toString())) ? "" : et01.getText().toString()));
+        mdc.setM02(((TextUtils.isEmpty(et02.getText().toString())) ? "" : et02.getText().toString()));
+        mdc.setM03(((TextUtils.isEmpty(et03.getText().toString())) ? "" : et03.getText().toString()));
+        mdc.setM04(((TextUtils.isEmpty(et04.getText().toString())) ? "" : et04.getText().toString()));
+        mdc.setM05(((TextUtils.isEmpty(et05.getText().toString())) ? "" : et05.getText().toString()));
 
-        mdc.setM06(et06.getText().toString());
-        mdc.setM07(et07.getText().toString());
-        mdc.setM08(et08.getText().toString());
-        mdc.setM09(et09.getText().toString());
-        mdc.setM010(et10.getText().toString());
-
-        mdc.setM011(et11.getText().toString());
-        mdc.setM012(et12.getText().toString());
-        mdc.setM013(et13.getText().toString());
-        mdc.setM014(et14.getText().toString());
+        mdc.setM06(((TextUtils.isEmpty(et06.getText().toString())) ? "" : et06.getText().toString()));
+        mdc.setM07(((TextUtils.isEmpty(et07.getText().toString())) ? "" : et07.getText().toString()));
+        mdc.setM08(((TextUtils.isEmpty(et08.getText().toString())) ? "" : et08.getText().toString()));
+        mdc.setM09(((TextUtils.isEmpty(et09.getText().toString())) ? "" : et09.getText().toString()));
 
 
-        mdc.setM016(et16.getText().toString());
-        mdc.setM017(et17.getText().toString());
-        mdc.setM018(et18.getText().toString());
-        mdc.setM019(et19.getText().toString());
-        mdc.setM020(et20.getText().toString());
+        mdc.setM010(((TextUtils.isEmpty(et10.getText().toString())) ? "" : et10.getText().toString()));
+        mdc.setM011(((TextUtils.isEmpty(et11.getText().toString())) ? "" : et11.getText().toString()));
+        mdc.setM012(((TextUtils.isEmpty(et12.getText().toString())) ? "" : et12.getText().toString()));
+        mdc.setM013(((TextUtils.isEmpty(et13.getText().toString())) ? "" : et13.getText().toString()));
+        mdc.setM014(((TextUtils.isEmpty(et14.getText().toString())) ? "" : et14.getText().toString()));
+        mdc.setM016(((TextUtils.isEmpty(et16.getText().toString())) ? "" : et16.getText().toString()));
+        mdc.setM017(((TextUtils.isEmpty(et17.getText().toString())) ? "" : et17.getText().toString()));
+        mdc.setM018(((TextUtils.isEmpty(et18.getText().toString())) ? "" : et18.getText().toString()));
+        mdc.setM019(((TextUtils.isEmpty(et19.getText().toString())) ? "" : et19.getText().toString()));
+        mdc.setM020(((TextUtils.isEmpty(et20.getText().toString())) ? "" : et20.getText().toString()));
+        mdc.setM21(((TextUtils.isEmpty(et21.getText().toString())) ? "" : et21.getText().toString()));
+        mdc.setM22(((TextUtils.isEmpty(et22.getText().toString())) ? "" : et22.getText().toString()));
+        mdc.setM23(((TextUtils.isEmpty(et23.getText().toString())) ? "" : et23.getText().toString()));
+        mdc.setM24(((TextUtils.isEmpty(et24.getText().toString())) ? "" : et24.getText().toString()));
+        mdc.setM25(((TextUtils.isEmpty(et25.getText().toString())) ? "" : et25.getText().toString()));
+        mdc.setM26(((TextUtils.isEmpty(et26.getText().toString())) ? "" : et26.getText().toString()));
+        mdc.setM27(((TextUtils.isEmpty(et27.getText().toString())) ? "" : et27.getText().toString()));
+        mdc.setM28(((TextUtils.isEmpty(et28.getText().toString())) ? "" : et28.getText().toString()));
+        mdc.setM29(((TextUtils.isEmpty(et29.getText().toString())) ? "" : et29.getText().toString()));
+        mdc.setM30(((TextUtils.isEmpty(et30.getText().toString())) ? "" : et30.getText().toString()));
 
-        mdc.setM21(et21.getText().toString());
-        mdc.setM22(et22.getText().toString());
-        mdc.setM23(et23.getText().toString());
-        mdc.setM24(et24.getText().toString());
-        mdc.setM25(et25.getText().toString());
 
-        mdc.setM26(et26.getText().toString());
-        mdc.setM27(et27.getText().toString());
-        mdc.setM28(et28.getText().toString());
-        mdc.setM29(et29.getText().toString());
-        mdc.setM30(et30.getText().toString());
+
         mdc.setM31(sCheckBox01);
         mdc.setM32(Select);
         mdc.setmRuta(user);
 
         aLista.add(mdc);
         Medicos_model.Save(this,aLista,"New");
-        Llaves_model.updtID(ManagerURI.getDirDb(),this,cntMedicos,user,"MEDICOS");
+
         new AlertDialog.Builder(this).setTitle("Notificación").setMessage("Guardado con exito").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -395,7 +387,8 @@ public class AddMedicosActivity extends AppCompatActivity {
         mdc.setM28(et28.getText().toString());
         mdc.setM29(et29.getText().toString());
         mdc.setM30(et30.getText().toString());
-
+        mdc.setM31(sCheckBox01);
+        mdc.setM32(Select);
 
 
         aLista.add(mdc);

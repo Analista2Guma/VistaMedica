@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.guma.desarrollo.gvm.POJO.Farmacias;
+
 import com.guma.desarrollo.gvm.POJO.Medicos;
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.activities.DetalleContactoActivity;
@@ -55,10 +55,11 @@ public class Medicos_Adapter extends RecyclerView.Adapter<Medicos_Adapter.ViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetalleContactoActivity.class);
                 intent.putExtra("Accion", "Editar");
+                intent.putExtra("UID", cliente.getmUID());
                 intent.putExtra("Tipo", "M");
                 intent.putExtra("peNombre", cliente.getM01());
                 intent.putExtra("peDireccion", cliente.getM03());
-                intent.putExtra("UID", cliente.getmUID());
+
                 activity.startActivity(intent);
                 activity.finish();
 

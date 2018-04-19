@@ -6,11 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,18 +21,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
-import com.guma.desarrollo.gvm.LIB.Calendario;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
 import com.guma.desarrollo.gvm.POJO.Farmacias;
 import com.guma.desarrollo.gvm.POJO.Llaves;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.TASK.TaskDeleteFarmacias;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
 import java.util.ArrayList;
@@ -181,19 +177,19 @@ public class AddFarmaciasActivity extends AppCompatActivity {
 
                     if(tvNombre_Farmacia.getText().toString().isEmpty()){
                         tvNombre_Farmacia.requestFocus();
-                        tvNombre_Farmacia.setError("This field can not be blank");
+                        tvNombre_Farmacia.setError("Este campo no puede estar en blanco");
                     }else {
                         if(tvNombre_propietario.getText().toString().isEmpty()){
                             tvNombre_propietario.requestFocus();
-                            tvNombre_propietario.setError("This field can not be blank");
+                            tvNombre_propietario.setError("Este campo no puede estar en blanco");
                         }else{
                             if(tvDireccion.getText().toString().isEmpty()){
                                 tvDireccion.requestFocus();
-                                tvDireccion.setError("This field can not be blank");
+                                tvDireccion.setError("Este campo no puede estar en blanco");
                             }else{
                                 if(tvTef_Farmacia.getText().toString().isEmpty()){
                                     tvTef_Farmacia.requestFocus();
-                                    tvTef_Farmacia.setError("This field can not be blank");
+                                    tvTef_Farmacia.setError("Este campo no puede estar en blanco");
                                 }else{
                                     Save_Farmacia();
                                 }
@@ -273,17 +269,9 @@ public class AddFarmaciasActivity extends AppCompatActivity {
     }
 
     private void Save_Farmacia() {
-        Integer cntFarmacias=0;
 
-        for (Llaves ll: Llaves_model.get(ManagerURI.getDirDb(),this)) {
-            cntFarmacias = Integer.valueOf(ll.getmFar());
-        }
 
-        cntFarmacias++;
-
-        String COD = user.concat("-F").concat(String.valueOf(cntFarmacias));
-
-        Llaves_model.updtID(ManagerURI.getDirDb(),this,cntFarmacias,user,"FARMACIAS");
+        String COD = user.concat("-F").concat(Clock.getIDs());
 
         Integer sCheckBox01 = ((tv_CheckBox01.isChecked()) ? 1 :    0);
         Integer sCheckBox02 = ((tv_CheckBox02.isChecked()) ? 1 : 0);

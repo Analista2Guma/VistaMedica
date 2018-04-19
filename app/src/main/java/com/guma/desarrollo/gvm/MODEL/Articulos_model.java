@@ -84,4 +84,5 @@ public class Articulos_model {
         }
         return lst;
     }
+
 }

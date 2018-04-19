@@ -1,23 +1,16 @@
 package com.guma.desarrollo.gvm.TASK;
 
-import android.app.ProgressDialog;
+
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.guma.desarrollo.gvm.API.Servicio;
 import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
-import com.guma.desarrollo.gvm.POJO.Farmacias;
-import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Farmacias;
 import com.guma.desarrollo.gvm.services.Class_retrofit;
 import com.guma.desarrollo.gvm.services.ManagerURI;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -2,20 +2,17 @@ package com.guma.desarrollo.gvm.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.guma.desarrollo.gvm.POJO.Articulo;
 import com.guma.desarrollo.gvm.POJO.DetalleLog;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.activities.DetalleArticulosActivity;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +23,13 @@ public class ReporteVisitaAdapter extends RecyclerView.Adapter<ReporteVisitaAdap
     private List<DetalleLog> listaArticulos;
     private Context context;
     private Activity activity;
+    private String bandera;
 
-    public ReporteVisitaAdapter(List<DetalleLog> listaArticulos, Context context, Activity activity) {
+    public ReporteVisitaAdapter(List<DetalleLog> listaArticulos, Context context, Activity activity,String Bandera) {
         this.listaArticulos = listaArticulos;
         this.context = context;
         this.activity = activity;
+        this.bandera= Bandera;
     }
 
     @Override
@@ -42,28 +41,46 @@ public class ReporteVisitaAdapter extends RecyclerView.Adapter<ReporteVisitaAdap
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final DetalleLog articulo = listaArticulos.get(position);
 
 
         holder.articuloNombre.setText(articulo.getDescrp().toUpperCase());
         holder.Cantidad.setText(articulo.getCantidad().toUpperCase());
+        holder.articulosCard.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+
+                return false;
+            }
+        });
 
 
         holder.articulosCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (bandera.equals("View")){
 
-                //The selected card is set to colorSelected
-                //holder.articulosCard.setCardBackgroundColor(context.getResources().getColor(R.color.color_Accent));
-             /*   Intent intent = new Intent(context, DetalleArticulosActivity.class);
-                intent.putExtra("Cod_articulo", articulo.getmCod());
-                intent.putExtra("Name_articulo", articulo.getmNam());
-                intent.putExtra("Art_Reglas", articulo.getmRgl());
-                activity.startActivity(intent);*/
+                }else{
+                    new AlertDialog.Builder(activity)
+                            .setMessage("¿Seguro que decea borrar el registro?")
+                            .setCancelable(false)
+                            .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    deleteItem(position);
+                                }
+                            })
+                            .setNegativeButton("NO", null)
+                            .show();
 
+                }
             }
         });
+    }
+    void deleteItem(int index) {
+        listaArticulos.remove(index);
+        notifyItemRemoved(index);
     }
 
     @Override

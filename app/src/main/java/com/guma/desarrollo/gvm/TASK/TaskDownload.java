@@ -8,16 +8,20 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+
+import com.google.gson.Gson;
 import com.guma.desarrollo.gvm.API.Servicio;
+import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Clientes_model;
 import com.guma.desarrollo.gvm.MODEL.Cuotas_model;
 import com.guma.desarrollo.gvm.MODEL.Especialidades_model;
 import com.guma.desarrollo.gvm.MODEL.Facturas_Puntos_model;
-import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
+
 import com.guma.desarrollo.gvm.MODEL.HstItemFacturado_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
+import com.guma.desarrollo.gvm.MODEL.LogActividades_model;
 import com.guma.desarrollo.gvm.MODEL.Lotes_model;
 import com.guma.desarrollo.gvm.MODEL.Mvstcla_model;
 import com.guma.desarrollo.gvm.MODEL.MvtsArticulos_model;
@@ -26,11 +30,12 @@ import com.guma.desarrollo.gvm.MODEL.vst_3m_cla_model;
 import com.guma.desarrollo.gvm.MODEL.vts_3m_Cliente_model;
 import com.guma.desarrollo.gvm.MODEL.vts_m3_Articulos_model;
 import com.guma.desarrollo.gvm.POJO.Llaves;
+import com.guma.desarrollo.gvm.POJO.Log_Actividades;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Clientes;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Cuotas;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Especialidades;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Facturas_puntos;
-import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Farmacias;
+
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_HstItemFacturados;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Llaves;
 import com.guma.desarrollo.gvm.RESPUESTAS.Respuesta_Lotes;
@@ -60,9 +65,6 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     String user;
-    Integer cntFarmacias=0;
-    Integer cntMedicos=0;
-
     private static final String TAG = "TaskDownload";
     public TaskDownload(Context cnxt) {
         this.cnxt = cnxt;
@@ -79,6 +81,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
     @Override
     protected String doInBackground(Integer... params) {
+
 
         //VENTAS POR ARTICULOS MENSUALES
         Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user).enqueue(new Callback<Respuesta_MvtsArticulos>() {
@@ -301,6 +304,8 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
                 if(response.isSuccessful()){
                     Respuesta_articulos respuesta = response.body();
                     Articulos_model.Save(cnxt,respuesta.getResults());
+                    Alerta();
+                    pdialog.dismiss();
                 }else{
                     pdialog.dismiss();
                 }
@@ -312,30 +317,36 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
 
-        for (Llaves ll: Llaves_model.get(ManagerURI.getDirDb(),cnxt)) {
-            cntFarmacias = Integer.valueOf(ll.getmFar());
-            cntMedicos = Integer.valueOf(ll.getmMed());
-        }
-        Class_retrofit.Objfit().create(Servicio.class).get_Llaves(user,cntFarmacias,cntMedicos).enqueue(new Callback<Respuesta_Llaves>() {
-            @Override
-            public void onResponse(Call<Respuesta_Llaves> call, Response<Respuesta_Llaves> response) {
-                if(response.isSuccessful()){
-                    Respuesta_Llaves respuesta = response.body();
-                    Llaves_model.Save(cnxt,respuesta.getResults());
-                    //Llaves_model.updtID(ManagerURI.getDirDb(),cnxt,cntFarmacias,user,"FARMACIAS");
-                    //Llaves_model.updtID(ManagerURI.getDirDb(),cnxt,cntMedicos,user,"MEDICOS");
 
-                    Alerta();
-                    pdialog.dismiss();
-                }else{
+        List<Log_Actividades> olst =LogActividades_model.get_aEnviar(ManagerURI.getDirDb(),cnxt);
+        String json = new Gson().toJson(olst);
+        if (olst.size()>0){
+            String json2 = new Gson().toJson(LogActividades_model.get_detalle_aEnviar(ManagerURI.getDirDb(),cnxt));
+            Log.d("JsonReportes:", "doInBackground: " + json);
+            Class_retrofit.Objfit().create(Servicio.class).SendLogs(json,json2).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if(response.isSuccessful()){
+                        SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),cnxt, "UPDATE log_actividades SET ESTADO='1' WHERE ESTADO='0'");
+                        SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),cnxt, "UPDATE log_actividades_detalle SET ESTADO='1' WHERE ESTADO='0'");
+                        pdialog.dismiss();
+                    }else{
+
+                        pdialog.dismiss();
+                    }
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
                     pdialog.dismiss();
                 }
-            }
-            @Override
-            public void onFailure(Call<Respuesta_Llaves> call, Throwable t) {
-                pdialog.dismiss();
-            }
-        });
+            });
+        }
+
+
+
+
+
+
 
         editor.putString("lstDownload", Clock.getTimeStamp());
         editor.apply();

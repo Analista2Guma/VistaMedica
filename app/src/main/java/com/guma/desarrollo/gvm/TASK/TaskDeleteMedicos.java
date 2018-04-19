@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.guma.desarrollo.gvm.API.Servicio;
-import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.MODEL.Medicos_model;
 import com.guma.desarrollo.gvm.services.Class_retrofit;
 import com.guma.desarrollo.gvm.services.ManagerURI;

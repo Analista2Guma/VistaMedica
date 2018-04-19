@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.guma.desarrollo.gvm.POJO.Farmacias;
 import com.guma.desarrollo.gvm.POJO.Log_Actividades;
 import com.guma.desarrollo.gvm.R;
-import com.guma.desarrollo.gvm.activities.DetalleContactoActivity;
+import com.guma.desarrollo.gvm.activities.LocationActivity;
 
 import java.util.List;
 
@@ -47,23 +46,16 @@ public class Actividad_Adapter extends RecyclerView.Adapter<Actividad_Adapter.Vi
         final Log_Actividades cliente = listaClientes.get(position);
         final String Fecha = (String) DateFormat.format("EEEE dd 'de' MMMM 'de' yyyy HH:mm:ss 's'", cliente.getmFecha());
         holder.clienteNombre.setText(Fecha);
-
-
-        /*holder.clienteCard.setOnClickListener(new View.OnClickListener() {
+        holder.clienteCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            /*    Intent intent = new Intent(context, DetalleContactoActivity.class);
-                intent.putExtra("Accion", "Editar");
-                intent.putExtra("UID", cliente.getmUID());
-
-                intent.putExtra("peNombre", cliente.getmNFR());
-                intent.putExtra("peDireccion", cliente.getmDIR());
-
+                Intent intent = new Intent(context, LocationActivity.class);
+                intent.putExtra("Accion", "view");
+                intent.putExtra("UID", cliente.getUID());
                 activity.startActivity(intent);
                 activity.finish();
-
             }
-        });*/
+        });
     }
 
     @Override
@@ -72,12 +64,14 @@ public class Actividad_Adapter extends RecyclerView.Adapter<Actividad_Adapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
+        private CardView clienteCard;
         private TextView clienteNombre;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            clienteCard = itemView.findViewById(R.id.cardClienteLayout);
             clienteNombre = itemView.findViewById(R.id.cardClienteNombre);
 
         }

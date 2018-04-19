@@ -1,6 +1,6 @@
 package com.guma.desarrollo.gvm.RESPUESTAS;
 
-import com.guma.desarrollo.gvm.POJO.Cliente;
+
 import com.guma.desarrollo.gvm.POJO.Farmacias;
 
 import java.util.ArrayList;

@@ -1,40 +1,27 @@
 package com.guma.desarrollo.gvm.activities;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.guma.desarrollo.gvm.LIB.Clock;
-import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.MODEL.LogActividades_model;
-import com.guma.desarrollo.gvm.POJO.DetalleLog;
-import com.guma.desarrollo.gvm.POJO.Farmacias;
 import com.guma.desarrollo.gvm.POJO.Log_Actividades;
 import com.guma.desarrollo.gvm.R;
 import com.guma.desarrollo.gvm.adapters.Actividad_Adapter;
-import com.guma.desarrollo.gvm.adapters.Farmacias_Adapter;
 import com.guma.desarrollo.gvm.services.ManagerURI;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DetalleContactoActivity extends AppCompatActivity {
@@ -54,6 +41,7 @@ public class DetalleContactoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null){ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
         setTitle("INFORMACION DEL CONTACTO");
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             IDFarmacias = bundle.getString("UID");
@@ -76,9 +64,14 @@ public class DetalleContactoActivity extends AppCompatActivity {
 
         txtName.setText(Nombre);
         txtDir.setText(Direccion);
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        if (Type.equals("CL")){
+            fab.hide();
+        }
 
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Type.equals("F")){
@@ -103,34 +96,14 @@ public class DetalleContactoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DetalleContactoActivity.this, LocationActivity.class);
                 intent.putExtra("UID", IDFarmacias);
+                intent.putExtra("Accion", "");
                 startActivity(intent);
                 finish();
-
-
-               /* new AlertDialog.Builder(DetalleContactoActivity.this)
-                        .setMessage("¿Seguro que decea marcar la visita?")
-                        .setCancelable(false)
-                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                recyclerViewClientes.setAdapter( new Actividad_Adapter(new ArrayList<Log_Actividades>(), getBaseContext(), DetalleContactoActivity.this));
-                                ArrayList<Log_Actividades> alog = new ArrayList<>();
-                                Log_Actividades tmp = new Log_Actividades();
-                                tmp.setmUID(IDFarmacias);
-                                tmp.setmRuta(user);
-                                tmp.setmFecha(System.currentTimeMillis());
-                                alog.add(tmp);
-                                LogActividades_model.Save(DetalleContactoActivity.this,alog);
-
-                                Llenar();
-                                //finish();
-                            }
-                        })
-                        .setNegativeButton("NO", null)
-                        .show();*/
             }
         });
 
         Llenar();
+
 
 
 
@@ -148,10 +121,6 @@ public class DetalleContactoActivity extends AppCompatActivity {
 
     private void Llenar() {
         oActividad = LogActividades_model.get(ManagerURI.getDirDb(),this, IDFarmacias);
-
-        String json = new Gson().toJson(LogActividades_model.get_detalle(ManagerURI.getDirDb(),this));
-        //Log.d("Llenar:", "Llenar: " + json);
-
         Actividad_Adapter ActividadAdapter = new Actividad_Adapter(oActividad, getBaseContext(), this);
         recyclerViewClientes.setAdapter(ActividadAdapter);
     }
