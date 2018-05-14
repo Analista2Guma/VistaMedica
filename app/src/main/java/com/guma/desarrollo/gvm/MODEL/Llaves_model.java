@@ -33,7 +33,7 @@ public class Llaves_model {
                 for(int i=0;i<ARTI.size();i++){
                     Llaves a = ARTI.get(i);
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("RUTA" , a.getmRut());
+                    contentValues.put("VISITADOR" , a.getmRut());
                     contentValues.put("FARMACIAS" , a.getmFar());
                     contentValues.put("MEDICOS" , a.getmMed());
                     contentValues.put("REPORTES" , a.getmRpt());
@@ -49,6 +49,38 @@ public class Llaves_model {
             if(myDataBase != null) { myDataBase.close(); }
             if(myDbHelper != null) { myDbHelper.close(); }
         }
+    }
+    public static List<Llaves> getID(String basedir, Context context) {
+        List<Llaves> lst = new ArrayList<>();
+
+        SQLiteDatabase myDataBase = null;
+        SQLiteHelper myDbHelper = null;
+        try
+        {
+            myDbHelper = new SQLiteHelper(basedir, context);
+            myDataBase = myDbHelper.getReadableDatabase();
+            //Cursor cursor = myDataBase.query(true, "Llaves", null, null, null, null, null, null);
+            Cursor cursor = myDataBase.query(true, "Llaves", null, null, null, null, null, null, null);
+            if(cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while(!cursor.isAfterLast()) {
+                    Llaves tmp = new Llaves();
+                    tmp.setmRut(cursor.getString(cursor.getColumnIndex("VISITADOR")));
+                    tmp.setmRpt(cursor.getString(cursor.getColumnIndex("REPORTES")));
+                    tmp.setmMed(cursor.getString(cursor.getColumnIndex("MEDICOS")));
+                    tmp.setmFar(cursor.getString(cursor.getColumnIndex("FARMACIAS")));
+                    lst.add(tmp);
+                    cursor.moveToNext();
+                }
+            }
+        }
+        catch (Exception e) { e.printStackTrace(); }
+        finally
+        {
+            if(myDataBase != null) { myDataBase.close(); }
+            if(myDbHelper != null) { myDbHelper.close(); }
+        }
+        return lst;
     }
 
 }

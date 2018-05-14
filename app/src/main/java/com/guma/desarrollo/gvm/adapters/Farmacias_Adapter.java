@@ -57,9 +57,8 @@ public class Farmacias_Adapter extends RecyclerView.Adapter<Farmacias_Adapter.Vi
                 intent.putExtra("Tipo", "F");
                 intent.putExtra("peNombre", cliente.getmNFR());
                 intent.putExtra("peDireccion", cliente.getmDIR());
-
                 activity.startActivity(intent);
-                activity.finish();
+                //activity.finish();
 
             }
         });

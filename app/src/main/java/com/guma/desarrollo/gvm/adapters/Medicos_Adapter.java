@@ -59,9 +59,8 @@ public class Medicos_Adapter extends RecyclerView.Adapter<Medicos_Adapter.ViewHo
                 intent.putExtra("Tipo", "M");
                 intent.putExtra("peNombre", cliente.getM01());
                 intent.putExtra("peDireccion", cliente.getM03());
-
                 activity.startActivity(intent);
-                activity.finish();
+                //activity.finish();
 
             }
         });

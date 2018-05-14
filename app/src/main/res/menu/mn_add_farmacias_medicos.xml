@@ -9,6 +9,12 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/accion_add_commit_farmacias"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_message_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="add" />
+    <item
         android:id="@+id/action_add"
         android:icon="@drawable/ic_save_white_24dp"
         android:orderInCategory="1"

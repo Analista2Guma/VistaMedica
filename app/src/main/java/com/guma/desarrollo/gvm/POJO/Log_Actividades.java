@@ -1,17 +1,19 @@
 package com.guma.desarrollo.gvm.POJO;
 
 public class Log_Actividades {
-    String UID,mCliente,mComentario,mRuta,mLogitud,mLatitud;
+    String UID,mCliente,mComentario,mRuta,mLogitud,mLatitud,Name,Status;
     long mFecha;
     public Log_Actividades(){}
 
-    public Log_Actividades(String UID, String mCliente, String mComentario, String mRuta, String mLogitud, String mLatitud, long mFecha) {
+    public Log_Actividades(String UID, String mCliente, String mComentario, String mRuta, String mLogitud, String mLatitud, String name, String status, long mFecha) {
         this.UID = UID;
         this.mCliente = mCliente;
         this.mComentario = mComentario;
         this.mRuta = mRuta;
         this.mLogitud = mLogitud;
         this.mLatitud = mLatitud;
+        Name = name;
+        Status = status;
         this.mFecha = mFecha;
     }
 
@@ -61,6 +63,22 @@ public class Log_Actividades {
 
     public void setmLatitud(String mLatitud) {
         this.mLatitud = mLatitud;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 
     public long getmFecha() {

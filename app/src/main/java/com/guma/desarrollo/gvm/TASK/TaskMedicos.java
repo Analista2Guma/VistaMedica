@@ -41,7 +41,7 @@ public class TaskMedicos extends AsyncTask<Integer,Integer,String> {
         this.cnxt = cnxt;
         preferences = PreferenceManager.getDefaultSharedPreferences(cnxt);
         editor = preferences.edit();
-        user =preferences.getString("Ruta","");
+        user =preferences.getString("IDVM","");
     }
 
     @Override
@@ -53,7 +53,6 @@ public class TaskMedicos extends AsyncTask<Integer,Integer,String> {
     @Override
     protected String doInBackground(Integer... params) {
         String json = new Gson().toJson(Medicos_model.get(ManagerURI.getDirDb(),cnxt,""));
-        Log.d("TaskFarmacias", "doInBackground: " + json);
         Class_retrofit.Objfit().create(Servicio.class).get_Medicos(user,json).enqueue(new Callback<Respuesta_Medicos>() {
             @Override
             public void onResponse(Call<Respuesta_Medicos> call, Response<Respuesta_Medicos> response) {

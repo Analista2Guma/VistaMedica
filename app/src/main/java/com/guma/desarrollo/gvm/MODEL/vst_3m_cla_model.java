@@ -65,9 +65,10 @@ public class vst_3m_cla_model {
             myDataBase = myDbHelper.getReadableDatabase();
             //cursor = myDataBase.query(true, "vst_m3_CLA", null, null, null, null, null, null, null);
             if (Cls.equals("")){
-                cursor = myDataBase.query(true, "vst_m3_CLA", null, null, null, null, null, null, null);
+                cursor = myDataBase.query(false, "vst_m3_CLA", null, null, null, null, null, null, null);
             }else{
-                cursor = myDataBase.query(true, "vst_m3_CLA", null, "mCcl"+ "=?", new String[] { Cls }, null, null, null, null);
+                cursor = myDataBase.query(false, "vst_m3_CLA", null, "mCcl"+ "=?", new String[] { Cls }, null, null, null, null);
+                //cursor = myDataBase.query(false, "vst_m3_CLA", new String[] { "mRut","mCcl","mArt","mDec","Sum(mCnt) as mCnt","mClf","mVnt","mDia" }, "mCcl"+ "=?", new String[] { Cls }, "mArt,mDia", null, null, null);
             }
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();

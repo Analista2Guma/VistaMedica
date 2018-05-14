@@ -64,13 +64,14 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
     Context cnxt;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    String user;
+    String user,mUID;
     private static final String TAG = "TaskDownload";
     public TaskDownload(Context cnxt) {
         this.cnxt = cnxt;
         preferences = PreferenceManager.getDefaultSharedPreferences(cnxt);
         editor = preferences.edit();
         user =preferences.getString("Ruta","");
+        mUID=preferences.getString("IDVM","");
     }
 
     @Override
@@ -84,7 +85,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
 
         //VENTAS POR ARTICULOS MENSUALES
-        Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user).enqueue(new Callback<Respuesta_MvtsArticulos>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_MvtsArticulos(user,mUID).enqueue(new Callback<Respuesta_MvtsArticulos>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsArticulos> call, Response<Respuesta_MvtsArticulos> response) {
                 if(response.isSuccessful()){
@@ -102,7 +103,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
         });
         //VENTAS POR ARTICULOS EN LOS ULTIMOS 3 MESES
-        Class_retrofit.Objfit().create(Servicio.class).get_vm_3M_vtsArticulos(user).enqueue(new Callback<Respuesta_vts_3m_Articulos>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_vm_3M_vtsArticulos(user,mUID).enqueue(new Callback<Respuesta_vts_3m_Articulos>() {
             @Override
             public void onResponse(Call<Respuesta_vts_3m_Articulos> call, Response<Respuesta_vts_3m_Articulos> response) {
                 if(response.isSuccessful()){
@@ -121,7 +122,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
         //CLIENTES FACTURADOS EN EL MES
-        Class_retrofit.Objfit().create(Servicio.class).get_MvtsCliente(user).enqueue(new Callback<Respuesta_MvtsCliente>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_MvtsCliente(user,mUID).enqueue(new Callback<Respuesta_MvtsCliente>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsCliente> call, Response<Respuesta_MvtsCliente> response) {
                 if(response.isSuccessful()){
@@ -139,7 +140,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
         //CLIENTES FACTURADOS EN LOS ULTIMOS 3 MESES
-        Class_retrofit.Objfit().create(Servicio.class).get_vts_3M_Cliente(user).enqueue(new Callback<Respuesta_MvtsCliente>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_vts_3M_Cliente(user,mUID).enqueue(new Callback<Respuesta_MvtsCliente>() {
             @Override
             public void onResponse(Call<Respuesta_MvtsCliente> call, Response<Respuesta_MvtsCliente> response) {
                 if(response.isSuccessful()){
@@ -157,7 +158,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
         //ARTICULOS FACTURADOS EN EL MES
-        Class_retrofit.Objfit().create(Servicio.class).get_MvstCLA(user).enqueue(new Callback<Respuesta_MvstCLA>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_MvstCLA(user,mUID).enqueue(new Callback<Respuesta_MvstCLA>() {
             @Override
             public void onResponse(Call<Respuesta_MvstCLA> call, Response<Respuesta_MvstCLA> response) {
                 if(response.isSuccessful()){
@@ -175,7 +176,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
         //HISTORICO DE ITEM FACTURADOS POR CLIENTE
-        Class_retrofit.Objfit().create(Servicio.class).get_vst_HstItemFacturados(user).enqueue(new Callback<Respuesta_HstItemFacturados>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_vst_HstItemFacturados(user,mUID).enqueue(new Callback<Respuesta_HstItemFacturados>() {
             @Override
             public void onResponse(Call<Respuesta_HstItemFacturados> call, Response<Respuesta_HstItemFacturados> response) {
                 if(response.isSuccessful()){
@@ -193,7 +194,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
         });
 
         //ARTICULOS FACTURADOS EN LOS ULTIMOS 3 MESES
-        Class_retrofit.Objfit().create(Servicio.class).get_vst_3M_CLA(user).enqueue(new Callback<Respuesta_MvstCLA>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_vst_3M_CLA(user,mUID).enqueue(new Callback<Respuesta_MvstCLA>() {
             @Override
             public void onResponse(Call<Respuesta_MvstCLA> call, Response<Respuesta_MvstCLA> response) {
                 if(response.isSuccessful()){
@@ -210,7 +211,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
         });
         //CUOTAS CORRESPONDIENTES A CADA MES
-        Class_retrofit.Objfit().create(Servicio.class).get_Coutas(user).enqueue(new Callback<Respuesta_Cuotas>() {
+        Class_retrofit.Objfit().create(Servicio.class).get_Coutas(user,mUID).enqueue(new Callback<Respuesta_Cuotas>() {
             @Override
             public void onResponse(Call<Respuesta_Cuotas> call, Response<Respuesta_Cuotas> response) {
                 if(response.isSuccessful()){
@@ -297,6 +298,25 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
         });
 
+        List <Llaves> llaves = Llaves_model.getID(ManagerURI.getDirDb(),cnxt);
+        String json_llaves = new Gson().toJson(llaves);
+        Class_retrofit.Objfit().create(Servicio.class).get_Llaves(mUID,json_llaves).enqueue(new Callback<Respuesta_Llaves>() {
+            @Override
+            public void onResponse(Call<Respuesta_Llaves> call, Response<Respuesta_Llaves> response) {
+                if(response.isSuccessful()){
+                    Respuesta_Llaves respuesta = response.body();
+                    Llaves_model.Save(cnxt,respuesta.getResults());
+                }else{
+                    pdialog.dismiss();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta_Llaves> call, Throwable t) {
+                pdialog.dismiss();
+            }
+
+        });
+
         //MASTER DE ARTICULOS
         Class_retrofit.Objfit().create(Servicio.class).get_Articulos().enqueue(new Callback<Respuesta_articulos>() {
             @Override
@@ -348,7 +368,7 @@ public class TaskDownload extends AsyncTask<Integer,Integer,String> {
 
 
 
-        editor.putString("lstDownload", Clock.getTimeStamp());
+        editor.putLong("lstDownload", System.currentTimeMillis());
         editor.apply();
         return null;
     }

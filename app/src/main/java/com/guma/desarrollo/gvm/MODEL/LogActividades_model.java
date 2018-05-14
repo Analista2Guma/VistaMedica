@@ -40,6 +40,7 @@ public class LogActividades_model {
                     contentValues.put("RUTA" , a.getmRuta());
                     contentValues.put("COMENTARIO" , a.getmComentario());
                     contentValues.put("FECHA" , a.getmFecha());
+                    contentValues.put("NOMBRE" , a.getName());
                     contentValues.put("ESTADO" , "0");
                     myDataBase.insert("log_actividades", null, contentValues );
                 }
@@ -76,11 +77,17 @@ public class LogActividades_model {
         List<Log_Actividades> lst = new ArrayList<>();
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;
+        Cursor cursor;
         try
         {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
-            Cursor cursor = myDataBase.query(true, "log_actividades", null, "CLIENTE"+ "=?", new String[] { Cls }, null, null, null, null);
+            if (Cls.equals("")){
+                cursor = myDataBase.query(true, "log_actividades", null, null, null, null, null, null, null);
+            }else{
+                cursor = myDataBase.query(true, "log_actividades", null, "CLIENTE"+ "=?", new String[] { Cls }, null, null, null, null);
+            }
+
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while(!cursor.isAfterLast()) {
@@ -89,9 +96,11 @@ public class LogActividades_model {
                     tmp.setmCliente(cursor.getString(cursor.getColumnIndex("CLIENTE")));
                     tmp.setmLogitud(cursor.getString(cursor.getColumnIndex("LONGITUD")));
                     tmp.setmLatitud(cursor.getString(cursor.getColumnIndex("LATITUD")));
+                    tmp.setName(cursor.getString(cursor.getColumnIndex("NOMBRE")));
                     tmp.setmComentario(cursor.getString(cursor.getColumnIndex("COMENTARIO")));
                     tmp.setmRuta(cursor.getString(cursor.getColumnIndex("RUTA")));
                     tmp.setmFecha(cursor.getLong(cursor.getColumnIndex("FECHA")));
+                    tmp.setStatus(cursor.getString(cursor.getColumnIndex("ESTADO")));
 
                     lst.add(tmp);
                     cursor.moveToNext();
@@ -165,6 +174,7 @@ public class LogActividades_model {
                     tmp.setUID(cursor.getString(cursor.getColumnIndex("IDRPT")));
                     tmp.setmCliente(cursor.getString(cursor.getColumnIndex("CLIENTE")));
                     tmp.setmLogitud(cursor.getString(cursor.getColumnIndex("LONGITUD")));
+                    tmp.setName(cursor.getString(cursor.getColumnIndex("NOMBRE")));
                     tmp.setmLatitud(cursor.getString(cursor.getColumnIndex("LATITUD")));
                     tmp.setmComentario(cursor.getString(cursor.getColumnIndex("COMENTARIO")));
                     tmp.setmRuta(cursor.getString(cursor.getColumnIndex("RUTA")));
@@ -199,6 +209,7 @@ public class LogActividades_model {
                 while(!cursor.isAfterLast()) {
                     Log_Actividades tmp = new Log_Actividades();
                     tmp.setUID(cursor.getString(cursor.getColumnIndex("IDRPT")));
+                    tmp.setName(cursor.getString(cursor.getColumnIndex("NOMBRE")));
                     tmp.setmCliente(cursor.getString(cursor.getColumnIndex("CLIENTE")));
                     tmp.setmLogitud(cursor.getString(cursor.getColumnIndex("LONGITUD")));
                     tmp.setmLatitud(cursor.getString(cursor.getColumnIndex("LATITUD")));

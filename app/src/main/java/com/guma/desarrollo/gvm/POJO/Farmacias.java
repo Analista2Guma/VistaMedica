@@ -1,12 +1,12 @@
 package com.guma.desarrollo.gvm.POJO;
 
 public class Farmacias {
-    String mUID,mNFR,mNPR,mDIR,mFAN,mTFR,mTFP,mHAT,mRCP,mTRC,mCDP,mPCP,mDPF,mRVC,mRCJ,mNDM,Ruta;
+    String mUID,mNFR,mNPR,mDIR,mFAN,mTFR,mTFP,mHAT,mRCP,mTRC,mCDP,mPCP,mDPF,mRVC,mRCJ,mNDM,Ruta,mCommit;
     int mPPP,mEBD,mPIP,mCCO;
 
     public Farmacias(){}
 
-    public Farmacias(String mUID, String mNFR, String mNPR, String mDIR, String mFAN, String mTFR, String mTFP, String mHAT, String mRCP, String mTRC, String mCDP, String mPCP, String mDPF, String mRVC, String mRCJ, String mNDM, String ruta, int mPPP, int mEBD, int mPIP, int mCCO) {
+    public Farmacias(String mUID, String mNFR, String mNPR, String mDIR, String mFAN, String mTFR, String mTFP, String mHAT, String mRCP, String mTRC, String mCDP, String mPCP, String mDPF, String mRVC, String mRCJ, String mNDM, String ruta, String mCommit, int mPPP, int mEBD, int mPIP, int mCCO) {
         this.mUID = mUID;
         this.mNFR = mNFR;
         this.mNPR = mNPR;
@@ -24,6 +24,7 @@ public class Farmacias {
         this.mRCJ = mRCJ;
         this.mNDM = mNDM;
         Ruta = ruta;
+        this.mCommit = mCommit;
         this.mPPP = mPPP;
         this.mEBD = mEBD;
         this.mPIP = mPIP;
@@ -164,6 +165,14 @@ public class Farmacias {
 
     public void setRuta(String ruta) {
         Ruta = ruta;
+    }
+
+    public String getmCommit() {
+        return mCommit;
+    }
+
+    public void setmCommit(String mCommit) {
+        this.mCommit = mCommit;
     }
 
     public int getmPPP() {

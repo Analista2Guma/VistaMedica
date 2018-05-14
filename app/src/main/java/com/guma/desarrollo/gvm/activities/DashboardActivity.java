@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -62,9 +63,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         final TextView txt_name_user= headerView.findViewById(R.id.drw_name_user);
         final TextView txt_name_ruta= headerView.findViewById(R.id.drw_name_ruta);
 
-        txt_last_update.setText("Actualizado hasta: " + preferences.getString("lstDownload","00/00/0000"));
+        final String Fecha = (String) DateFormat.format("EEEE dd 'de' MMMM 'de' yyyy ", preferences.getLong("lstDownload",0));
+
+        txt_last_update.setText(("Actualizado hasta: ").concat(Fecha));
         txt_name_user.setText(NombreVisitador);
-        txt_name_ruta.setText(user);
+        txt_name_ruta.setText(user.replace("'",""));
 
         dashboardCurrentMonth =  findViewById(R.id.dashboardCurrentMonth);
         dashboardLastMonths = findViewById(R.id.dashboardLastMonths);
@@ -87,7 +90,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onClick(View view) {
                 if (ManagerURI.isOnlinea(DashboardActivity.this)){
                     new TaskDownload(DashboardActivity.this).execute(0);
-                    txt_last_update.setText(preferences.getString("lstDownload","00/00/0000"));
+                    txt_last_update.setText("00/00/0000");
                 }else{
                     new AlertDialog.Builder(DashboardActivity.this)
                             .setTitle("Alerta")
@@ -118,10 +121,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.drawer_item_Farmacias) {
-
             intent.putExtra("Activity_list", "F");
             startActivity(intent);
-
         } else if (id == R.id.drawer_item_Medicos) {
             intent.putExtra("Activity_list", "M");
             startActivity(intent);
@@ -141,6 +142,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     })
                     .setNegativeButton("NO", null)
                     .show();
+
+        }else if(id == R.id.drawer_item_Historial){
+            startActivity(new Intent(DashboardActivity.this,ReporteHistorialActivity.class));
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -11,6 +11,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +25,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Farmacias_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
@@ -43,9 +46,10 @@ public class AddFarmaciasActivity extends AppCompatActivity {
     final int mes = c.get(Calendar.MONTH);
     final int dia = c.get(Calendar.DAY_OF_MONTH);
     final int anio = c.get(Calendar.YEAR);
-    String user ,IDFarmacias,mnDelete;
+    String user ,IDFarmacias,mnDelete,mUID;
     boolean Accion = false;
     private SharedPreferences preferences;
+    String  vCommit;
     TextView etPlannedDate;
     TextView tvNombre_Farmacia,tvNombre_propietario,tvDireccion,tvTef_Farmacia,tvCel_duenna;
 
@@ -62,7 +66,7 @@ public class AddFarmaciasActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        user =preferences.getString("Ruta","");
+        user =preferences.getString("IDVM","");
 
         etPlannedDate = findViewById(R.id.item_frm_FechaAniversario);
 
@@ -116,6 +120,7 @@ public class AddFarmaciasActivity extends AppCompatActivity {
             tvResponsables_Vencidos.setText(Row.get(0).getmRVC().toString());
             tvResponsables_canjes.setText(Row.get(0).getmRCJ().toString());
             tvResponsable_mostrador.setText(Row.get(0).getmNDM().toString());
+            vCommit = Row.get(0).getmCommit();
 
             if(Row.get(0).getmPPP()==1){tv_CheckBox01.setChecked(true);}
             if(Row.get(0).getmEBD()==1){tv_CheckBox02.setChecked(true);}
@@ -168,13 +173,34 @@ public class AddFarmaciasActivity extends AppCompatActivity {
             case 16908332:
                 finish();
                 return true;
+            case R.id.accion_add_commit_farmacias:
+                LayoutInflater li = LayoutInflater.from(this);
+                final View promptsView = li.inflate(R.layout.input_observacion, null);
+                android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
+                alertDialogBuilder.setView(promptsView);
+                final TextView comentario = promptsView.findViewById(R.id.txtObservaciones);
+                comentario.setText(vCommit);
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                vCommit =comentario.getText().toString();
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                }).create().show();
+                return true;
             case R.id.action_settings:
                 return true;
             case R.id.action_add:
                 if (Accion){
                     Update_Farmacia();
                 }else{
-
                     if(tvNombre_Farmacia.getText().toString().isEmpty()){
                         tvNombre_Farmacia.requestFocus();
                         tvNombre_Farmacia.setError("Este campo no puede estar en blanco");
@@ -247,6 +273,7 @@ public class AddFarmaciasActivity extends AppCompatActivity {
         tmp.setmEBD(sCheckBox02);
         tmp.setmPIP(sCheckBox03);
         tmp.setmCCO(sCheckBox04);
+        tmp.setmCommit(vCommit);
 
         aListFarmacias.add(tmp);
 
@@ -269,9 +296,9 @@ public class AddFarmaciasActivity extends AppCompatActivity {
     }
 
     private void Save_Farmacia() {
-
-
-        String COD = user.concat("-F").concat(Clock.getIDs());
+        int D = Integer.valueOf(Llaves_model.getID(ManagerURI.getDirDb(),this).get(0).getmFar());
+        D++;
+        String COD = user.concat("-F").concat(String.valueOf(D));
 
         Integer sCheckBox01 = ((tv_CheckBox01.isChecked()) ? 1 :    0);
         Integer sCheckBox02 = ((tv_CheckBox02.isChecked()) ? 1 : 0);
@@ -302,11 +329,12 @@ public class AddFarmaciasActivity extends AppCompatActivity {
         tmp.setmPIP(sCheckBox03);
         tmp.setmCCO(sCheckBox04);
         tmp.setRuta(user);
+        tmp.setmCommit(vCommit);
         aListFarmacias.add(tmp);
 
 
         Farmacias_model.Save(this,aListFarmacias,"New");
-       // SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),this, "UPDATE Farmacias SET Estado = 0 WHERE idFarmacia='" + COD + "'");
+        SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),this, "UPDATE Llaves SET FARMACIAS ='" + D + "'");
 
 
 

@@ -31,9 +31,11 @@ public class Usuario_model {
                 for(int i=0;i<ARTI.size();i++){
                     Usuario a = ARTI.get(i);
                     ContentValues contentValues = new ContentValues();
+                    contentValues.put("mUID" , a.getmUID());
                     contentValues.put("mUser" , a.getmUser());
                     contentValues.put("mNamv" , a.getmNamv());
                     contentValues.put("mPass" , a.getmPass());
+                    contentValues.put("mRutas" , a.getmRutas());
                     myDataBase.insert("Usuario", null, contentValues );
                 }
             }

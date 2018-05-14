@@ -57,11 +57,12 @@ public class LoginActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(txtPassword.getText())){
                         Toast.makeText(LoginActivity.this, "Campos Requeridos", Toast.LENGTH_SHORT).show();
                     }else{
-                        lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),""));
+                        lista.add(new Usuario(txtUsuario.getText().toString(),txtPassword.getText().toString(),"","",""));
                         isUsuario = Usuario_model.get(ManagerURI.getDirDb(),LoginActivity.this,lista);
                         if (isUsuario.size()>0){
                             editor.putBoolean("isLogin", !checked);
-                            editor.putString("Ruta", isUsuario.get(0).getmUser());
+                            editor.putString("IDVM", isUsuario.get(0).getmUser());
+                            editor.putString("Ruta", isUsuario.get(0).getmRutas());
                             editor.putString("NombreVisitador", isUsuario.get(0).getmNamv());
                             editor.apply();
                             startActivity(new Intent(LoginActivity.this,DashboardActivity.class));

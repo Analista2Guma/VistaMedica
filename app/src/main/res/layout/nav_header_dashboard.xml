@@ -12,15 +12,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:backgroundTint="@color/color_azul_oscuro">
 
-    <ImageView
-        android:tint="@color/lightgray"
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/ic_account_circle_black_36dp" />
+
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="100dp">
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/imageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@drawable/user1" />
+    </LinearLayout>
 
     <TextView
+        android:text="MARYAN ADAN ESPINOZA BARRERA"
         android:id="@+id/drw_name_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +37,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
+        android:text="F09,F10"
         android:id="@+id/drw_name_ruta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

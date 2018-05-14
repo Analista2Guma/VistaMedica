@@ -50,6 +50,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Articulos_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
@@ -97,7 +98,7 @@ public class LocationActivity extends AppCompatActivity implements
     //List<Articulo> lst = new ArrayList<>();
     ReporteVisitaAdapter articulosAdapter;
    String[] myarray;
-   String user,IDFarmacias,opView;
+   String user,IDFarmacias,opView,nmCliente;
 
     List<DetalleLog> dtLogs = new ArrayList<>();;
     private SharedPreferences preferences;
@@ -122,12 +123,13 @@ public class LocationActivity extends AppCompatActivity implements
         mBroadcastReceiver = new ActivityDetectionBroadcastReceiver();
         updateValuesFromBundle(savedInstanceState);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        user =preferences.getString("Ruta","");
+        user =preferences.getString("IDVM","");
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
             IDFarmacias = bundle.getString("UID");
             opView = bundle.getString("Accion","");
+            nmCliente=bundle.getString("nmCLiente","");
         }
         Button btn = findViewById(R.id.btnRpt);
         //LinearLayout lyt = findViewById(R.id.tlTop);
@@ -195,10 +197,11 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     private void Save_log() {
+        int D = Integer.valueOf(Llaves_model.getID(ManagerURI.getDirDb(),this).get(0).getmRpt());
+        D++;
 
 
-
-        String COD = user.concat("-R").concat(Clock.getIDs());
+        String COD = user.concat("-R").concat((String.valueOf(D)));
 
         ArrayList<Log_Actividades> alog = new ArrayList<>();
         Log_Actividades tmp = new Log_Actividades();
@@ -209,10 +212,12 @@ public class LocationActivity extends AppCompatActivity implements
         tmp.setmComentario(mComentarios.getText().toString());
         tmp.setmCliente(IDFarmacias);
         tmp.setmRuta(user);
+        tmp.setName(nmCliente);
         tmp.setmFecha(System.currentTimeMillis());
 
         alog.add(tmp);
         LogActividades_model.Save(LocationActivity.this,alog,dtLogs);
+        SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),this, "UPDATE Llaves SET REPORTES ='" + D + "'");
         new android.support.v7.app.AlertDialog.Builder(this).setTitle("Notificación").setMessage("Guardado con exito").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

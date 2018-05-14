@@ -37,7 +37,6 @@ public class HistorialActivity extends AppCompatActivity {
         recyclerViewArticulos.setLayoutManager(linearLayout);
 
         if (bundle.getString("View").equals("CL")){
-            //oArticulo = Articulos_model.get(ManagerURI.getDirDb(),this);
             setTitle("HISTORIAL DEL CLIENTE");
             oMvstCLA = vst_3m_cla_model.get(ManagerURI.getDirDb(), this,bundle.getString("COD"));
             recyclerViewArticulos.setAdapter(new HistoricoAdapter(oMvstCLA, getBaseContext(), this));

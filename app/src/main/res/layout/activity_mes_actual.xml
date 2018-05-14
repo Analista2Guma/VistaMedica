@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:layout_gravity="center_horizontal"
-                        android:text="META"/>
+                        android:text="META MES"/>
 
                 </LinearLayout>
 
@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:textSize="20sp"
-                        android:text="VENTAS TOTALES"/>
+                        android:text="ACUMULADO MES"/>
                 </LinearLayout>
 
             </RelativeLayout>

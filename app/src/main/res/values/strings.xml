@@ -4,9 +4,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="drawer_farmacias">FARMACIAS</string>
-    <string name="drawer_medicos">MEDICOS</string>
-    <string name="drawer_cerrar_session">CERRAR SESSIÓN</string>
+    <string name="drawer_farmacias">Farmacias</string>
+    <string name="drawer_medicos">Medicos</string>
+    <string name="drawer_cerrar_session">Cerrar Sessión</string>
 
     <string name="app_name_full">GESTIÓN DE VISITA MÉDICA</string>
     <string name="text_buttom_login">Entrar</string>
@@ -17,6 +17,7 @@
     <string name="text_clientes">CLIENTES</string>
     <string name="text_articulos">ARTICULOS</string>
     <string name="copyright">Todos los Derechos Reservados - Unimark S.A, Copyright © 2018</string>
+    <string name="version">v1.3.1</string>
     <string name="hint_busqueda">BUSQUEDA</string>
     <string name="successful">Su Registro fue satisfactorio.</string>
 
@@ -99,6 +100,8 @@
 
 
     <string name="title_activity_detalle_contacto">DetalleContactoActivity</string>
+    <string name="drawer_Visitas">Historial</string>
+    <string name="title_activity_reporte_historial">ReporteHistorialActivity</string>
 
 
 </resources>

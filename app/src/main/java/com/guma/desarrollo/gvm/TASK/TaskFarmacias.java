@@ -43,7 +43,7 @@ public class TaskFarmacias extends AsyncTask<Integer,Integer,String> {
         this.cnxt = cnxt;
         preferences = PreferenceManager.getDefaultSharedPreferences(cnxt);
         editor = preferences.edit();
-        user =preferences.getString("Ruta","");
+        user =preferences.getString("IDVM","");
     }
 
     @Override

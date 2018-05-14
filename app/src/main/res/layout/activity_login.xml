@@ -32,6 +32,7 @@
                     android:layout_centerInParent="true"/>
 
                 <TextView
+                    android:id="@+id/tdLbl"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -39,6 +40,16 @@
                     android:layout_below="@+id/logo"
                     android:layout_marginTop="10dp"
                     android:text="@string/app_name_full"/>
+                <TextView
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/tdLbl"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/version"/>
+
+
 
             </RelativeLayout>
             <LinearLayout
@@ -62,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_usuario"
-                        android:text="F09"/>
+                        android:text=""/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_password"
                         android:inputType="textPassword"
-                        android:text="HC8429"/>
+                        android:text=""/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -105,6 +116,7 @@
                         android:textColor="@color/colorAccent"
                         android:textStyle="bold"
                         android:textSize="15sp"/>
+
 
                 </RelativeLayout>
 

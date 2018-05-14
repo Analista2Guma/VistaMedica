@@ -6,11 +6,11 @@ public class Medicos {
     String m011,m012,m013,m014,m015;
     String m016,m017,m018,m019,m020;
     String m21,m22,m23,m24,m25;
-    String m26,m27,m28,m29,m30,mRuta;
+    String m26,m27,m28,m29,m30,mRuta,mCommit;
     Integer m31,m32;
     public Medicos(){}
 
-    public Medicos(String mUID, String m01, String m02, String m03, String m04, String m05, String m06, String m07, String m08, String m09, String m010, String m011, String m012, String m013, String m014, String m015, String m016, String m017, String m018, String m019, String m020, String m21, String m22, String m23, String m24, String m25, String m26, String m27, String m28, String m29, String m30, String mRuta, Integer m31, Integer m32) {
+    public Medicos(String mUID, String m01, String m02, String m03, String m04, String m05, String m06, String m07, String m08, String m09, String m010, String m011, String m012, String m013, String m014, String m015, String m016, String m017, String m018, String m019, String m020, String m21, String m22, String m23, String m24, String m25, String m26, String m27, String m28, String m29, String m30, String mRuta, String mCommit, Integer m31, Integer m32) {
         this.mUID = mUID;
         this.m01 = m01;
         this.m02 = m02;
@@ -43,6 +43,7 @@ public class Medicos {
         this.m29 = m29;
         this.m30 = m30;
         this.mRuta = mRuta;
+        this.mCommit = mCommit;
         this.m31 = m31;
         this.m32 = m32;
     }
@@ -301,6 +302,14 @@ public class Medicos {
 
     public void setmRuta(String mRuta) {
         this.mRuta = mRuta;
+    }
+
+    public String getmCommit() {
+        return mCommit;
+    }
+
+    public void setmCommit(String mCommit) {
+        this.mCommit = mCommit;
     }
 
     public Integer getM31() {

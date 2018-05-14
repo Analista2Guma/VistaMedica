@@ -87,7 +87,7 @@ public class DetalleContactoActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(DetalleContactoActivity.this, "Algo Salio mal", Toast.LENGTH_SHORT).show();
                 }
-                finish();
+                //finish();
             }
         });
 
@@ -97,8 +97,9 @@ public class DetalleContactoActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetalleContactoActivity.this, LocationActivity.class);
                 intent.putExtra("UID", IDFarmacias);
                 intent.putExtra("Accion", "");
+                intent.putExtra("nmCLiente", Nombre);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 

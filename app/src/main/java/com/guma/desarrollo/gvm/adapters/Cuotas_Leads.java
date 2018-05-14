@@ -52,11 +52,13 @@ public class Cuotas_Leads extends ArrayAdapter<Cuotas> {
         it3.setText("Cuota: " + String.valueOf(Cantidad));
         it4.setText("Vendido: " + String.valueOf(Vendido));
 
-        it5.setText("Pendiente: " + String.valueOf(Pendiente));
+
         if (Pendiente>=0){
             it5.setTextColor(getContext().getResources().getColor(R.color.color_NOk));
+            it5.setText("Pendiente: " + String.valueOf(Pendiente));
         }else {
             it5.setTextColor(getContext().getResources().getColor(R.color.color_ok));
+            it5.setText("Exedente: " + String.valueOf(Pendiente));
         }
 
 

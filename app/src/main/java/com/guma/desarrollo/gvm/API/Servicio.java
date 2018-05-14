@@ -33,37 +33,37 @@ public interface Servicio {
     //VENTA DE ARTICULOS EN EL MES ACTUAL
     @FormUrlEncoded
     @POST("MvtsArticulos")
-    Call<Respuesta_MvtsArticulos> get_MvtsArticulos(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_MvtsArticulos> get_MvtsArticulos(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     //VENTAS POR ARTICULOS EN LOS ULTIMOS 3 MESES
     @FormUrlEncoded
     @POST("vtsArticulos")
-    Call<Respuesta_vts_3m_Articulos> get_vm_3M_vtsArticulos(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_vts_3m_Articulos> get_vm_3M_vtsArticulos(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
 
     //CLIENTES FACTURADOS POR MES
     @FormUrlEncoded
     @POST("MvtsCliente")
-    Call<Respuesta_MvtsCliente> get_MvtsCliente(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_MvtsCliente> get_MvtsCliente(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     //CLIENTES FACTURADOS EN LOS ULTIMOS 3 MESES
     @FormUrlEncoded
     @POST("vtsCliente")
-    Call<Respuesta_MvtsCliente> get_vts_3M_Cliente(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_MvtsCliente> get_vts_3M_Cliente(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     //ARTICULOS FACTURADOS EN EL MES
     @FormUrlEncoded
     @POST("MvstCLA")
-    Call<Respuesta_MvstCLA>get_MvstCLA(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_MvstCLA>get_MvstCLA(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     //ARTICULOS FACTURADOS EN LOS ULTIMOS 3 MESES
     @FormUrlEncoded
     @POST("vstCLA")
-    Call<Respuesta_MvstCLA>get_vst_3M_CLA(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_MvstCLA>get_vst_3M_CLA(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     @FormUrlEncoded
     @POST("HstItemFacturados")
-    Call<Respuesta_HstItemFacturados>get_vst_HstItemFacturados(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_HstItemFacturados>get_vst_HstItemFacturados(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
 
     //MODULO GENERALES.
@@ -83,7 +83,7 @@ public interface Servicio {
 
     @FormUrlEncoded
     @POST("Mcuotas")
-    Call<Respuesta_Cuotas> get_Coutas(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_Cuotas> get_Coutas(@Field("mVendedor") String mVendedor,@Field("mUID") String mUID);
 
     @FormUrlEncoded
     @POST("PUNTOS")
@@ -99,7 +99,7 @@ public interface Servicio {
 
     @FormUrlEncoded
     @POST("Llaves")
-    Call<Respuesta_Llaves> get_Llaves(@Field("mVendedor") String mVendedor);
+    Call<Respuesta_Llaves> get_Llaves(@Field("mVendedor") String mVendedor,@Field("mJsonLlaves") String mJson);
 
     @FormUrlEncoded
     @POST("UpdateLlaves")

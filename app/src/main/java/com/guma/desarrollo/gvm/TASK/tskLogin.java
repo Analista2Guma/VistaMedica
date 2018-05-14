@@ -51,6 +51,7 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
     }
     @Override
     protected Void doInBackground(List<Usuario>... arrays) {
+
         String pmUser = "",pmPass="";
 
         for (List<Usuario> u:arrays){
@@ -67,7 +68,8 @@ public class tskLogin extends AsyncTask<List<Usuario>,Integer,Void> {
                         Alerta();
                     }else {
                         editor.putBoolean("isLogin", true);
-                        editor.putString("Ruta", response.body().getResults().get(0).getmUser());
+                        editor.putString("IDVM", response.body().getResults().get(0).getmUser());
+                        editor.putString("Ruta", response.body().getResults().get(0).getmRutas());
                         editor.putString("NombreVisitador", response.body().getResults().get(0).getmNamv());
                         editor.apply();
                         Usuario_model.Save(cnxt,response.body().getResults());

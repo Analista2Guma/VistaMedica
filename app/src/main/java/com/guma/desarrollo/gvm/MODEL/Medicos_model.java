@@ -69,6 +69,7 @@ public class Medicos_model {
                     contentValues.put("cmp31" , a.getM31());
                     contentValues.put("cmp32" , a.getM32());
                     contentValues.put("Ruta" , a.getmRuta());
+                    contentValues.put("cCommit" , a.getmCommit());
 
                     myDataBase.insert("Medicos", null, contentValues );
                 }
@@ -143,7 +144,7 @@ public class Medicos_model {
                     contentValues.put("cmp30" , a.getM30());
                     contentValues.put("cmp31" , a.getM31());
                     contentValues.put("cmp32" , a.getM32());
-
+                    contentValues.put("cCommit" , a.getmCommit());
                     myDataBase.update("Medicos", contentValues, "IdMedico='"  + a.getmUID()+"'", null);
                    // myDataBase.update("Farmacias", contentValues, "idFarmacia=" ,new String[] { a.getmUID() });
                 }
@@ -215,6 +216,7 @@ public class Medicos_model {
                     tmp.setM32(cursor.getInt(cursor.getColumnIndex("cmp32")));
 
                     tmp.setmRuta(cursor.getString(cursor.getColumnIndex("Ruta")));
+                    tmp.setmCommit(cursor.getString(cursor.getColumnIndex("cCommit")));
 
                     lst.add(tmp);
                     cursor.moveToNext();

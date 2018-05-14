@@ -54,6 +54,7 @@ public class Farmacias_model {
                     contentValues.put("CheckBox03" , a.getmPIP());
                     contentValues.put("CheckBox04" , a.getmCCO());
                     contentValues.put("Ruta" , a.getRuta());
+                    contentValues.put("cCommit",a.getmCommit());
                     myDataBase.insert("Farmacias", null, contentValues );
                 }
             }
@@ -114,7 +115,7 @@ public class Farmacias_model {
                     contentValues.put("CheckBox02" , a.getmEBD());
                     contentValues.put("CheckBox03" , a.getmPIP());
                     contentValues.put("CheckBox04" , a.getmCCO());
-
+                    contentValues.put("cCommit",a.getmCommit());
                     myDataBase.update("Farmacias", contentValues, "idFarmacia='"  + a.getmUID()+"'", null);
                    // myDataBase.update("Farmacias", contentValues, "idFarmacia=" ,new String[] { a.getmUID() });
                 }
@@ -170,6 +171,7 @@ public class Farmacias_model {
                     tmp.setmPIP(cursor.getInt(cursor.getColumnIndex("CheckBox03")));
                     tmp.setmCCO(cursor.getInt(cursor.getColumnIndex("CheckBox04")));
                     tmp.setRuta(cursor.getString(cursor.getColumnIndex("Ruta")));
+                    tmp.setmCommit(cursor.getString(cursor.getColumnIndex("cCommit")));
 
                     lst.add(tmp);
                     cursor.moveToNext();

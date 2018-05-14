@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,8 +22,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.guma.desarrollo.gvm.DATABASE.SQLiteHelper;
 import com.guma.desarrollo.gvm.LIB.Clock;
 import com.guma.desarrollo.gvm.MODEL.Especialidades_model;
 import com.guma.desarrollo.gvm.MODEL.Llaves_model;
@@ -43,7 +46,7 @@ public class AddMedicosActivity extends AppCompatActivity {
 
     List<Especialidades> lst;
 
-    String user ,IDMedico,mnDelete;
+    String user ,IDMedico,mnDelete,vCommit;
     boolean Accion = false;
     private static final String TAG = "AddMedicosActivity";
     EditText et01,et02,et03,et04,et05,et06,et07,et08,et09,et10;
@@ -61,7 +64,7 @@ public class AddMedicosActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null){ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        user =preferences.getString("Ruta","");
+        user =preferences.getString("IDVM","");
 
         spnn1 = findViewById(R.id.spnn1);
 
@@ -156,6 +159,7 @@ public class AddMedicosActivity extends AppCompatActivity {
             et28.setText(Row.get(0).getM28().toString());
             et29.setText(Row.get(0).getM29().toString());
             et30.setText(Row.get(0).getM30().toString());
+            vCommit = Row.get(0).getmCommit().toString();
 
             if(Row.get(0).getM31()==1){tv_CheckBox01.setChecked(true);}
 
@@ -243,6 +247,28 @@ public class AddMedicosActivity extends AppCompatActivity {
             case 16908332:
                 finish();
                 return true;
+            case R.id.accion_add_commit_farmacias:
+                LayoutInflater li = LayoutInflater.from(this);
+                final View promptsView = li.inflate(R.layout.input_observacion, null);
+                android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
+                alertDialogBuilder.setView(promptsView);
+                final TextView comentario = promptsView.findViewById(R.id.txtObservaciones);
+                comentario.setText(vCommit);
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                vCommit =comentario.getText().toString();
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                }).create().show();
+                return true;
             case R.id.action_add:
                 if (Accion){
                     Update_Medico();
@@ -284,9 +310,10 @@ public class AddMedicosActivity extends AppCompatActivity {
     }
 
     private void Save_Medico() {
+        int D = Integer.valueOf(Llaves_model.getID(ManagerURI.getDirDb(),this).get(0).getmMed());
+        D++;
 
-
-        String COD = user.concat("-M").concat(Clock.getIDs());
+        String COD = user.concat("-M").concat((String.valueOf(D)));
         ArrayList<Medicos> aLista = new ArrayList<>();
         Medicos mdc = new Medicos();
 
@@ -326,6 +353,8 @@ public class AddMedicosActivity extends AppCompatActivity {
         mdc.setM28(((TextUtils.isEmpty(et28.getText().toString())) ? "" : et28.getText().toString()));
         mdc.setM29(((TextUtils.isEmpty(et29.getText().toString())) ? "" : et29.getText().toString()));
         mdc.setM30(((TextUtils.isEmpty(et30.getText().toString())) ? "" : et30.getText().toString()));
+        mdc.setmCommit(vCommit);
+
 
 
 
@@ -335,7 +364,7 @@ public class AddMedicosActivity extends AppCompatActivity {
 
         aLista.add(mdc);
         Medicos_model.Save(this,aLista,"New");
-
+        SQLiteHelper.ExecuteSQL(ManagerURI.getDirDb(),this, "UPDATE Llaves SET MEDICOS ='" + D + "'");
         new AlertDialog.Builder(this).setTitle("Notificación").setMessage("Guardado con exito").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -389,6 +418,7 @@ public class AddMedicosActivity extends AppCompatActivity {
         mdc.setM30(et30.getText().toString());
         mdc.setM31(sCheckBox01);
         mdc.setM32(Select);
+        mdc.setmCommit(vCommit);
 
 
         aLista.add(mdc);

@@ -13,7 +13,12 @@
             android:icon="@drawable/ic_group_black_24dp"
             android:title="@string/drawer_medicos"/>
         <item
+            android:id="@+id/drawer_item_Historial"
+            android:icon="@drawable/ic_restore_black_24dp"
+            android:title="@string/drawer_Visitas"/>
+        <item
             android:id="@+id/drawerCerrarSession"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/drawer_cerrar_session" />
     </group>
 
