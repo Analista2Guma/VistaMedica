@@ -73,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_usuario"
-                        android:text=""/>
+                        android:text="VM03"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_password"
                         android:inputType="textPassword"
-                        android:text=""/>
+                        android:text="HC8429"/>
 
                 </android.support.design.widget.TextInputLayout>
 

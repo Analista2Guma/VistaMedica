@@ -157,20 +157,21 @@ public class LocationActivity extends AppCompatActivity implements
         btn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (dtLogs.size()>0){
-                new android.support.v7.app.AlertDialog.Builder(LocationActivity.this)
-                        .setMessage("¿Seguro que decea guardar el registro?")
-                        .setCancelable(false)
-                        .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Save_log();
-                            }
-                        })
-                        .setNegativeButton("NO", null)
-                        .show();
+            new android.support.v7.app.AlertDialog.Builder(LocationActivity.this)
+                    .setMessage("¿Seguro que decea guardar el reporte?")
+                    .setCancelable(false)
+                    .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Save_log();
+                        }
+                    })
+                    .setNegativeButton("NO", null)
+                    .show();
+           /* if (dtLogs.size()>0){
+
             }else{
                 Toast.makeText(LocationActivity.this, "Sin Registros que Guardar.", Toast.LENGTH_SHORT).show();
-            }
+            }*/
 
 
 
